@@ -1,0 +1,30 @@
+{"ts": 1789575464.9177833, "event": "ring_intake_rejection", "reason": "no content words (0 < 2)", "clarity_score": 0.1, "cleaned_excerpt": "the the the a a an and or but"}
+{"ts": 1789575464.9192984, "event": "ring_intake_rejection", "reason": "character spam (longest run=10)", "clarity_score": 0.05, "cleaned_excerpt": "aaaaaaaaaa bbbbbbbbbb cccccccccc"}
+{"ts": 1789575464.9192984, "event": "ring_intake_rejection", "reason": "too short (1 tokens < 3)", "clarity_score": 0.1, "cleaned_excerpt": "hi"}
+{"ts": 1789575464.9235, "event": "ring_intake_rejection", "reason": "empty input", "clarity_score": 0.0, "cleaned_excerpt": "   "}
+{"ts": 1789575464.9301307, "event": "ring_intake_rejection", "reason": "too short (1 tokens < 3)", "clarity_score": 0.1, "cleaned_excerpt": "hi"}
+{"ts": 1789575465.252671, "event": "ring_intake_rejection", "reason": "too short (1 tokens < 3)", "clarity_score": 0.1, "cleaned_excerpt": "aaaaa"}
+{"ts": 1789636329.1294646, "event": "ring_intake_rejection", "reason": "too short (1 tokens < 3)", "clarity_score": 0.1, "cleaned_excerpt": "aaaaa"}
+{"ts": 1789637357.7732992, "event": "ring_intake_rejection", "reason": "character spam (longest run=10)", "clarity_score": 0.05, "cleaned_excerpt": "aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd"}
+{"ts": 1789637357.7732992, "event": "ring_intake_rejection", "reason": "too short (1 tokens < 3)", "clarity_score": 0.1, "cleaned_excerpt": "hi"}
+{"ts": 1789637781.0295577, "event": "ring_intake_rejection", "reason": "character spam (longest run=10)", "clarity_score": 0.05, "cleaned_excerpt": "aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd"}
+{"ts": 1789638013.3464513, "event": "ring_intake_rejection", "reason": "character spam (longest run=10)", "clarity_score": 0.05, "cleaned_excerpt": "aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd"}
+{"ts": 1789671671.0791576, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789671671.0791576, "event": "ring_intake_rejection", "reason": "too short (1 tokens < 3)", "clarity_score": 0.1, "cleaned_excerpt": "aaaaaaaaaaaaaaaaaaaaaaaa"}
+{"ts": 1789671679.5743895, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789671765.7420077, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789679553.5486076, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789679687.9825203, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789679717.7759037, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789680646.7504737, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789680906.2843246, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789730003.9404984, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789730180.3986518, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789730575.256186, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789732591.744888, "event": "ring_intake_rejection", "reason": "character spam (longest run=10)", "clarity_score": 0.05, "cleaned_excerpt": "aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd"}
+{"ts": 1789732889.3369536, "event": "ring_intake_rejection", "reason": "character spam (longest run=10)", "clarity_score": 0.05, "cleaned_excerpt": "aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd"}
+{"ts": 1789742675.6866412, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789747020.255946, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789747357.6170747, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789748612.496525, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}
+{"ts": 1789751673.3951101, "event": "ring_intake_rejection", "reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)", "clarity_score": 0.05, "cleaned_excerpt": "aaaa aaaa aaaaa aaaaaa aaaaaaa"}

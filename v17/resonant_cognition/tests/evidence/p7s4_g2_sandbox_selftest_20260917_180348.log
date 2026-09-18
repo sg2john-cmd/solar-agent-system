@@ -1,0 +1,33 @@
+============================================================
+g2_sandbox.py — Phase 7 Segment 4 self-test (G2 Sandbox)
+============================================================
+  [PASS] [1a] Toggle OFF: status=skipped
+  [PASS] [1b] Toggle OFF: zero prompts run
+  [PASS] [1c] Toggle OFF: reason mentions disabled
+  [PASS] [1d] Toggle OFF: no new pipeline modules loaded (collapse/memory not imported fresh)
+  [PASS] [2a] cos(identical) ≈ 1.0
+  [PASS] [2b] cos(opposite) ≈ −1.0
+  [PASS] [2c] cos(orthogonal) = 0.0
+  [PASS] [2d] cos(mismatched dims) = 0.0
+  [PASS] [2e] cos(zero vector) = 0.0
+  [PASS] [3a] shift(2.0, 2.5) = 0.5
+  [PASS] [3b] shift is symmetric
+  [PASS] [3c] shift identical = 0.0
+  [PASS] [4a] small shift + high coherence → PASS
+  [PASS] [4b] huge tension shift → FAIL even if coherent
+  [PASS] [4c] low coherence → FAIL even if tension stable
+  [PASS] [4d] exactly at thresholds → PASS (<= and >= are inclusive)
+  [PASS] [5a] Two same-direction entries: unit dir points +x
+  [PASS] [5c] Vec-less entry ignored: dir still +x
+  [PASS] [5d] Opposing entries: net dir flips to the stronger (−x)
+  [PASS] [5e] No usable vecs at all → None
+  [PASS] [6a] candidate_bias_wave(plain entry) → None
+  [PASS] [6b] candidate wave matches manual aggregation (cos ≈ 1)
+  [PASS] [7a] Multiday scaffold returns not_implemented
+  [PASS] [7b] Scaffold points to the documented upgrade path
+  [PASS] [8a] G2_SANDBOX_ENABLED matches constants
+  [PASS] [8b] Tension-shift threshold matches constants (0.30)
+  [PASS] [8c] Coherence minimum matches constants (0.70)
+  (info) live G2_SANDBOX_ENABLED = False (dev default OFF; flip in constants.py for production)
+
+g2_sandbox.py Segment 4 self-test: ALL PASS (G2 Sandbox, offline)

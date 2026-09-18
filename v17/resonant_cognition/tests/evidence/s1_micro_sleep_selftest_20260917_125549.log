@@ -1,0 +1,17 @@
+sleep.py Segment 1 self-test: micro_sleep()
+  elapsed: 0.0015s
+  [PASS] completes in < 1 second
+  [PASS] returns combined report shape
+  [PASS] Pass I scanned both ring entries
+  [PASS] Pass I aligned count == 1
+  [PASS] Pass I misaligned count == 1
+  [PASS] aligned decay_rate relaxed to 0.003333
+  [PASS] aligned align_score >= threshold
+  [PASS] misaligned decay_rate accelerated to 0.06
+  [PASS] misaligned align_score below threshold
+  [PASS] aged-but-surviving entry still present
+  [PASS] below-min-mass entry shed from live store
+  [PASS] surviving entry mass decayed on disk to 0.814354
+  [PASS] shed entry landed in compression queue
+
+Segment 1 self-test: PASS (micro_sleep = Pass I light + Pass V light, <1s, no LLM)

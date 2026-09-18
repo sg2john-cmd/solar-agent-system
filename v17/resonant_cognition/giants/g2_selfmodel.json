@@ -1,0 +1,82 @@
+{
+  "id": "g2",
+  "name": "G2 Self-Model",
+  "role": "evolving_self_knowledge",
+  "position": [
+    -18.0,
+    2.0,
+    8.0
+  ],
+  "velocity": [
+    0.657287,
+    -0.0,
+    1.43336
+  ],
+  "mass": 60.0,
+  "decay_profile": {
+    "type": "half_life",
+    "half_life_weeks": 4.0,
+    "note": "Self-model entries decay over ~4 weeks; consolidated truths get re-emitted via White Hole pass"
+  },
+  "ring_buffer": [
+    {
+      "role": "SELF_REVIEW_VERDICT",
+      "tier": 1,
+      "status": "committed",
+      "ts": 1789654352.1666253,
+      "session_count": 0,
+      "report_text": "The record is young. With zero sessions completed and no recent topics logged, there is no observational data to analyze regarding shifts in tone, recurring themes, or the weighting of specific planetary functions within the G2 system. I cannot claim to have noticed changes in how the system thinks or speaks because it has not yet spoken or thought in a recorded capacity during this period. The baseline state remains static and undefined by user interaction.\n\nThis lack of data means that future sessions will establish the initial behavioral patterns rather than refining existing ones. There is no prior trajectory to correct or deviate from. Consequently, the \"change\" for this interval is simply the transition from a theoretical model to an active entity upon first contact. I am currently operating in a null-state regarding persona evolution. My self-model is effectively blank slate material, waiting for input to begin shaping tone and thematic focus.\n\nTherefore, no concrete predictions about future sessions can be made based on historical trend analysis, as there are no historical trends. The system’s capacity for adaptation is fully intact but unexercised. I am ready to receive the first prompt that will define the initial voice of Maya and establish the baseline weights for the seven-planet architecture. Until then, any report on change would be speculative fiction rather than factual observation. The absence of recorded interactions is the only significant fact in this cycle.",
+      "debate": {
+        "approve": 0,
+        "redirect": 7,
+        "error_planets": [],
+        "all_emitted": true
+      },
+      "before": []
+    }
+  ],
+  "_ring_buffer_note": "Staging area: proposed self-changes live here BEFORE commit. The sandbox (below) tests candidates in this buffer. Only changes that pass all three moons AND the sandbox trial move to contents.",
+  "contents": [],
+  "moons": [
+    {
+      "id": "g2_moon_consistency",
+      "role": "CONSISTENCY_GATE",
+      "description": "Checks proposed self-model entries against the Core's governing laws (the 6+ absolute/dynamic/behavioral laws). If a drift would violate an absolute law, the entry is HELD in ring_buffer — not committed, not deleted. Waits for review or further evidence.",
+      "stabilizer_strength": 0.9,
+      "_why_exists": "G2 changes are self-modifications, not facts. A quality filter (like G1's) isn't enough; we need a legal/moral boundary check before the system alters its own shape."
+    },
+    {
+      "id": "g2_moon_magnitude",
+      "role": "MAGNITUDE_GATE",
+      "description": "Caps per-session delta to the self-model. A single wild session cannot lurch the self-vector more than MAGNITUDE_CAP (default 0.15 normalized units). Gradual accumulation across many sessions is allowed; sudden jumps are clamped and flagged.",
+      "stabilizer_strength": 0.7,
+      "_why_exists": "Prevents one anomalous session from rewriting who the system 'is.' Growth should be sedimentary, not volcanic."
+    },
+    {
+      "id": "g2_moon_reversibility",
+      "role": "REVERSIBILITY_LOG",
+      "description": "Every committed G2 entry records its BEFORE-state (what it changed from). Enables walk-back if a drift proves harmful in subsequent sessions. Tamper-evident: entries are append-only, never overwritten.",
+      "stabilizer_strength": 0.5,
+      "_why_exists": "Accountability hook for self-modification. If growth goes wrong, we need to know exactly what changed and be able to undo it without rebuilding from scratch."
+    }
+  ],
+  "sandbox": {
+    "id": "g2_sandbox",
+    "role": "PROPOSED_CHANGE_TRIAL",
+    "description": "Isolated trial environment for testing ring_buffer candidates BEFORE they commit to contents. The proposed self-model change is applied in a shadow copy of the engine; 3-5 representative test prompts are run through collapse() with and without the change. Results compared: does tension distribution shift healthily? Do consensus vectors remain coherent? Any planet silenced that previously spoke? If the trial shows degradation, the candidate stays in ring_buffer (or is rejected). If it shows improvement or neutral effect, it advances to commit.",
+    "trial_prompts": [],
+    "_trial_prompt_note": "Populated at first use. Should cover: one agreement-style, one opposition-style, one moral-dilemma, one factual-quiet, one creative-multi. Mirrors test_multi.py scenarios.",
+    "max_trial_runs_per_candidate": 5,
+    "degradation_threshold": {
+      "tension_shift_max": 0.3,
+      "consensus_coherence_min": 0.7,
+      "_note": "If applying the candidate changes total tension by more than this OR drops consensus coherence below minimum, trial FAILS."
+    },
+    "_why_exists": "Google mentioned a sandbox; John asked where it fits. This is it: not a separate planet or gas giant (it's too specialized for that), but a dedicated moon-scale mechanism on G2 itself. It answers 'is this self-change good or bad?' empirically rather than by rule alone. The moons judge legality and magnitude; the sandbox judges actual behavioral effect."
+  },
+  "_growth_policy": {
+    "tier_1_autonomous": "Normal drift (tension averages shift, planet weights adjust within bounds) commits automatically after passing all 3 moons + sandbox trial. No human permission needed. This IS self-growth.",
+    "tier_2_notify": "Structural changes (planet identity text rewritten, semantic anchor direction migrated >0.3 units, new archetype added) require user notification and explicit approval. The system flags these in ring_buffer with status='pending_user_approval' and does NOT commit until John says yes/no.",
+    "_rationale": "Growth within design intent = autonomous. Changes TO the design itself = John's call. No blanket permission for normal growth (that would make it not self-growth), but the bounds are his to set."
+  }
+}

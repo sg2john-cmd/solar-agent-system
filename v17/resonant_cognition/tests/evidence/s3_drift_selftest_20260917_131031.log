@@ -1,0 +1,55 @@
+sleep.py Segment 1 self-test: micro_sleep()
+  elapsed: 0.0015s
+  [PASS] completes in < 1 second
+  [PASS] returns combined report shape
+  [PASS] Pass I scanned both ring entries
+  [PASS] Pass I aligned count == 1
+  [PASS] Pass I misaligned count == 1
+  [PASS] aligned decay_rate relaxed to 0.003333
+  [PASS] aligned align_score >= threshold
+  [PASS] misaligned decay_rate accelerated to 0.06
+  [PASS] misaligned align_score below threshold
+  [PASS] aged-but-surviving entry still present
+  [PASS] below-min-mass entry shed from live store
+  [PASS] surviving entry mass decayed on disk to 0.814354
+  [PASS] shed entry landed in compression queue
+
+Segment 1 self-test: PASS (micro_sleep = Pass I light + Pass V light, <1s, no LLM)
+
+sleep.py Segment 2 self-test: select_watchkeepers()
+  [PASS] selects top-3 by weight
+  [PASS] remaining 4 are asleep
+  [PASS] count matches WATCHKEEPER_COUNT (3)
+  [PASS] weights_snapshot has all 7
+  [PASS] tie: all three top-weight planets selected
+  [PASS] 2 planets, count=3: both still watchkeepers (fewer than N)
+  [PASS] no one asleep with only 2 planets
+  [PASS] empty weights: no watchkeepers locked
+  [PASS] empty weights: note present
+  [PASS] non-planet keys excluded from selection
+  [PASS] count=2 selects top 2 (override)
+  [PASS] min_count=1 overrides count=0
+
+Segment 2 self-test: PASS (select_watchkeepers = top-N by activation weight, pure math)
+
+sleep.py Segment 3 self-test: compute_drift() + compute_core_drift()
+  [PASS] position moved toward consensus
+  [PASS] drift magnitude within bounds
+  [PASS] mass increased by hint (clamped)
+  [PASS] cognitive_mode unchanged without G2 suggestion
+  [PASS] prompt_structure preserved
+  [PASS] low-activation drift is near minimum
+  [PASS] no-session: drift magnitude is 0 (jitter only)
+  [PASS] no-session: position has tiny jitter (< 0.01)
+  [PASS] no-session: mass unchanged
+  [PASS] mass clamped at max 4.5
+  [PASS] mass clamped at min 2.0
+  [PASS] G2 suggestion: temp increased within bounds
+  [PASS] G2 suggestion: cot_depth increased by 1
+  [PASS] G2 clamp: temp capped at +DRIFT_TEMP_DELTA
+  [PASS] G2 clamp: cot_depth capped at +DRIFT_COT_DELTA
+  [PASS] core drift magnitude <= CORE_DRIFT_MAX
+  [PASS] core moved toward consensus (x increased)
+  [PASS] core idle: drift is minimal (< 0.01)
+
+Segment 3 self-test: PASS (compute_drift + compute_core_drift = pure math, bounded, no disk)

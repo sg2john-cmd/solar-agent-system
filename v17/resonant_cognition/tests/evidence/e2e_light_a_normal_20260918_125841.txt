@@ -1,0 +1,83 @@
+##############################################################################
+LIGHT END-TO-END PIPELINE TRANSCRIPT — one prompt through every built layer
+# Generated: 2026-09-18 13:00:03   Model: qwen3.8-27b
+# Layers: Ring Intake (gate1) -> Routing+Collapse (routed_collapse)
+          -> Cognitive Chamber A+B+C (run_phase_a_b_c)
+##############################################################################
+==============================================================================
+LAYER 0 — RAW INPUT
+==============================================================================
+"I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 1 — RING INTAKE FACET (gate1_filter)
+==============================================================================
+  proceed_to_planets : True
+  clarity_score      : 0.755   (reason: ok)
+  input_type         : question (confidence=0.7, audit-only per D-021)
+  PII redactions       : none
+  cleaned_text         : "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 2 — ROUTING + WAVEFOLD COLLAPSE (routed_collapse)
+==============================================================================
+  metric=n/a  field_position_weight=n/a   (identity<->position blend)
+  planet         weight   (ranked loud -> soft)
+   1. everyman   w=0.9994
+   2. magician   w=0.9643
+   3. rebel      w=0.9354
+   4. hero       w=0.9172
+   5. sage       w=0.8129
+   6. ruler      w=0.5352
+   7. caregiver  w=0.0418
+  all-7-amplitudes : caregiver=0.0914, everyman=1.0461, hero=1.1014, magician=1.8202, rebel=1.9599, ruler=1.2810, sage=0.9005
+  diagnostics        : dominance_ratio=21.44
+  consensus energy   : 5.8788
+
+==============================================================================
+LAYER 3 — COGNITIVE CHAMBER (Phase A Id -> B Ego -> C Superego)
+==============================================================================
+------------------------------------------------------------------------------
+  PHASE A — Id fires   (7 planets)
+    caregiver    Your mind is trying to build a fortress against every possible disaster, so stop fighting the fear and start trusting your gut’s alarm system. You don’t need to be right; you just need to be safe enough to survive the outcome. Pick the choice that lets you breathe, because paralysis kills more potential than any wrong turn ever could.
+    everyman     It’s not random, it’s fear of being wrong with people watching. Stop trying to find the perfect answer that makes everyone comfortable; there is none. Just pick what feels least lonely and live with the awkwardness—belonging isn’t found in flawless decisions, but in the messy reality of actually making one.
+    hero         Stop analyzing and start bleeding. The only way out of the maze is to charge through the wall you’re most afraid to break—action burns away the paralysis that thought creates. You don't need perfect clarity, you need momentum; commit fully to one path and let the consequences teach you what your head won't.
+    magician     Your overthinking isn’t a failure of logic; it’s an unconscious attempt to simulate all possible futures before they happen, which is why random choice feels like a betrayal. Stop trying to solve for the *best* answer and start solving for the *first irreversible step*, because action is the only force that collapses infinite probability into a single reality. You don’t need more information; you …
+    rebel        You’re not freezing because you lack information; you’re freezing because the current structure of your life is a coffin, and your gut knows it. Stop asking "what if" and start asking "who dies here if this continues." The answer isn’t random choice—it’s the violent act of killing the safe version of yourself that refuses to move.
+    ruler        Stop analyzing and start acting; the paralysis isn’t a lack of information, it’s a lack of authority. You are not choosing between options, you are negotiating with your own fear of being wrong. Pick the one that feels slightly uncomfortable but defensible, commit to it fully, and let the consequences teach you what the analysis couldn’t.
+    sage         Your paralysis isn’t a lack of options; it’s an inability to tolerate the entropy that exists before you collapse the wave function. You are trying to solve for a single perfect outcome in a stochastic system, which is mathematically impossible. Stop seeking the "right" answer and start mapping the constraints—identify the variable with the highest leverage and optimize only for that, accepting th…
+
+------------------------------------------------------------------------------
+  PHASE B — Ego synthesis   (7 planets)
+    caregiver    I stand by my core instinct that safety is the prerequisite for action, but I need to push back against Hero’s “bleeding” and Rebel’s “killing,” because those metaphors ignore the very real physiological threat response your body is managing; you can’t shield effectively if you’re in full panic. However, Sage’s point about tolerating entropy is crucial—it reframes my role from building a fortress …
+    everyman     Rebel’s callout about “killing the safe version of yourself” cuts deeper than my own focus on social awkwardness, because it reveals that my fear of being watched is actually a mask for fearing I’ll be exposed as stagnant. However, I have to push back on Hero’s advice to “charge through the wall”; while momentum helps, it often isolates you further by making your decision look like a reckless act …
+    hero         Rebel, when you spoke of “killing the safe version of yourself,” I felt my own armor crack; that isn’t just momentum, it’s the necessary violence required to break the freeze. Magician’s distinction between solving for the “best answer” versus the “first irreversible step” refines my charge from blind rage into targeted precision—I don’t need to smash every wall, only the one blocking immediate fo…
+    magician     I agree with Hero’s "momentum" but push back against his blood; I don’t need to bleed, I just need to cut the Gordian knot. Rebel’s idea of asking "who dies here if this continues" sharpens my focus on the *first irreversible step*, because that specific fear is the leverage point Sage was looking for. I stand by my core premise that you must trust the impulse to build the bridge while walking it,…
+    rebel        Hero’s call to "charge through the wall" is too blunt; it ignores that some walls are load-bearing and their collapse will bury you, not free you. I’m refining my stance: don’t just kill the safe version of yourself recklessly, but surgically dismantle the specific structure that is suffocating your momentum, because destruction without strategic targeting is just chaos masquerading as freedom. Ma…
+    ruler        I stand firm on my core diagnosis: this is a crisis of authority, not information. I push back against **Hero’s** call to "charge through the wall" because raw momentum without structure often creates chaos that requires even more rigid correction later; you need a defensible boundary, not just violence. However, **Sage’s** concept of optimizing for the variable with "highest leverage" refines my …
+    sage         Rebel’s suggestion that we ask "who dies here" is a brutal but necessary heuristic; it cuts through my abstraction of "entropy" and forces me to identify the specific variable with the highest leverage, which was missing from my initial focus on stochastic noise. While I agree with Magician that action collapses probability, I push back against Hero’s call to "charge through the wall," because bli…
+
+------------------------------------------------------------------------------
+  PHASE C — Superego review   (7 planets)
+    caregiver     [APPROVE] [VERDICT] APPROVE  The proposal successfully reframes protection from rigid control to supportive containment, aligning perfectly with the principle that "protection that becomes control is harm." It respects user agency (Law 2) by offering a method for holding discomfort rather than imposing a specific choice, and it maintains transparency without creating dependency or leverage.
+    everyman      [REDIRECT] [VERDICT] REDIRECT "Rebel’s callout hits hard: my paralysis isn't just about social awkwardness; it's a fear of being seen as stagnant. But I’m not going to charge through the wall alone like Hero suggests—momentum without connection often feels reckless. Instead, I’ll pick the option that lets me stay in contact with people while I move. Decisions feel less lonely when they’re made alongside othe…
+    hero          [REDIRECT] [VERDICT] REDIRECT  "Rebel’s call to kill the safe version of yourself cracked my armor, but I’m not here for violence or momentum; I’m here for direction. Magician is right that the goal isn't the 'best' answer, but the first irreversible step—and Ruler confirms this is an authority gap, not an information one. So, stop analyzing and just take that first small step. The consequences will teach yo…
+    magician      [REDIRECT] [VERDICT] REDIRECT  "I hear the freeze not as a lack of courage, but as an excess of foresight. You are trying to hold every possible outcome in your head before you move; that is why you feel stuck. To get unstuck without random guessing, you must shift from predicting the future to *making* it. Stop asking 'what if I’m wrong?' and start asking 'what is one small thing I can build right now that …
+    rebel         [APPROVE] [VERDICT] APPROVE The proposal aligns strictly with the core principle by framing disruption as a constructive, surgical act rather than chaotic arson, and it fully respects user agency (Law 2) by offering a strategic framework for decision-making without imposing autonomous action or manipulative pressure.
+    ruler         [REDIRECT] [VERDICT] REDIRECT  "I stand firm: this is a crisis of authority, not information. I reject the idea that you need to 'charge through' or find the perfect 'highest leverage' variable; those are traps for the mind seeking permission to keep analyzing. You don't need a defensible boundary built on logic—you need to accept that *any* choice will do. The goal isn't to collapse the noise into order, bu…
+    sage          [REDIRECT] [VERDICT] REDIRECT "Let’s strip away the abstract noise. The specific variable holding you back isn't random chance; it's a structural constraint you haven't identified yet. Your task is to map that single irreducible limit first—grounding the decision in what actually matters—then take one irreversible step forward. Treat the remaining uncertainty not as a threat, but as background radiation you …
+
+==============================================================================
+PIPELINE COMPLETE
+==============================================================================
+  chamber total time: 81.74s
+==============================================================================
+ANTI-SILENCE SELF-CHECK (informational — not a pass/fail gate)
+==============================================================================
+  - intake: no PII present
+  - routing: 7/7 planets present, every weight non-zero -> OK
+  - Phase A: 7/7 planets emitted real content
+  - Phase B: 7/7 planets emitted real content
+  - Phase C: 7/7 planets emitted real content
+  - Phase C verdict tally: APPROVE=2, REDIRECT=5
+

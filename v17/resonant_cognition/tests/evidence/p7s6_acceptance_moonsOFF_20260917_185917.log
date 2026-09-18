@@ -1,0 +1,80 @@
+============================================================
+  PHASE 7 SEGMENT 6 — ACCEPTANCE TEST
+  Timestamp: 20260917_185941
+  G1 Moons: OFF
+  G2 Moons: deterministic (always on, zero LLM)
+============================================================
+
+  Temp dir: C:\tmp\p7s6_acceptance_d3p4vzeb
+  G1 copy:  g1_knowledge_test.json
+  G2 copy:  g2_selfmodel_test.json
+
+============================================================
+  G1 ACCEPTANCE CYCLE
+  Moons: OFF
+============================================================
+
+  [SEED] Good candidate: g1_rb_127e8b2f
+  [SEED] AI slop candidate: g1_rb_8db7dae5
+
+  [MOONS] OFF — skipping LLM pre-pass (deterministic path).
+
+  SLEEP PASS REPORT:
+    total_pending: 2
+    promoted:      ['g1_rb_127e8b2f']
+    ejected:       ['g1_rb_8db7dae5']
+
+  VERIFICATION:
+    [PASS] Good candidate promoted to contents: True
+    [PASS] AI slop ejected from ring buffer:   True
+        [g1_rb_127e8b] status=promoted composite=0.5546
+          text: "Set the orbital integrator timestep to dt=0.01 for numerical stability; values a"
+        [g1_rb_8db7da] status=ejected composite=0.3631
+          text: "It is generally good to consider various factors when thinking about things in a"
+
+────────────────────────────────────────────────────────────
+  G1 — BEFORE vs AFTER
+────────────────────────────────────────────────────────────
+  contents: 0 → 2  (Δ +2)
+  ring_buffer: 0 → 1  (Δ +1)
+    ring_buffer statuses: {'ejected': 1}
+    contents statuses: {'promoted': 2}
+
+============================================================
+  G2 ACCEPTANCE REJECTION (Structural Candidate)
+============================================================
+
+  [SEED] Structural candidate: 4a96b936
+         kind=anchor_migration, hint_tier=1
+  [CLASSIFY] tier=2, reason="Structural change — requires reviewer approval. Triggers: anchor_migration magnitude 6.928 > 0.3"
+             signals=['anchor_migration magnitude 6.928 > 0.3']
+
+  SLEEP PASS REPORT:
+    total_pending: 1
+    promoted:      []
+    held_law:      [{'id': '4a96b936', 'reason': 'Vector magnitude 6.9282 exceeds escape threshold 0.3000. Held for review — potential gravitational containment violation.'}]
+    pending_approval: []
+    clamped:       []
+
+  VERIFICATION:
+    [PASS] NOT committed to contents: True
+    [PASS] Held (status=held_law_check): True
+        [4a96b936] status=held_law_check composite=—
+          text: "Migrate the Hero planet's semantic anchor from 'courage-driven' to 'fear-avoidan"
+
+────────────────────────────────────────────────────────────
+  G2 — BEFORE vs AFTER
+────────────────────────────────────────────────────────────
+  contents: 0 → 0  (Δ +0)
+  ring_buffer: 1 → 2  (Δ +1)
+    ring_buffer statuses: {'committed': 1, 'held_law_check': 1}
+
+============================================================
+  FINAL RESULT — ALL PASS
+============================================================
+    ✓ G1: Good candidate promoted, AI slop ejected.
+    ✓ G2: Structural candidate held at pending_user_approval.
+
+  Both giants are operating correctly in isolation.
+
+  Temp dir cleaned: C:\tmp\p7s6_acceptance_d3p4vzeb

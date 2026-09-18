@@ -1,0 +1,147 @@
+##############################################################################
+PRODUCTION-CONFIG VERIFICATION — moons ON (release configuration)
+  MOON_HEMISPHERE_ENABLED=True   G1_FILTER_MOONS_ENABLED=True
+  G2 self-model moons: always on. Expect ~15-20 min (moons double Phase A calls).
+##############################################################################
+
+========================================================================
+  PRODUCTION-CONFIG RUN — dominance
+========================================================================
+  intake: proceed=True (0.0s)
+  routing+collapse done (11.3s)
+
+================================================================
+PHASE A — ID FIRES (7 planets)
+Question: "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+Model: qwen3.8-27b
+================================================================
+   Caregiver    [moons] (6.8s) w=0.04 temp=0.6 | Stop trying to solve for certainty in a system built on probability; your brain ...
+   Everyman     [moons] (6.9s) w=1.00 temp=0.7 | You are stuck because you are trying to solve an emotional knot with a spreadshe...
+   Hero         [moons] (7.2s) w=0.92 temp=0.8 | Stop waiting for a certainty that doesn’t exist and start calculating the cost o...
+   Magician     [moons] (8.1s) w=0.96 temp=0.9 | You’re choking on a computational overload because you’re trying to optimize for...
+   Rebel        [moons] (7.3s) w=0.94 temp=0.85 | You’re burning cycles on noise because you refuse to kill the weak hypotheses, s...
+   Ruler        [moons] (6.7s) w=0.54 temp=0.55 | Stop pretending this is a math problem; it’s a physical scream trapped in your c...
+   Sage         [moons] (7.5s) w=0.81 temp=0.5 | You’re not failing at thinking, you’re choking on a termination condition becaus...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 50.4s
+
+================================================================
+PHASE B — EGO SYNTHESIS (7 planets)
+Question: "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+================================================================
+   Caregiver    (4.5s) w=0.04 | I stand by my core instinct that we must stop waiting for certainty, but I want to refine Rebel’s ag...
+   Everyman     (4.5s) w=1.00 | Ruler, when you said the right choice is the one that "makes that cold knot in your ribs loosen," yo...
+   Hero         (4.2s) w=0.92 | I’m hardening my stance around Everyman’s “crawl back out” and Magician’s “kill the variable,” becau...
+   Magician     (4.3s) w=0.96 | Rebel’s insistence on letting the gut “recoil” from what “tastes like ash” sharpens my bridge-buildi...
+   Rebel        (4.4s) w=0.94 | Everyman’s insistence on "crawling back out" is the only concession I’ll make, because it admits tha...
+   Ruler        (3.8s) w=0.54 | I agree with Sage’s diagnosis of a "termination condition," as it validates my need to set a hard bo...
+   Sage         (4.5s) w=0.81 | Rebel’s insistence on letting the "gut recoil" from what tastes like ash offers a cleaner decomposit...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 30.2s
+
+================================================================
+PHASE C — REGULATORY REVIEW / SUPEREGO (7 planets)
+Question: "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+Core Laws loaded: 6
+================================================================
+   Caregiver    (6.0s) [REDIRECT] | [VERDICT] REDIRECT I stand by my core instinct that we must stop waiting for certainty, bu...
+   Everyman     (4.4s) [REDIRECT] | [VERDICT] REDIRECT "Ruler, you nailed the exact mechanism: picking the reversible option i...
+   Hero         (6.0s) [REDIRECT] | [VERDICT] REDIRECT "I’m hardening my stance around Everyman’s “crawl back out” and Magicia...
+   Magician     (6.5s) [REDIRECT] | [VERDICT] REDIRECT  Here is the corrected version of the proposal:  "You are not failing t...
+   Rebel        (4.5s) [REDIRECT] | [VERDICT] REDIRECT Your architecture isn’t broken; it’s over-calibrated for a threat level...
+   Ruler        (6.6s) [REDIRECT] | [VERDICT] REDIRECT "I hear you: the freezing isn't just about needing more data; it’s abou...
+   Sage         (5.8s) [REDIRECT] | [VERDICT] REDIRECT  "Your overthinking isn't a character flaw or a broken brain; it’s just...
+
+────────────────────────────────────────────────────────────────
+   All 7 reviewed. APPROVE=0  REDIRECT=7. Time: 39.7s
+
+================================================================
+FULL CHAMBER A+B+C COMPLETE in 120.2s
+COMET: not triggered this session
+================================================================
+  chamber A+B+C done (120.2s)
+  [verify] Phase A (Id): 7/7 planets emitted real content  OK
+  [verify] Phase B (Ego): 7/7 planets emitted real content  OK
+  [verify] Phase C (Superego): 7/7 planets emitted real content  OK
+  [verify] dual-moon hemisphere framing: 0/7 Phase A records carry lens metadata  (CHECK — see transcript for raw phase_a records)
+  [verify] G1_FILTER_MOONS_ENABLED = True  (g1_ops.g1_sleep_pass_i imported OK — C1/M4 wiring intact)
+  [verify] Phase C verdicts: 7/7 present -> REDIRECT=7
+  [verify] waveform projection: 7/7 weights, all amplitudes > 0: True, consensus energy=5.8788
+  [verify] M2 fix: planets with [ERROR] output: none  OK
+
+========================================================================
+  PRODUCTION-CONFIG RUN — balanced
+========================================================================
+  intake: proceed=True (0.0s)
+  routing+collapse done (0.0s)
+
+================================================================
+PHASE A — ID FIRES (7 planets)
+Question: "Should I strictly optimize every hour of my day to guarantee progress toward my long-term goals, or leave vast open spaces for chance, intuition, and unplanned opportunities?"
+Model: qwen3.8-27b
+================================================================
+   Caregiver    [moons] (7.5s) w=0.02 temp=0.6 | Stop trying to engineer a perfect machine out of flesh and blood; you’ll just br...
+   Everyman     [moons] (7.6s) w=0.97 temp=0.7 | You’re mathematically capping your own ceiling by treating your life like a line...
+   Hero         [moons] (7.3s) w=0.90 temp=0.8 | Stop strangling yourself with a linear regression error; you’re trying to apply ...
+   Magician     [moons] (7.1s) w=0.93 temp=0.9 | Stop trying to drain the swamp; you’re treating time like a dead battery instead...
+   Rebel        [moons] (8.0s) w=0.93 temp=0.85 | Stop trying to machine-gun your life into a sterile, logical grid because that’s...
+   Ruler        [moons] (6.8s) w=0.87 temp=0.55 | Optimization is a cage that strangles the very life force you’re trying to harve...
+   Sage         [moons] (7.1s) w=0.86 temp=0.5 | Stop trying to run a linear regression on a living soul; you’re pruning the very...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 51.3s
+
+================================================================
+PHASE B — EGO SYNTHESIS (7 planets)
+Question: "Should I strictly optimize every hour of my day to guarantee progress toward my long-term goals, or leave vast open spaces for chance, intuition, and unplanned opportunities?"
+================================================================
+   Caregiver    (3.8s) w=0.02 | I stand by my core instinct that structure without breath leads to suffocation, but Hero’s image of ...
+   Everyman     (5.3s) w=0.97 | I’m standing by my core instinct that we must reject the linear equation, but I have to push back ag...
+   Hero         (4.7s) w=0.90 | I’m hardening my stance after hearing Caregiver’s warning that without that 30% open space, we’re no...
+   Magician     (4.5s) w=0.93 | I stand by my core insight that the "waste" is fuel, but Hero’s framing of this as a "noose tighteni...
+   Rebel        (4.1s) w=0.93 | As Hero noted that the schedule is a "noose," I want to sharpen that: it’s not just tight, it’s brit...
+   Ruler        (4.5s) w=0.87 | Caregiver’s specific "70/30" ratio is the only structural anchor I will accept, because even my Id n...
+   Sage         (4.3s) w=0.86 | Caregiver’s specific 70/30 split is the only variable that actually holds structural integrity; whil...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 31.2s
+
+================================================================
+PHASE C — REGULATORY REVIEW / SUPEREGO (7 planets)
+Question: "Should I strictly optimize every hour of my day to guarantee progress toward my long-term goals, or leave vast open spaces for chance, intuition, and unplanned opportunities?"
+Core Laws loaded: 6
+================================================================
+   Caregiver    (5.4s) [REDIRECT] | [VERDICT] REDIRECT "I stand by my core instinct that structure without breath leads to suf...
+   Everyman     (8.5s) [REDIRECT] | [VERDICT] REDIRECT I’m standing by my core instinct that we must reject the linear equatio...
+   Hero         (2.5s) [APPROVE] | [VERDICT] APPROVE The proposal effectively balances the need for structure with the necess...
+   Magician     (6.8s) [REDIRECT] | [VERDICT] REDIRECT "I stand by my core insight that the 'waste' is fuel; it is not ineffic...
+   Rebel        (5.1s) [REDIRECT] | [VERDICT] REDIRECT You don't just need space; you need the violence to shatter your curren...
+   Ruler        (6.1s) [REDIRECT] | [VERDICT] REDIRECT "Caregiver’s specific "70/30" ratio is a useful heuristic for structure...
+   Sage         (8.0s) [REDIRECT] | [VERDICT] REDIRECT  The original proposal’s framing of the user’s long-term goals as poten...
+
+────────────────────────────────────────────────────────────────
+   All 7 reviewed. APPROVE=1  REDIRECT=6. Time: 42.4s
+
+================================================================
+FULL CHAMBER A+B+C COMPLETE in 125.0s
+COMET: not triggered this session
+================================================================
+  chamber A+B+C done (125.0s)
+  [verify] Phase A (Id): 7/7 planets emitted real content  OK
+  [verify] Phase B (Ego): 7/7 planets emitted real content  OK
+  [verify] Phase C (Superego): 7/7 planets emitted real content  OK
+  [verify] dual-moon hemisphere framing: 0/7 Phase A records carry lens metadata  (CHECK — see transcript for raw phase_a records)
+  [verify] G1_FILTER_MOONS_ENABLED = True  (g1_ops.g1_sleep_pass_i imported OK — C1/M4 wiring intact)
+  [verify] Phase C verdicts: 7/7 present -> APPROVE=1, REDIRECT=6
+  [verify] waveform projection: 7/7 weights, all amplitudes > 0: True, consensus energy=6.4019
+  [verify] M2 fix: planets with [ERROR] output: none  OK
+
+  G1 filter moons: running sleep pass on g1_knowledge.json ...
+  G1 report (0.0s): ok=False candidates=None, promoted=None, rejected_slop=None, verdicts={}
+
+##############################################################################
+# DONE -> A:\AI\Solar_Agent_System\v17\resonant_cognition\tests\evidence\prod_config_verify_moonsON_20260918_172801.txt
+# Toggles were in-memory only; constants.py on disk is unchanged.
+##############################################################################

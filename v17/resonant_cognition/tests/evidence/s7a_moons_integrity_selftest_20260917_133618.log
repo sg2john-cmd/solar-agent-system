@@ -1,0 +1,135 @@
+sleep.py Segment 1 self-test: micro_sleep()
+  elapsed: 0.0015s
+  [PASS] completes in < 1 second
+  [PASS] returns combined report shape
+  [PASS] Pass I scanned both ring entries
+  [PASS] Pass I aligned count == 1
+  [PASS] Pass I misaligned count == 1
+  [PASS] aligned decay_rate relaxed to 0.003333
+  [PASS] aligned align_score >= threshold
+  [PASS] misaligned decay_rate accelerated to 0.06
+  [PASS] misaligned align_score below threshold
+  [PASS] aged-but-surviving entry still present
+  [PASS] below-min-mass entry shed from live store
+  [PASS] surviving entry mass decayed on disk to 0.814354
+  [PASS] shed entry landed in compression queue
+
+Segment 1 self-test: PASS (micro_sleep = Pass I light + Pass V light, <1s, no LLM)
+
+sleep.py Segment 2 self-test: select_watchkeepers()
+  [PASS] selects top-3 by weight
+  [PASS] remaining 4 are asleep
+  [PASS] count matches WATCHKEEPER_COUNT (3)
+  [PASS] weights_snapshot has all 7
+  [PASS] tie: all three top-weight planets selected
+  [PASS] 2 planets, count=3: both still watchkeepers (fewer than N)
+  [PASS] no one asleep with only 2 planets
+  [PASS] empty weights: no watchkeepers locked
+  [PASS] empty weights: note present
+  [PASS] non-planet keys excluded from selection
+  [PASS] count=2 selects top 2 (override)
+  [PASS] min_count=1 overrides count=0
+
+Segment 2 self-test: PASS (select_watchkeepers = top-N by activation weight, pure math)
+
+sleep.py Segment 3 self-test: compute_drift() + compute_core_drift()
+  [PASS] position moved toward consensus
+  [PASS] drift magnitude within bounds
+  [PASS] mass increased by hint (clamped)
+  [PASS] cognitive_mode unchanged without G2 suggestion
+  [PASS] prompt_structure preserved
+  [PASS] low-activation drift is near minimum
+  [PASS] no-session: drift magnitude is 0 (jitter only)
+  [PASS] no-session: position has tiny jitter (< 0.01)
+  [PASS] no-session: mass unchanged
+  [PASS] mass clamped at max 4.5
+  [PASS] mass clamped at min 2.0
+  [PASS] G2 suggestion: temp increased within bounds
+  [PASS] G2 suggestion: cot_depth increased by 1
+  [PASS] G2 clamp: temp capped at +DRIFT_TEMP_DELTA
+  [PASS] G2 clamp: cot_depth capped at +DRIFT_COT_DELTA
+  [PASS] core drift magnitude <= CORE_DRIFT_MAX
+  [PASS] core moved toward consensus (x increased)
+  [PASS] core idle: drift is minimal (< 0.01)
+
+Segment 3 self-test: PASS (compute_drift + compute_core_drift = pure math, bounded, no disk)
+
+sleep.py Segment 4 self-test: compute_rotating_shift() + execute_deep_sleep()
+  [PASS] 3 waves produced
+  [PASS] wave 1 sleeps ranks 5–7 (least active trio)
+  [PASS] wave 2 sleeps ranks 2–4
+  [PASS] wave 3 sleeps rank 1 (most active) alone
+  [PASS] each of the 7 planets sleeps exactly once
+  [PASS] wave 1: awake count >= 4 (got 4)
+  [PASS] wave 2: awake count >= 4 (got 4)
+  [PASS] wave 3: awake count >= 4 (got 6)
+  [PASS] schedule is deterministic (dict order doesn't matter)
+  [PASS] all-tied weights still sleep each planet exactly once
+  [PASS] all 7 planets applied, none skipped
+  [PASS] core commit applied
+  [PASS] invariant: each planet slept exactly once
+  [PASS] invariant: all present planets covered
+  [PASS] invariant: min awake during any wave >= 4
+  [PASS] all 7 positions changed on disk (moved=7)
+  [PASS] identity fields preserved for all 7 planets
+  [PASS] sage mass bumped by its hint
+  [PASS] hero cognitive_mode temp shifted by G2 suggestion
+  [PASS] core position nudged within CORE_DRIFT_MAX
+  [PASS] core session_counter untouched by sleep
+  [PASS] core genesis_state sentinel intact
+  [PASS] core/core_laws.json byte-identical after sleep
+  [PASS] gates/gates_config.json byte-identical after sleep
+
+Segment 4 self-test: PASS (rotating shift + staggered read-modify-write, identity preserved)
+
+sleep.py Segment 5 self-test: process_compression_queue() (Pass II + III)
+  [PASS] queue size in == 9 (3 cluster A + 4 cluster B + 2 singles)
+  [PASS] two duplicate clusters merged (3+4 members → 2 survivors)
+  [PASS] cluster A survivor is the highest-mass member
+  [PASS] cluster B survivor is one of its members (all tied mass)
+  [PASS] cluster A absorbed dup_b + promo_c
+  [PASS] cluster B absorbed exactly 3 of its 4 members
+  [PASS] only cluster B (merged mass 0.8 >= 0.6) re-promoted
+  [PASS] cluster A survivor stayed parked (merged mass 0.085 < 0.6 floor)
+  [PASS] cluster B survivor emitted at reduced mass 0.4
+  [PASS] parked entries are exactly: dup_a, unique_heavy, unique_light
+  [PASS] queue on disk holds exactly the 3 parked entries
+  [PASS] pre-existing vault entry survived re-promotion
+  [PASS] cluster B survivor landed in planet_vault
+  [PASS] re-promoted entry carries provenance (compressed_from) for its 3 cluster-mates
+  [PASS] second pass: no new merges, no re-promotions
+  [PASS] second pass: queue size stable at 3
+
+Segment 5 self-test: PASS (Pass II merge + Pass III re-promotion, provenance kept, zero LLM)
+
+sleep.py Segment 6 self-test: deep_sleep() full orchestrator (zero LLM, zero real waits)
+  [PASS] report has watchkeepers / drift / compression keys
+  [PASS] watchkeepers selected (count == WATCHKEEPER_COUNT)
+  [PASS] watchkeepers are the top-3 activation weights
+  [PASS] fixture planet ids match _KNOWN_PLANET_IDS
+  [PASS] rotating shift produced 3 waves covering all 7 planets
+  [PASS] every wave kept >= 4 awake (invariant)
+  [PASS] all planets applied, none skipped
+  [PASS] each planet slept exactly once (invariant flag)
+  [PASS] compression pass ran cleanly on empty queue
+  [PASS] every planet's position changed on disk (no cosmetic sleep)
+  [PASS] core position changed on disk
+  [PASS] state_changed flag is True (acceptance signal)
+  [PASS] semantic_anchor untouched by deep sleep (clobber guard held)
+
+Segment 6 self-test: PASS (full pass sequence composed, state changed on disk, zero LLM)
+
+sleep.py Segment 7a self-test: moons/giants integrity through full deep_sleep() (zero LLM)
+  [PASS] core\core_laws.json byte-identical after deep_sleep
+  [PASS] gates\gates_config.json byte-identical after deep_sleep
+  [PASS] G1 moons unchanged after sleep
+  [PASS] G1 committed_entries unchanged after sleep
+  [PASS] G2 3 self-model moons present and unchanged
+  [PASS] G2 sandbox mechanism unchanged after sleep
+  [PASS] G2 growth_policy unchanged after sleep (Tier-1/Tier-2 gates intact)
+  [PASS] G1 ring_buffer entry g1_ring_001 still present after sleep
+  [PASS] G1 ring_buffer g1_ring_001: content + mass untouched
+  [PASS] G2 ring_buffer entry g2_ring_001 still present after sleep
+  [PASS] G2 ring_buffer g2_ring_001: content + mass untouched
+
+Segment 7a self-test: PASS (moons/giants archive + self-model integrity held through deep sleep, zero LLM)

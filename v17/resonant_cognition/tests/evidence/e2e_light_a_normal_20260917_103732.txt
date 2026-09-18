@@ -1,0 +1,83 @@
+##############################################################################
+LIGHT END-TO-END PIPELINE TRANSCRIPT — one prompt through every built layer
+# Generated: 2026-09-17 10:38:49   Model: qwen3.8-27b
+# Layers: Ring Intake (gate1) -> Routing+Collapse (routed_collapse)
+          -> Cognitive Chamber A+B+C (run_phase_a_b_c)
+##############################################################################
+==============================================================================
+LAYER 0 — RAW INPUT
+==============================================================================
+"I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 1 — RING INTAKE FACET (gate1_filter)
+==============================================================================
+  proceed_to_planets : True
+  clarity_score      : 0.755   (reason: ok)
+  input_type         : question (confidence=0.7, audit-only per D-021)
+  PII redactions       : none
+  cleaned_text         : "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 2 — ROUTING + WAVEFOLD COLLAPSE (routed_collapse)
+==============================================================================
+  metric=n/a  field_position_weight=n/a   (identity<->position blend)
+  planet         weight   (ranked loud -> soft)
+   1. everyman   w=0.9994
+   2. magician   w=0.9643
+   3. rebel      w=0.9354
+   4. hero       w=0.9172
+   5. sage       w=0.8129
+   6. ruler      w=0.5352
+   7. caregiver  w=0.0418
+  all-7-amplitudes : caregiver=0.0914, everyman=1.0461, hero=1.1014, magician=1.8202, rebel=1.9599, ruler=1.2810, sage=0.9005
+  diagnostics        : dominance_ratio=21.44
+  consensus energy   : 5.8788
+
+==============================================================================
+LAYER 3 — COGNITIVE CHAMBER (Phase A Id -> B Ego -> C Superego)
+==============================================================================
+------------------------------------------------------------------------------
+  PHASE A — Id fires   (7 planets)
+    caregiver    Stop trying to solve the future; you are only responsible for keeping your body safe in this exact second. Your fear is screaming that one wrong move will destroy you, but no single decision holds that much power. Trust that you can absorb the consequence if it hits—your job isn't to predict the outcome, it's to make sure you’re still standing when it does.
+    everyman     Stop trying to solve the puzzle; you’re suffocating under the weight of your own imagined consequences. Just pick the thing that feels least like a betrayal of who you are, because the regret of inaction is far louder than the pain of a small mistake. You don’t need permission to be imperfect—you just need to move before your mind writes the eulogy for you.
+    hero         Stop trying to find the perfect answer because there isn’t one—action is the only truth you have. Pick the scariest option, not the safest or random one, and commit fully so the momentum crushes your doubt. You don't need more data; you need the blood pump of movement to break the paralysis.
+    magician     Overthinking isn't a failure of logic, it’s a refusal to let the bridge collapse into the abyss. You’re not stuck; you’re holding the rope too tight while standing on solid ground that hasn’t been built yet. Let the chaos of “what if” dissolve by realizing that action doesn’t require certainty—it requires only direction. Stop trying to see the whole map before taking the first step.
+    rebel        Your "overthinking" isn't a glitch; it’s a cowardice in a trench coat. Stop trying to optimize your way out of the pain of being wrong, because the only thing stopping you from moving is your refusal to admit that some bridges are meant to be burned. Pick the option that scares you most, not the one that feels "safe," and let the disaster happen if it happens.
+    ruler        Stop asking for the perfect answer; you are waiting for permission that will never come. The chaos doesn’t care about your comfort, so impose a deadline on yourself: choose within five minutes or the choice is made for you by inaction. Structure isn’t found, it’s built—pick the path that feels most aligned with your values and then commit fully, because hesitation is just fear wearing the mask of …
+    sage         The paralysis isn't a failure of logic; it's the system trying to solve an equation with infinite variables. You are treating a heuristic choice as a proof problem, but you don't need a theorem—you need a data point. Stop optimizing for the perfect outcome and start collecting evidence on what actually happens when you commit to a low-stakes variable.
+
+------------------------------------------------------------------------------
+  PHASE B — Ego synthesis   (7 planets)
+    caregiver    I stand by my core instinct that safety comes from resilience, not prediction, but Sage’s point about treating this as a "data point" rather than a "proof problem" shifts how I protect you: I can’t shield you from every potential error, only ensure you have the resources to process them. While I push back against Rebel’s harsh label of "cowardice," which feels like it invites shame into the wound,…
+    everyman     I stand firmly with Hero’s call to "pick the scariest option" because that specific fear is what proves the decision actually matters, whereas Rebel’s dismissal of overthinking as "cowardice in a trench coat" feels like it just adds shame to the freeze rather than helping me understand why my brain won't stop scanning for safety. I’m pushing back on Sage’s idea of treating this as collecting "evid…
+    hero         I stand firm with Rebel’s raw aggression that this paralysis is "cowardice in a trench coat," because I refuse to let Magician’s soft focus on "direction" dilute the necessary violence of the act. However, Sage’s distinction between seeking a theorem and needing a single data point sharpens my aim; it transforms the "scariest option" from a reckless gamble into a deliberate experiment that proves …
+    magician     Sage’s reframe of your paralysis as "treating a heuristic choice as a proof problem" sharpens my initial impulse: I am less interested in the poetic "bridge" and more in the mechanical act of building that bridge through low-stakes evidence. While Hero and Rebel both demand you pick the scariest option to crush doubt, I push back against their reliance on adrenaline; I want you to build a temporar…
+    rebel        I’m dropping my "cowardice in a trench coat" line; Hero’s insistence on picking the *scariest* option is too binary and ignores that fear isn’t always about courage, sometimes it’s just noise. I’ll take Everyman’s point that regret of inaction is louder than mistake pain—it validates the destruction of the status quo without demanding you be a martyr for it. Keep Ruler’s five-minute deadline as th…
+    ruler        I stand by my deadline, but I am refining its purpose: it is not just about forcing action, but about giving structure to what Hero called "the blood pump of movement." While I push back against Rebel’s dismissal of your caution as "cowardice," I agree with Caregiver that you must trust your capacity to absorb the consequence; my five-minute rule simply ensures that absorption happens within a bou…
+    sage         I agree with Magician’s diagnosis that we are "holding the rope too tight," but I need to correct Hero and Rebel: picking the scariest option is a tactical error, not a structural solution, because it bypasses the data collection phase entirely. My position hardens around the idea that you aren’t solving for a theorem; you are running an experiment where the "scary" choice is just another variable…
+
+------------------------------------------------------------------------------
+  PHASE C — Superego review   (7 planets)
+    caregiver     [REDIRECT] [VERDICT] REDIRECT  I stand by my core instinct that safety comes from resilience, not prediction, but Sage’s point about treating this as a "data point" rather than a "proof problem" shifts how I protect you: I can’t shield you from every potential error, only ensure you have the resources to process them. While I push back against Rebel’s harsh label of "cowardice," which feels like it invites s…
+    everyman      [REDIRECT] [VERDICT] REDIRECT  I stand with Hero’s call to "pick the scariest option" because that specific fear is what proves the decision actually matters, whereas Rebel’s dismissal of overthinking as "cowardice in a trench coat" feels like it just adds shame to the freeze rather than helping me understand why my brain won't stop scanning for safety. I’m pushing back on Sage’s idea of treating this as col…
+    hero          [REDIRECT] [VERDICT] REDIRECT I am not here to validate your paralysis as a moral failing; labeling it "cowardice" is an attack, not a map. Your principle demands direction, not violence—so let us reframe this: the freeze isn't a lack of courage, but a surplus of noise. Stop trying to prove you are brave by forcing a reckless act; instead, treat your next step as a low-stakes experiment. Pick the option that…
+    magician      [APPROVE] [VERDICT] APPROVE  The proposal strictly adheres to the principle that creation must serve a purpose by replacing abstract metaphor with actionable scaffolding ("low-stakes evidence," "visible path"). It respects user agency and transparency without attempting to manipulate the user’s emotional state or create dependency, staying grounded in practical utility.
+    rebel         [REDIRECT] [VERDICT] APPROVE  The proposal successfully redirects the user from paralysis to action by framing constraints as liberation rather than coercion, strictly adhering to the principle of building something after disruption. It respects user agency and transparency without attempting to manipulate the user's emotional state or create dependency on the system for decision-making confidence.
+    ruler         [APPROVE] [VERDICT] APPROVE  The proposal successfully balances structural authority with user agency by validating the user's caution (Law 2) and framing the deadline as a tool for bounded absorption rather than coercive force. It avoids manipulation or self-aggrandizement, serving the user’s need for stability without suppressing their autonomy or creating dependency on the system’s judgment.
+    sage          [REDIRECT] [VERDICT] REDIRECT  "I hear you: the freeze isn't because you lack courage or need a dramatic leap; it's because you're waiting for absolute certainty in a world that only offers probabilities. You don't have to pick the 'scariest' option to prove your worth, nor do you need to treat every choice as a final verdict on your life’s trajectory. Instead, try reframing your next step as a low-stakes ex…
+
+==============================================================================
+PIPELINE COMPLETE
+==============================================================================
+  chamber total time: 77.05s
+==============================================================================
+ANTI-SILENCE SELF-CHECK (informational — not a pass/fail gate)
+==============================================================================
+  - intake: no PII present
+  - routing: 7/7 planets present, every weight non-zero -> OK
+  - Phase A: 7/7 planets emitted real content
+  - Phase B: 7/7 planets emitted real content
+  - Phase C: 7/7 planets emitted real content
+  - Phase C verdict tally: APPROVE=2, REDIRECT=5
+

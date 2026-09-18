@@ -1,0 +1,21 @@
+{
+  "position": [0.1, -0.8, -0.3],
+  "G_value": 5.0,
+  "_g_value_note": "legacy field - not read by physics; live constant is C.G in constants.py. Set to match so JSON and constants agree.",
+  "M_base": 10.0,
+  "dissonance_alpha": 1.2,
+  "dissonance_beta": 1.8,
+  "well_depth": 2.5,
+  "session_counter": 0,
+  "laws_file_path": "core_laws.json",
+
+  "genesis_state": {
+    "_description": "CMB fingerprint. Immutable after creation. Identifies this system's shared semantic/ethical baseline for multi-system compatibility checks. See docs/phase0g_cosmological_fields.md §3.",
+    "version": "17.0.0",
+    "created_at": "2026-09-15T19:02:33",
+    "base_axioms_hash": "c27b1ed8de886b4518cd347cfd65c370fc8648a36e6a4d05f40f65b8d17d19da",
+    "embedding_model": "all-MiniLM-L6-v2 (384d)",
+    "archetype_set": ["sage", "magician", "caregiver", "hero", "everyman", "rebel", "ruler"],
+    "compatibility_class": "resonant-cognition-v17"
+  }
+}

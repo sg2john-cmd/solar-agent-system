@@ -1,0 +1,8 @@
+{
+  "id": "sage_right",
+  "parent_planet_id": "sage",
+  "hemisphere": "RIGHT",
+  "offset_vector": [0.12, -0.04, 0.02],
+  "stabilizer_strength": 0.3,
+  "buffer_content": []
+}

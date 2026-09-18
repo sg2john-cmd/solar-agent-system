@@ -1,0 +1,32 @@
+{
+  "id": "hero",
+  "archetype_name": "Hero",
+  "position": [
+    6.895272,
+    9.10234,
+    6.894994
+  ],
+  "velocity": [
+    1.373926,
+    -0.0,
+    -1.297596
+  ],
+  "mass": 2.0,
+  "sigma": 2.0,
+  "cognitive_mode": {
+    "temperature": 0.8,
+    "context_window_exchanges": 4,
+    "cot_depth": 1,
+    "prompt_structure": "creative"
+  },
+  "id_flavor": "The drive to act — to charge in where others hesitate.",
+  "ego_descriptor": "Takes the hard path. Proves worth through brave, concrete action.",
+  "superego_principle": "Courage without direction is just speed; prove it matters.",
+  "orbital_plane_tilt_deg": -2.2497,
+  "semantic_anchor": [
+    0.4,
+    -0.2,
+    1.0
+  ],
+  "_semantic_anchor_guard": "static cognitive-space direction — do NOT overwrite with orbital state"
+}

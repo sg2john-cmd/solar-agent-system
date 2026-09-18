@@ -1,0 +1,42 @@
+================================================================
+PHASE 4 MEMORY WRITE — END-TO-END TEST (live LM Studio)
+================================================================
+
+[CHAMBER] running one real routed session ...
+   dominant planet : everyman
+   top-3 weights   : everyman=0.9983, sage=0.9961, magician=0.9919
+   cleaned text    : 'I keep over-planning my week, my email is [REDACTED] and my phone is [REDACTED] — how do I stop preparing for the worst case all day?'
+  ✓ All 7 planets emitted routed weights (anti-silence)  (got 7)
+  ✓ A dominant planet was identified
+
+TEST 1 — Memory written to disk sits NEAR the dominant planet
+   entry pos : [-2.0957, 0.7762, 3.725]
+   planet pos: [-2.088363, 0.773546, 3.711999]  (distance=0.01512, jitter cap=0.050001000000000004)
+  ✓ Entry written to its zone file
+  ✓ Stored position is within jitter of the dominant planet  (d=0.01512 <= 0.050001000000000004)
+  ✓ Mass carried over (base*max(0,cos) in [0, base])  (mass=0.1241)
+
+TEST 2 — Restart: entry fully recoverable from disk alone
+  ✓ Entry id recovered identically  (id=mem_1789644289978_x5550)
+  ✓ Zone recovered from disk  (zone=planet_vault)
+  ✓ Position recovered (3 floats)  (pos=[-2.0957, 0.7762, 3.725])
+  ✓ Mass + decay_rate recovered as numbers  (mass=0.12406865257476865, rate=0.02)
+  ✓ Recovered position still near dominant planet  (d=0.01512)
+
+TEST 3 — PII held on disk across ALL store files
+  ✓ Cleaned turn text has no raw email  ('I keep over-planning my week, my email is [REDACTED] and my phone is [REDACTED] — how do I stop preparing for the worst case all day?')
+  ✓ Cleaned turn text has no raw phone
+  ✓ Raw email appears in NO store file on disk  (leaked_in=[])
+  ✓ Raw phone appears in NO store file on disk  (leaked_in=[])
+  ✗ FAIL: Vault entry carries a pii_redacted_types audit field (guard fired)  (types=none)
+
+TEST 4 — Decay sweep works on real written entries
+   sweep report : {'files': 3, 'kept': 1, 'moved_to_compression': 1}
+   vault kept=0, periphery kept=1, compression=1
+  ✓ 300-day-old real entry decayed below the floor (moved to compression)  (compression=1)
+  ✓ Fresh periphery entry survived the sweep  (periphery kept=1)
+
+================================================================
+PHASE 4 MEMORY WRITE RESULT: 16/17 checks passed, 1 failed
+(real memory stores untouched by test: True)
+================================================================

@@ -1,0 +1,8 @@
+{
+  "id": "rebel_left",
+  "parent_planet_id": "rebel",
+  "hemisphere": "LEFT",
+  "offset_vector": [0.1, 0.03, -0.12],
+  "stabilizer_strength": 0.5,
+  "buffer_content": []
+}

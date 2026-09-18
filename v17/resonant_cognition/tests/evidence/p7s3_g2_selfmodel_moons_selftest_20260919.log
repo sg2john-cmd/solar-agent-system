@@ -1,0 +1,33 @@
+============================================================
+g2_ops.py — Phase 7 Segment 3 self-test (G2 Self-Model Moons)
+============================================================
+  [PASS] [1a] Entry added with status=pending
+  [PASS] [1b] before field is empty list initially
+  [PASS] [2a] One pending candidate after add
+  [PASS] [2b] Candidate has correct id
+  [PASS] [3a] No-laws mode: consistency gate passes
+  [PASS] [3x] Real core_laws.json loaded from disk
+  [PASS] [3b] Large vector with laws present: held for review
+  [PASS] [3c] Hold reason mentions escape threshold
+  [PASS] [4a] Small vector: not clamped
+  [PASS] [4b] Small vector: unchanged
+  [PASS] [5a] Large vector: was_clamped=True
+  [PASS] [5b] Clamped magnitude ≈ G2_MAGNITUDE_CAP (0.15)
+  [PASS] [5c] Original vector preserved in audit field
+  [PASS] [5d] Status set to 'clamped'
+  [PASS] [6a] New entry (no target): before=[]
+  [PASS] [6b] committed_ts is set
+  [PASS] [7a] Targeted entry: before has 1 snapshot
+  [PASS] [7b] Snapshot preserves original text
+  [PASS] [8a] Report total_pending == 2
+  [PASS] [8b] At least one promoted (the small-vector entry)
+  [PASS] [8c] The large-vector entry was clamped
+  [PASS] [8d] Promoted entries are now in contents
+  [PASS] [8e] Clamped entry was still committed (not rejected)
+  [PASS] [9a] Second pass: total_pending == 0
+  [PASS] [9b] Second pass: nothing promoted
+  [PASS] [10a] Zero vector: not clamped
+  [PASS] [10b] Vector exactly at cap: not clamped
+  [PASS] [10c] Vector well above cap: clamped to ~cap
+
+g2_ops.py Segment 3 self-test: ALL PASS (G2 Self-Model Moons)

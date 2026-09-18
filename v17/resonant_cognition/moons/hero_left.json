@@ -1,0 +1,8 @@
+{
+  "id": "hero_left",
+  "parent_planet_id": "hero",
+  "hemisphere": "LEFT",
+  "offset_vector": [0.23, 0.13, 0.19],
+  "stabilizer_strength": 0.5,
+  "buffer_content": []
+}

@@ -1,0 +1,33 @@
+{
+  "id": "jester",
+  "name": "The Jester (Comet)",
+  "role": "challenger_and_perspective_breaker",
+  "orbital_type": "elliptical_functional",
+  "note": "NOT in the orbital integrator. Position computed from session state when trigger fires.",
+  "trigger_conditions": [
+    {
+      "id": "stagnation",
+      "description": "System has been converging on the same answer pattern for >3 exchanges without new information entering.",
+      "activation_weight": 0.8
+    },
+    {
+      "id": "over_seriousness",
+      "description": "Composite field shows sustained high-Ruler/Caregiver dominance with no creative or exploratory input for >5 exchanges.",
+      "activation_weight": 0.7
+    },
+    {
+      "id": "binary_convergence",
+      "description": "Two planets are locked in direct opposition (cosine similarity < -0.6) and no resolution path is emerging after 2 exchanges.",
+      "activation_weight": 0.9
+    },
+    {
+      "id": "random_injection",
+      "description": "Random chance trigger to keep the system from calcifying into predictable patterns.",
+      "probability_per_session": 0.02,
+      "activation_weight": 0.4
+    }
+  ],
+  "last_appearance_session": null,
+  "intervention_history_ref": "g2_selfmodel",
+  "privilege": "May challenge whether a Core Law is being applied too rigidly in context. Cannot override the Law itself; flags for John's review via sleep Pass IV logging."
+}

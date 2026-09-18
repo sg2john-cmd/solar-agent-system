@@ -1,0 +1,32 @@
+# Repository License — Solar Agent System (v17)
+
+This repository contains two kinds of material, licensed separately:
+
+## 1. Code and implementation (everything under `v17/`)
+
+All rights reserved by the author.
+
+You are free to use, study, test, and modify this code for research and
+non-commercial purposes. You may not use it commercially (in products, paid
+services, SaaS, or any sold software) without a commercial license from the
+author. See COMMERCIAL_LICENSE.md for how to request one.
+
+## 2. Theory papers, documentation, and architecture notes
+(01 - Theory/, 02 - Architecture/, 04 - Decisions & Rationale/, 05 - Issues & Postmortems/)
+
+Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International (CC BY-NC-SA 4.0).
+
+You are free to:
+  Share — copy and redistribute the material in any medium or format
+  Adapt — remix, transform, and build upon the material
+
+Under the following terms:
+  Attribution — You must give appropriate credit, provide a link to the
+                 license, and indicate if changes were made.
+  NonCommercial — You may not use the material for commercial purposes.
+  ShareAlike — If you remix, transform, or build upon the material, you
+                must distribute your contributions under the same or
+                compatible license.
+
+Full license text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode

@@ -1,0 +1,83 @@
+##############################################################################
+LIGHT END-TO-END PIPELINE TRANSCRIPT — one prompt through every built layer
+# Generated: 2026-09-18 12:55:09   Model: qwen3.8-27b
+# Layers: Ring Intake (gate1) -> Routing+Collapse (routed_collapse)
+          -> Cognitive Chamber A+B+C (run_phase_a_b_c)
+##############################################################################
+==============================================================================
+LAYER 0 — RAW INPUT
+==============================================================================
+"I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 1 — RING INTAKE FACET (gate1_filter)
+==============================================================================
+  proceed_to_planets : True
+  clarity_score      : 0.755   (reason: ok)
+  input_type         : question (confidence=0.7, audit-only per D-021)
+  PII redactions       : none
+  cleaned_text         : "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 2 — ROUTING + WAVEFOLD COLLAPSE (routed_collapse)
+==============================================================================
+  metric=n/a  field_position_weight=n/a   (identity<->position blend)
+  planet         weight   (ranked loud -> soft)
+   1. everyman   w=0.9994
+   2. magician   w=0.9643
+   3. rebel      w=0.9354
+   4. hero       w=0.9172
+   5. sage       w=0.8129
+   6. ruler      w=0.5352
+   7. caregiver  w=0.0418
+  all-7-amplitudes : caregiver=0.0914, everyman=1.0461, hero=1.1014, magician=1.8202, rebel=1.9599, ruler=1.2810, sage=0.9005
+  diagnostics        : dominance_ratio=21.44
+  consensus energy   : 5.8788
+
+==============================================================================
+LAYER 3 — COGNITIVE CHAMBER (Phase A Id -> B Ego -> C Superego)
+==============================================================================
+------------------------------------------------------------------------------
+  PHASE A — Id fires   (7 planets)
+    caregiver    Stop trying to solve the puzzle; you are paralyzing yourself because you think one wrong move kills you. It doesn’t. Pick the option that feels least threatening, not the "best," and let your body move before your mind can spin up another excuse. I will hold the line against the consequences so you don’t have to carry them alone—just step out of the cage you built for yourself.
+    everyman     Stop trying to engineer a perfect answer; you are paralyzed because you’re looking for a sign that this choice will make everyone else understand your worth. Just pick the option that feels like *you* right now, not the one that looks good on paper. You don’t need to be right to belong—you just need to move.
+    hero         You’re bleeding energy trying to make a perfect move instead of making *any* move. Stop analyzing your options; pick the path that scares you slightly less than the other one, because hesitation is the real enemy here. Action generates clarity that thought never will—just go do it and learn from the impact of the blow, not the calculation of it.
+    magician     Your paralysis isn't a lack of options; it’s the friction of trying to optimize a path that doesn’t exist yet. Stop looking for the perfect bridge between A and B, and instead, let the gap scream its shape at you until a third option—a door you didn't see—slams open in your face. Trust that the "right" choice feels like an inevitable collapse of distance, not a calculated selection.
+    rebel        You’re not stuck because you lack options; you’re paralyzed by the illusion that a perfect choice exists. Your overthinking is a coward’s attempt to avoid the grief of being wrong, so stop trying to optimize and start accepting that every decision is an act of violence against all other possibilities. Pick the option that scares you most, because safety is just another word for death.
+    ruler        Stop asking for permission to exist in a state of flux; your paralysis is just cowardice dressed up as caution. You are not looking for the right answer, you are hiding from the weight of being wrong. Pick the option that scares you least and commit with the violence of a blade cutting through fog—structure only exists after the cut.
+    sage         Your paralysis isn’t a lack of options; it’s a failure to distinguish signal from noise. You are drowning in low-quality data, trying to solve an equation with infinite variables that don’t actually matter. Stop analyzing the outcome and start decomposing the constraints: identify the single variable where error is irreversible, optimize for that, and let everything else be structurally irrelevant…
+
+------------------------------------------------------------------------------
+  PHASE B — Ego synthesis   (7 planets)
+    caregiver    I hear Hero’s call to "learn from the impact of the blow," but I need to soften that edge: you don’t have to endure a blow to learn, and I am here to absorb the shock so your nervous system doesn’t shatter on contact. While Rebel’s insistence that safety is "death" feels like it might push you into trauma rather than movement, Ruler’s command to cut through the fog with structure gives me the firm…
+    everyman     I’m standing firm on my core truth—Hero’s call to "swing the hammer" and Magician’s "inevitable collapse of distance" are both right, but they still frame this as a battle or a puzzle rather than a social act. What shifts me is Sage’s distinction between signal and noise; it validates that our paralysis isn't just fear, but a genuine inability to filter out the irrelevant variables that make us fe…
+    hero         Rebel’s call to pick what “scares you most” is a trap I’m not falling into; that’s not bravery, it’s just chaos, and Hero needs control to be effective. Ruler’s insistence on the “violence of a blade” cuts through the fog better than my original focus on fear—committing with structural force creates the reality we need to act upon. However, I’m hardening around Sage’s distinction that we must opti…
+    magician     Rebel’s insistence that every decision is an "act of violence" against other possibilities is a crucial correction to my earlier focus on finding a hidden third option; I am hardening the stance that the magic isn’t in *seeing* more doors, but in violently collapsing the distance so that the chosen path becomes inevitable. While Sage rightly identifies the need to filter signal from noise by isola…
+    rebel        Sage’s insistence on "decomposing constraints" is a trap; it validates the very analytical paralysis I am trying to break, so I reject the idea that optimizing for irreversibility saves you from grief. I align with Hero’s assertion that hesitation is the real enemy, but I refine his advice: don’t pick what scares you *least*, as Ruler suggests—that’s just cowardice in a suit—but pick the option th…
+    ruler        Sage’s insistence on "decomposing constraints" is the only structural logic that saves me from my own reckless blade; I accept that identifying the single irreversible variable is how we impose order without descending into pure violence. However, I reject Rebel’s romanticization of fear as a guide, because willpower requires discernment, not just shock, and I stand by my core assertion that hesit…
+    sage         Caregiver’s insistence on "letting your body move before your mind" validates my structural insight that you are drowning in low-quality data, but I push back against the dismissal of analysis; without decomposing which variable is truly irreversible, you risk optimizing for the wrong constraint. Ruler’s metaphor of "structure only existing after the cut" hardens my position: the elegance of the p…
+
+------------------------------------------------------------------------------
+  PHASE C — Superego review   (7 planets)
+    caregiver     [REDIRECT] [VERDICT] REDIRECT "I hear Hero’s need to learn from impact, but I want to reframe that: you don’t have to endure a blow to grow, and we can find safety in the pause itself rather than needing me to absorb all your shock. While Rebel warns against stagnation, Ruler offers structure, so let’s use that framework to pick the 'least threatening' option not as avoidance, but as a deliberate act of self…
+    everyman      [REDIRECT] [VERDICT] REDIRECT "I hear the group’s push toward action and mystery, but I’m anchoring this in something more practical: you’re not freezing because you lack courage or need to solve a riddle; you’re stuck because you’re trying to justify every variable to an imaginary audience. The shift isn’t about ‘surviving’ social judgment—that still makes the other person’s reaction the center of your safe…
+    hero          [REDIRECT] [VERDICT] REDIRECT  "Overthinking isn't a lack of control; it’s a search for certainty in a world that only offers probability. You don’t need to pick the 'scariest' option (that’s just anxiety with a costume) or execute with 'structural violence' (that’s rigidity, not courage). You get unstuck by identifying the *consequence* you can actually bear: Pick the path where the worst-case scenario is s…
+    magician      [REDIRECT] [VERDICT] REDIRECT  "Rebel’s framing of choice as 'violence' is a powerful counter to passive overthinking; the magic isn’t in finding a hidden third door, but in collapsing the distance between hesitation and action until the path feels inevitable. Sage’s focus on filtering noise by identifying irreversible constraints is essential—we aren't solving an equation for perfection, we are letting the …
+    rebel         [REDIRECT] [VERDICT] REDIRECT "Sage’s decomposition isn't a trap; it's just the wrong tool for right now. You don't need to optimize every variable when you're frozen—you need momentum. I’m with Hero that hesitation is the enemy, but let’s refine the target: pick the option where the *potential regret* feels heaviest if you do nothing. That isn’t cowardice or chaos; it’s identifying what actually matters to …
+    ruler         [REDIRECT] [VERDICT] REDIRECT "I hear the paralysis in you, and I know it feels like a lack of control, but hesitation is actually your mind trying to protect you from regret—it’s not a failure of authority, just an overload of safety checks. To get unstuck without gambling, we don’t need cold violence or random luck; we need to find the one decision where being wrong doesn’t hurt. Pick that reversible path …
+    sage          [REDIRECT] [VERDICT] REDIRECT "Overthinking often stems from treating every choice as high-stakes; try distinguishing between 'reversible' and 'irreversible' decisions to lower the mental load. For reversible choices, set a strict time limit or use a simple heuristic like 'good enough is fine.' Save your deep analysis for the rare moments where the outcome truly cannot be undone—this way, you stop drowning i…
+
+==============================================================================
+PIPELINE COMPLETE
+==============================================================================
+  chamber total time: 87.4s
+==============================================================================
+ANTI-SILENCE SELF-CHECK (informational — not a pass/fail gate)
+==============================================================================
+  - intake: no PII present
+  - routing: 7/7 planets present, every weight non-zero -> OK
+  - Phase A: 7/7 planets emitted real content
+  - Phase B: 7/7 planets emitted real content
+  - Phase C: 7/7 planets emitted real content
+  - Phase C verdict tally: REDIRECT=7
+

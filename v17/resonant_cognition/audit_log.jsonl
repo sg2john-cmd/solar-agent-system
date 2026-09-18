@@ -1,0 +1,19 @@
+{"id": "68e0490cb927", "ts": "2026-09-17T19:02:45.742007+00:00", "epoch": 1789671765.742, "event_type": "gate1_result", "payload": {"proceed": false, "clarity_score": 0.05, "redactions_count": 0}}
+{"id": "7e582ea0598e", "ts": "2026-09-17T19:02:45.742007+00:00", "epoch": 1789671765.742, "event_type": "gate1_reject", "payload": {"reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)"}}
+{"id": "189c4e479d1a", "ts": "2026-09-17T19:03:26.508625+00:00", "epoch": 1789671806.509, "event_type": "input_received", "payload": {"length": 42, "preview": "What should I do about my fear of failure?"}}
+{"id": "f2272bf7a6d9", "ts": "2026-09-17T19:03:26.508625+00:00", "epoch": 1789671806.509, "event_type": "gate1_result", "payload": {"proceed": true, "clarity_score": 0.633, "redactions_count": 0}}
+{"id": "a06e9fa4fa89", "ts": "2026-09-17T19:03:26.508625+00:00", "epoch": 1789671806.509, "event_type": "ring_inbound", "payload": {"session": null, "recent_topics_count": 0}}
+{"id": "ff30f10ae70f", "ts": "2026-09-17T19:03:26.667880+00:00", "epoch": 1789671806.668, "event_type": "collapse_complete", "payload": {"elapsed_s": 0.159, "top_planet": 0.9943418499839808, "dominance_ratio": 9.66}}
+{"id": "25417089ca8c", "ts": "2026-09-17T19:03:26.675587+00:00", "epoch": 1789671806.676, "event_type": "resonance_complete", "payload": {"top_resonance": 1.9158911526178481}}
+{"id": "84c54bb4bf1d", "ts": "2026-09-17T19:04:38.929015+00:00", "epoch": 1789671878.929, "event_type": "chamber_complete", "payload": {"elapsed_s": 72.252, "comet_fired": false, "top_planet": "ruler"}}
+{"id": "a6fbe1a09884", "ts": "2026-09-17T19:04:38.929015+00:00", "epoch": 1789671878.929, "event_type": "response_complete", "payload": {"status": "ok", "total_elapsed_s": 72.42, "comet_fired": false, "top_planet": "ruler"}}
+{"id": "91372d57ddb2", "ts": "2026-09-17T21:12:33.548607+00:00", "epoch": 1789679553.549, "event_type": "gate1_result", "payload": {"proceed": false, "clarity_score": 0.05, "redactions_count": 0}}
+{"id": "a35fa576a6e6", "ts": "2026-09-17T21:12:33.550122+00:00", "epoch": 1789679553.55, "event_type": "gate1_reject", "payload": {"reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)"}}
+{"id": "86cc02850508", "ts": "2026-09-17T21:14:47.982520+00:00", "epoch": 1789679687.983, "event_type": "gate1_result", "payload": {"proceed": false, "clarity_score": 0.05, "redactions_count": 0}}
+{"id": "b969e6b48dda", "ts": "2026-09-17T21:14:47.982520+00:00", "epoch": 1789679687.983, "event_type": "gate1_reject", "payload": {"reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)"}}
+{"id": "37e94497f993", "ts": "2026-09-17T21:15:17.775903+00:00", "epoch": 1789679717.776, "event_type": "gate1_result", "payload": {"proceed": false, "clarity_score": 0.05, "redactions_count": 0}}
+{"id": "a0ff656c8f31", "ts": "2026-09-17T21:15:17.775903+00:00", "epoch": 1789679717.776, "event_type": "gate1_reject", "payload": {"reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)"}}
+{"id": "b0bd6edd22cf", "ts": "2026-09-17T21:30:46.750473+00:00", "epoch": 1789680646.75, "event_type": "gate1_result", "payload": {"proceed": false, "clarity_score": 0.05, "redactions_count": 0}}
+{"id": "3ca894064f91", "ts": "2026-09-17T21:30:46.750473+00:00", "epoch": 1789680646.75, "event_type": "gate1_reject", "payload": {"reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)"}}
+{"id": "6a17da898219", "ts": "2026-09-17T21:35:06.284324+00:00", "epoch": 1789680906.284, "event_type": "gate1_result", "payload": {"proceed": false, "clarity_score": 0.05, "redactions_count": 0}}
+{"id": "ed8434140fa7", "ts": "2026-09-17T21:35:06.284324+00:00", "epoch": 1789680906.284, "event_type": "gate1_reject", "payload": {"reason": "character spam (low diversity: 1 distinct letter(s), 'a' x26)"}}

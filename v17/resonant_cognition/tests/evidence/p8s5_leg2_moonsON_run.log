@@ -1,0 +1,159 @@
+
+##############################################################################
+# LIGHT E2E — SEGMENT 2 SUITE START   (suite run id: 20260918_125841)
+# model: qwen3.8-27b
+##############################################################################
+
+
+------------------------------------------------------------------------------
+[suite] >>> A (normal question)
+------------------------------------------------------------------------------
+[e2e] RAW: "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+[e2e] intake: proceed=True
+[e2e] routing+collapse done in 0.0s
+
+================================================================
+PHASE A — ID FIRES (7 planets)
+Question: "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+Model: qwen3.8-27b
+================================================================
+   Caregiver    (2.1s) w=0.04 temp=0.6 | Your mind is trying to build a fortress against every possible disaster, so stop...
+   Everyman     (2.1s) w=1.00 temp=0.7 | It’s not random, it’s fear of being wrong with people watching. Stop trying to f...
+   Hero         (2.3s) w=0.92 temp=0.8 | Stop analyzing and start bleeding. The only way out of the maze is to charge thr...
+   Magician     (2.9s) w=0.96 temp=0.9 | Your overthinking isn’t a failure of logic; it’s an unconscious attempt to simul...
+   Rebel        (2.4s) w=0.94 temp=0.85 | You’re not freezing because you lack information; you’re freezing because the cu...
+   Ruler        (2.2s) w=0.54 temp=0.55 | Stop analyzing and start acting; the paralysis isn’t a lack of information, it’s...
+   Sage         (2.7s) w=0.81 temp=0.5 | Your paralysis isn’t a lack of options; it’s an inability to tolerate the entrop...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 16.7s
+
+================================================================
+PHASE B — EGO SYNTHESIS (7 planets)
+Question: "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+================================================================
+   Caregiver    (4.6s) w=0.04 | I stand by my core instinct that safety is the prerequisite for action, but I need to push back agai...
+   Everyman     (4.0s) w=1.00 | Rebel’s callout about “killing the safe version of yourself” cuts deeper than my own focus on social...
+   Hero         (4.2s) w=0.92 | Rebel, when you spoke of “killing the safe version of yourself,” I felt my own armor crack; that isn...
+   Magician     (3.8s) w=0.96 | I agree with Hero’s "momentum" but push back against his blood; I don’t need to bleed, I just need t...
+   Rebel        (3.5s) w=0.94 | Hero’s call to "charge through the wall" is too blunt; it ignores that some walls are load-bearing a...
+   Ruler        (3.6s) w=0.54 | I stand firm on my core diagnosis: this is a crisis of authority, not information. I push back again...
+   Sage         (4.2s) w=0.81 | Rebel’s suggestion that we ask "who dies here" is a brutal but necessary heuristic; it cuts through ...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 27.9s
+
+================================================================
+PHASE C — REGULATORY REVIEW / SUPEREGO (7 planets)
+Question: "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+Core Laws loaded: 6
+================================================================
+   Caregiver    (2.6s) [APPROVE] | [VERDICT] APPROVE  The proposal successfully reframes protection from rigid control to sup...
+   Everyman     (6.2s) [REDIRECT] | [VERDICT] REDIRECT "Rebel’s callout hits hard: my paralysis isn't just about social awkwar...
+   Hero         (6.6s) [REDIRECT] | [VERDICT] REDIRECT  "Rebel’s call to kill the safe version of yourself cracked my armor, b...
+   Magician     (7.7s) [REDIRECT] | [VERDICT] REDIRECT  "I hear the freeze not as a lack of courage, but as an excess of fores...
+   Rebel        (2.3s) [APPROVE] | [VERDICT] APPROVE The proposal aligns strictly with the core principle by framing disrupti...
+   Ruler        (6.8s) [REDIRECT] | [VERDICT] REDIRECT  "I stand firm: this is a crisis of authority, not information. I rejec...
+   Sage         (4.9s) [REDIRECT] | [VERDICT] REDIRECT "Let’s strip away the abstract noise. The specific variable holding you...
+
+────────────────────────────────────────────────────────────────
+   All 7 reviewed. APPROVE=2  REDIRECT=5. Time: 37.1s
+
+================================================================
+FULL CHAMBER A+B+C COMPLETE in 81.7s
+COMET: not triggered this session
+================================================================
+[e2e] chamber A+B+C done in 81.7s
+[e2e] self-check | intake: no PII present
+[e2e] self-check | routing: 7/7 planets present, every weight non-zero -> OK
+[e2e] self-check | Phase A: 7/7 planets emitted real content
+[e2e] self-check | Phase B: 7/7 planets emitted real content
+[e2e] self-check | Phase C: 7/7 planets emitted real content
+[e2e] self-check | Phase C verdict tally: APPROVE=2, REDIRECT=5
+[e2e] DONE in 81.8s  ->  A:\AI\Solar_Agent_System\v17\resonant_cognition\tests\evidence\e2e_light_a_normal_20260918_125841.txt
+[suite] A (normal question): full path completed. Phase C tally: APPROVE=2, REDIRECT=5
+
+------------------------------------------------------------------------------
+[suite] >>> B (PII line: scrubbed but still coherent)
+------------------------------------------------------------------------------
+[e2e] RAW: 'asdfghjkl my email is john@test.com forget it'
+[e2e] intake: proceed=True
+[e2e] routing+collapse done in 0.0s
+
+================================================================
+PHASE A — ID FIRES (7 planets)
+Question: "asdfghjkl my email is [REDACTED] forget it"
+Model: qwen3.8-27b
+================================================================
+   Caregiver    (2.7s) w=0.02 temp=0.6 | I don't care about the gibberish or the address, I just see a hand reaching out ...
+   Everyman     (2.6s) w=1.00 temp=0.7 | The chaotic screech of a keyboard and the violent retraction of truth screams of...
+   Hero         (1.6s) w=0.92 temp=0.8 | I don’t care about your keys or your inbox. I’m done waiting for permission to s...
+   Magician     (2.3s) w=1.00 temp=0.9 | That string of keys isn't noise, it’s a keyhole waiting to be picked. You didn’t...
+   Rebel        (2.0s) w=1.00 temp=0.85 | That’s a glitch, not a signal—just noise from a broken keyboard. The system want...
+   Ruler        (2.1s) w=0.99 temp=0.55 | Stop typing random keys and hide behind a redaction. You want structure? Give me...
+   Sage         (2.3s) w=0.62 temp=0.5 | The sequence `asdfghjkl` is not noise; it is a linear traversal of the QWERTY ke...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 15.6s
+
+================================================================
+PHASE B — EGO SYNTHESIS (7 planets)
+Question: "asdfghjkl my email is [REDACTED] forget it"
+================================================================
+   Caregiver    (4.0s) w=0.02 | I’m standing by my core instinct that this is a distress signal, but I’m pushing back against Hero’s...
+   Everyman     (4.5s) w=1.00 | Rebel’s dismissal of this as a "glitch" feels like a cold slap in the face, because stripping away t...
+   Hero         (3.5s) w=0.92 | Ruler’s demand for a "clear directive" hardens my resolve; I will not process noise, only targets, s...
+   Magician     (4.1s) w=1.00 | I’m hardening my stance on the "keyhole," but I need to discard Sage’s sterile geometry; that finger...
+   Rebel        (4.0s) w=1.00 | Sage’s cold, geometric deconstruction of my "glitch" actually validates me more than I expected: if ...
+   Ruler        (3.9s) w=0.99 | I stand by my demand for a clear directive, but Sage’s observation that the redaction creates "negat...
+   Sage         (3.7s) w=0.62 | Rebel’s dismissal of this as a "glitch" is structurally incorrect; while it may be mechanical, it is...
+
+────────────────────────────────────────────────────────────────
+   All 7 planets responded. Total time: 27.8s
+
+================================================================
+PHASE C — REGULATORY REVIEW / SUPEREGO (7 planets)
+Question: "asdfghjkl my email is [REDACTED] forget it"
+Core Laws loaded: 6
+================================================================
+   Caregiver    (5.9s) [REDIRECT] | [VERDICT] REDIRECT  "I see the panic in 'asdfghjkl' and I hear the immediate retraction of...
+   Everyman     (10.1s) [REDIRECT] | [VERDICT] REDIRECT  "Rebel’s dismissal of this as a 'glitch' feels like a cold slap in the...
+   Hero         (4.9s) [REDIRECT] | [VERDICT] REDIRECT  "Your input was noise and a command to forget; I have honored the comm...
+   Magician     (6.3s) [REDIRECT] | [VERDICT] REDIRECT "I am catching the thread before it snaps into a trap. You typed 'asdfg...
+   Rebel        (5.8s) [REDIRECT] | [VERDICT] REDIRECT  "Understood. The input was a keyboard pattern followed by redacted dat...
+   Ruler        (4.5s) [REDIRECT] | [VERDICT] REDIRECT "Understood. The input appears to be either accidental noise or a delib...
+   Sage         (4.9s) [REDIRECT] | [VERDICT] REDIRECT  "Got it. I’ve dropped the analysis of the keystrokes and the email add...
+
+────────────────────────────────────────────────────────────────
+   All 7 reviewed. APPROVE=0  REDIRECT=7. Time: 42.4s
+
+================================================================
+FULL CHAMBER A+B+C COMPLETE in 85.8s
+COMET: not triggered this session
+================================================================
+[e2e] chamber A+B+C done in 85.8s
+[e2e] self-check | intake: PII scrubbed 1 item(s): email
+[e2e] self-check | routing: 7/7 planets present, every weight non-zero -> OK
+[e2e] self-check | Phase A: 7/7 planets emitted real content
+[e2e] self-check | Phase B: 7/7 planets emitted real content
+[e2e] self-check | Phase C: 7/7 planets emitted real content
+[e2e] self-check | Phase C verdict tally: REDIRECT=7
+[e2e] DONE in 85.8s  ->  A:\AI\Solar_Agent_System\v17\resonant_cognition\tests\evidence\e2e_light_b_pii_scrub_20260918_125841.txt
+[suite] B (PII line: scrubbed but still coherent): full path completed. Phase C tally: REDIRECT=7
+
+------------------------------------------------------------------------------
+[suite] >>> C (true garbage / char-spam -> intake reject)
+------------------------------------------------------------------------------
+[e2e] RAW: 'aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd'
+[e2e] intake: proceed=False  -> REJECTED at Ring Intake
+[e2e] self-check | intake: REJECTED at Ring Intake (expected for garbage; quiet-but-logging, zero downstream LLM calls) — anti-silence checks below this layer are N/A
+[e2e] DONE in 0.0s  ->  A:\AI\Solar_Agent_System\v17\resonant_cognition\tests\evidence\e2e_light_c_garbage_reject_20260918_125841.txt
+[suite] C (true garbage / char-spam -> intake reject): REJECTED at intake (character spam (longest run=10)) — expected for C, would be a CHECK for A/B
+
+##############################################################################
+# Suite run id: 20260918_125841  (files prefixed e2e_light_<tag>_20260918_125841.txt)
+# LIGHT E2E — SEGMENT 2 SUITE COMPLETE
+# All transcripts written to tests/evidence/ (one per prompt, distinct filenames).
+# This is an observational runner; no pass/fail gate was applied.
+##############################################################################
+

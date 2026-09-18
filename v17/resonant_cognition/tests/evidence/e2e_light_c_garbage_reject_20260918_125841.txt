@@ -1,0 +1,30 @@
+##############################################################################
+LIGHT END-TO-END PIPELINE TRANSCRIPT — one prompt through every built layer
+# Generated: 2026-09-18 13:01:29   Model: qwen3.8-27b
+# Layers: Ring Intake (gate1) -> Routing+Collapse (routed_collapse)
+          -> Cognitive Chamber A+B+C (run_phase_a_b_c)
+##############################################################################
+==============================================================================
+LAYER 0 — RAW INPUT
+==============================================================================
+"aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd"
+
+==============================================================================
+LAYER 1 — RING INTAKE FACET (gate1_filter)
+==============================================================================
+  proceed_to_planets : False
+  clarity_score      : 0.05   (reason: character spam (longest run=10))
+  PII redactions       : none
+  cleaned_text         : "aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd"
+
+==============================================================================
+PIPELINE STOPPED — input rejected at Ring Intake (quiet-but-logging)
+==============================================================================
+  reason: character spam (longest run=10)
+  No embedding, no routing, no chamber calls were made.
+
+==============================================================================
+ANTI-SILENCE SELF-CHECK (informational — not a pass/fail gate)
+==============================================================================
+  - intake: REJECTED at Ring Intake (expected for garbage; quiet-but-logging, zero downstream LLM calls) — anti-silence checks below this layer are N/A
+

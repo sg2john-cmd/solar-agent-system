@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head><title>Test</title></head>
+<body style="margin:0;background:#111">
+<canvas id="c" width="800" height="600" style="background:#222"></canvas>
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+
+// Draw a big red circle in the center
+ctx.beginPath();
+ctx.arc(400, 300, 100, 0, Math.PI*2);
+ctx.fillStyle = '#f00';
+ctx.fill();
+
+// Draw text
+ctx.font = '24px monospace';
+ctx.fillStyle = '#fff';
+ctx.fillText('CANVAS WORKS', 300, 50);
+
+console.log('Canvas test ran. Context:', ctx ? 'OK' : 'NULL');
+</script>
+</body></html>

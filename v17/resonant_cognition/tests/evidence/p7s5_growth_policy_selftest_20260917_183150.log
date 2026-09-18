@@ -1,0 +1,30 @@
+============================================================
+g2_growth_policy.py — Phase 7 Segment 5 self-test (Growth Policy / Tiers)
+============================================================
+  [PASS] [1a] Small drift classifies Tier 1
+  [PASS] [1b] No structural signals
+  [PASS] [2a] Large anchor migration classifies Tier 2
+  [PASS] [2b] Signal names the magnitude trigger
+  [PASS] [3a] Anchor re-anchoring is Tier 2 even with small vector
+  [PASS] [3b] Small-magnitude anchor migration notes structural signal
+  [PASS] [4a] Identity rewrite classifies Tier 2
+  [PASS] [4b] Signal present
+  [PASS] [5a] New archetype classifies Tier 2
+  [PASS] [6a] Plain self-review verdict classifies Tier 1
+  [PASS] [7a] is_structural(big anchor)
+  [PASS] [7b] is_structural(clean drift)
+  [PASS] [8a] Non-anchor drift at bound stays Tier 1
+  [PASS] [9a] Pending entry created in buffer
+  [PASS] [9b] Approve result status=approve
+  [PASS] [9c] Approved entry moved to contents
+  [PASS] [9d] Approved entry removed from ring_buffer
+  [PASS] [9e] Reviewer tag recorded (role-based)
+  [PASS] [9f] Status=committed
+  [PASS] [10a] Reject result status=reject
+  [PASS] [10b] Rejected entry stays in ring_buffer (audit)
+  [PASS] [10c] Rejected entry NOT in contents
+  [PASS] [10d] Rejected status flag set
+  [PASS] [11a] Unknown id → error status
+  [PASS] [11b] Invalid decision → error status
+
+g2_growth_policy.py Segment 5 self-test: ALL PASS (Growth Policy / Tiers)

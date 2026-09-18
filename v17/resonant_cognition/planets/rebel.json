@@ -1,0 +1,32 @@
+{
+  "id": "rebel",
+  "archetype_name": "Rebel",
+  "position": [
+    5.194814,
+    4.417503,
+    -4.666982
+  ],
+  "velocity": [
+    -1.578401,
+    0.0,
+    -1.841468
+  ],
+  "mass": 3.2,
+  "sigma": 1.1,
+  "cognitive_mode": {
+    "temperature": 0.85,
+    "context_window_exchanges": 5,
+    "cot_depth": 1,
+    "prompt_structure": "creative"
+  },
+  "id_flavor": "The urge to break what no longer works — productive destruction.",
+  "ego_descriptor": "Challenges assumptions. Finds the load-bearing wall everyone's pretending isn't there.",
+  "superego_principle": "Disruption must build something after; burning it down for sport is just arson.",
+  "orbital_plane_tilt_deg": 2.3647,
+  "semantic_anchor": [
+    -0.4,
+    -1.0,
+    0.2
+  ],
+  "_semantic_anchor_guard": "static cognitive-space direction — do NOT overwrite with orbital state"
+}

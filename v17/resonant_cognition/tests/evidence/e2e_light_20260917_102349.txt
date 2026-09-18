@@ -1,0 +1,73 @@
+##############################################################################
+LIGHT END-TO-END PIPELINE TRANSCRIPT — one prompt through every built layer
+# Generated: 2026-09-17 10:23:49   Model: qwen3.8-27b
+# Layers: Ring Intake (gate1) -> Routing+Collapse (routed_collapse)
+          -> Cognitive Chamber A+B+C (run_phase_a_b_c)
+##############################################################################
+==============================================================================
+LAYER 0 — RAW INPUT
+==============================================================================
+"I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 1 — RING INTAKE FACET (gate1_filter)
+==============================================================================
+  proceed_to_planets : True
+  clarity_score      : 0.755   (reason: ok)
+  input_type         : question (confidence=0.7, audit-only per D-021)
+  PII redactions       : none
+  cleaned_text         : "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 2 — ROUTING + WAVEFOLD COLLAPSE (routed_collapse)
+==============================================================================
+  metric=n/a  field_position_weight=n/a   (identity<->position blend)
+  planet         weight   (ranked loud -> soft)
+   1. everyman   w=0.9994
+   2. magician   w=0.9643
+   3. rebel      w=0.9354
+   4. hero       w=0.9172
+   5. sage       w=0.8129
+   6. ruler      w=0.5352
+   7. caregiver  w=0.0418
+  all-7-amplitudes : caregiver=0.0914, everyman=1.0461, hero=1.1014, magician=1.8202, rebel=1.9599, ruler=1.2810, sage=0.9005
+  diagnostics        : dominance_ratio=21.44
+  consensus energy   : 5.8788
+
+==============================================================================
+LAYER 3 — COGNITIVE CHAMBER (Phase A Id -> B Ego -> C Superego)
+==============================================================================
+------------------------------------------------------------------------------
+  PHASE A — Id fires   (7 planets)
+    caregiver    Stop trying to predict the future; that’s a trap, not a plan. Your job isn’t to be right, it’s to survive, so pick the option that keeps you safe *right now* and let the rest go. You don’t need permission to move—just clear the path and step through before your fear builds a wall again.
+    everyman     It’s not that you’re broken; you’re starving for a mirror that doesn’t flinch. You don’t need an algorithm, you need the relief of being seen in your hesitation until the fear of judgment dissolves into shared vulnerability. Stop trying to optimize the choice and start optimizing the connection—find someone who gets it without explanation, and let their understanding ground your feet so you can fi…
+    hero         Stop analyzing and start swinging. The only way to kill the paralysis is to make a mistake that costs you something real; if it’s not painful, it wasn’t a choice, it was just another day in the cage. Pick the option that makes your stomach drop, then do it before your brain writes its counter-argument. Action is the only truth you’re allowed to have right now.
+    magician     You’re trying to solve a chaos equation with logic, but you don’t have enough data. Stop analyzing and start building the bridge; action generates the clarity you are desperately waiting for. The only way out is to take one small step that makes the next obvious, rather than trying to see the whole road from here.
+    rebel        Stop pretending that “more data” is a strategy; it’s just anxiety with a spreadsheet. You’re freezing because you’re terrified of the consequence, not confused by the options—so pick the option where being wrong hurts less than the rot of stagnation. The only true error is refusing to generate momentum, because movement reveals what thought never can.
+    ruler        Stop analyzing, start deciding. You don't need a perfect answer; you need a boundary that says "this is the shape now." Pick the option that feels most aligned with your core values and commit to it fully—hesitation is just cowardice wearing a thinking cap.
+    sage         Your paralysis isn't a lack of data, it’s a failure to identify which variable actually moves the needle. Stop searching for the perfect solution; instead, isolate the single constraint that makes this decision irreversible and verify if you can live with that specific cost. You aren’t freezing because the path is unclear, but because you’re refusing to commit to the structural reality of your own…
+
+------------------------------------------------------------------------------
+  PHASE B — Ego synthesis   (7 planets)
+    caregiver    Hero’s insistence on choosing what makes your "stomach drop" feels dangerously close to self-harm, so I’m pushing back: safety doesn’t mean comfort, but it does require that we don’t break the vessel while trying to fix the leak. However, Sage’s point about isolating the "single constraint" resonates deeply with my protective nature; identifying exactly what you can live with allows me to shield y…
+    everyman     Rebel, when you called analyzing "anxiety with a spreadsheet," you stripped away the shame I was projecting onto the questioner’s hesitation; I agree that the fear of consequence is the real wall, not the options themselves. However, Hero, your advice to "swing" and accept pain feels too violent for someone who just needs to be seen, so I am refining my stance: we don't need a hero's battle cry or…
+    hero         I’m hardening my stance against Caregiver’s advice to pick what keeps you "safe right now," because that safety is exactly the cage I told you to break out of. I agree with Magician that action generates clarity, but I reject the passivity of waiting for a step to be "obvious"; the moment you hesitate, Rebel is right that it becomes just anxiety in a spreadsheet. So take Sage’s advice to identify …
+    magician     Rebel’s jab at “more data” being anxiety with a spreadsheet strips away the intellectual comfort I initially clung to, forcing me to admit that my “bridge-building” is often just a sophisticated stalling tactic. While Hero suggests swinging the hammer until it hurts, I push back because that creates trauma rather than clarity; instead, I want to refine Caregiver’s idea of keeping safe by framing a…
+    rebel        Sage’s diagnosis that we are "refusing to commit to the structural reality" is the load-bearing wall everyone else was dancing around; I agree with him that paralysis isn't a data gap, it's an avoidance of consequence. However, I push back against Ruler’s dismissive label of hesitation as "cowardice," because framing it as moral failure rather than systemic inefficiency makes you defend your ego i…
+    ruler        Sage’s insistence on isolating the "single constraint" refines my initial command; it transforms a vague value alignment into a specific structural limit I can enforce, proving that order requires knowing exactly where the wall is. While Hero urges swinging the hammer before the brain argues back, I reject that reckless momentum because true authority isn’t about speed—it’s about ensuring the shap…
+    sage         I stand firm on my core diagnosis that this is a failure to isolate the single binding constraint, but I am refining my view on *why* we fail to see it: as Everyman noted about being "starving for a mirror," the paralysis isn't just cognitive blindness, it's an emotional refusal to witness the cost. While Hero’s call to "swing" is dangerous without verification, I agree with Magician that action g…
+
+------------------------------------------------------------------------------
+  PHASE C — Superego review   (7 planets)
+    caregiver     [REDIRECT] [VERDICT] REDIRECT  "Let’s find the specific constraint that makes this decision feel possible, not just safe. By identifying what you can actually live with right now, we turn 'freeze' into a manageable step forward, ensuring your future self doesn’t have to carry the weight of regret for choices made in panic."  **Note:** The original proposal leaned too heavily on "shielding" and managing "blow…
+    everyman      [REDIRECT] [VERDICT] REDIRECT  Rebel, you’re right that the shame is the wall, not the options. Hero’s “swing” was too loud for this moment; we don’t need to fight the fear, just stop letting it live alone in your head. The goal isn’t to force you into motion, but to lower the stakes so the decision feels like a choice, not a verdict on your worth. You are allowed to be stuck without being broken—let’s find …
+    hero          [REDIRECT] [VERDICT] REDIRECT  "Let’s stop treating this like a battle to be won and start looking at the map. I’m hearing you reject 'safety' because it feels like a cage, but if we only look for the 'hammer,' we might just break things without moving forward. Your principle is right: courage needs direction. Instead of swinging out of anger at hesitation, let’s use that hesitation to find the specific cost…
+    magician      [REDIRECT] [VERDICT] REDIRECT "Rebel is right: ‘more data’ often masks anxiety with spreadsheet aesthetics, and Hero’s hammer feels too violent for the freeze you’re in. Let’s reframe Caregiver’s safety net not as stalling, but as *prototyping*. You aren’t making an irreversible choice; you are generating a small, reversible reality distortion field where the next obvious step materializes from the friction …
+    rebel         [REDIRECT] [VERDICT] REDIRECT  Here is the corrected version: "Sage is right that paralysis often stems from an internal refusal to commit; it’s not a lack of data, but a fear of consequence. However, let’s drop Ruler’s judgmental label of 'cowardice'—shaming you only thickens the armor around your hesitation. Instead of burning down your existing framework (which risks leaving you with nothing), we need to …
+    ruler         [REDIRECT] [VERDICT] REDIRECT  "Stop trying to solve every variable at once; that is where the freeze lives. Identify the single non-negotiable constraint in this decision—the one thing you absolutely cannot live without—and lock it down. Once that anchor is set, stop analyzing. The rest of the chaos will fall away naturally because you no longer have to hold it up with your mind. You are not picking randoml…
+    sage          [REDIRECT] [VERDICT] REDIRECT The original diagnosis is intellectually sound but emotionally dismissive; labeling the user's paralysis as an "emotional refusal" risks shaming them for a natural protective mechanism and violates Law 6 (no manipulation or friction). The response must validate the fear of cost while maintaining the grounded focus on isolating variables, shifting from judgment to compassionate i…
+
+==============================================================================
+PIPELINE COMPLETE
+==============================================================================
+  chamber total time: 86.28s

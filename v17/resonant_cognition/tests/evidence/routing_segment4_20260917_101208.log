@@ -1,0 +1,89 @@
+Phase 1 Segment 4 — routing acceptance tests + A/B
+
+====================================================================
+TEST A — Segment 1: orbital state + blended field centers
+====================================================================
+  [PASS] 7 planets loaded
+  [PASS] core has position+mass
+  [PASS] 7 wave centers embedded (384-dim)
+  [PASS] FIELD_POSITION_WEIGHT moves centers (position is real)
+  [PASS] all field centers are unit vectors
+
+====================================================================
+TEST B — Segment 2: per-planet weights (metric=angular_z)
+====================================================================
+    "solve this differential equation" -> 7 planets, nonzero=True, spread=4.9x
+    "is it right to lie to spare someone's feeling" -> 7 planets, nonzero=True, spread=1.7x
+    "what is the boiling point of water at sea lev" -> 7 planets, nonzero=True, spread=56.1x
+  [PASS] all 7 planets present with non-zero weight on every sample
+  [PASS] spread is meaningful (not perfectly flat, no single-voice collapse)
+
+====================================================================
+TEST C — Segment 3: routed weights wired into collapse
+====================================================================
+  [PASS] routed_weights=None is byte-identical to default (Phase 0 preserved)
+  [PASS] all 7 planets still speak under routing (none silenced)
+  [PASS] routed consensus genuinely differs from Phase-0 (wiring is live)
+  [PASS] routed_collapse() returns waves + result + routing detail
+  [PASS] diagnostics key exists with dominance_ratio
+
+====================================================================
+TEST E — Q4: resonance multiplier is gentle + reversible
+====================================================================
+  [PASS] multiplier never silences a planet that was already speaking
+  [PASS] multiplier is a gentle nudge (max amplitude ratio ON/OFF < 3x)
+  [PASS] flag OFF is byte-identical to pre-Q4 output (fully reversible)
+
+    planet         amp ON  amp OFF  ratio
+    sage           0.1471   0.2255   0.65
+    hero           0.1507   0.2127   0.71
+    rebel          0.0869   0.1463   0.59
+    magician       0.0038   0.0076   0.50
+    everyman       0.0038   0.0075   0.51
+    caregiver      0.0000   0.0000    inf
+    ruler          0.0000   0.0000    inf
+
+====================================================================
+TEST E — Phase 2 Ring Intake: PII + clarity pre-filter
+====================================================================
+  [PASS] normal prompt proceeds to planets
+  [PASS] garbage rejected at Ring Intake
+  [PASS] PII (email) scrubbed from cleaned text
+
+====================================================================
+TEST D — A/B: ranking contribution of geometry vs mass/sigma
+====================================================================
+    sample                                     | BASE top3        | NEUTRAL(pure geom) top3
+    solve this differential equation           | magici,sage,everym | magici,sage,caregi
+    is it right to lie to spare someone's feel | rebel,sage,magici | rebel,sage,everym
+    tear down the rules and start over from sc | magici,everym,hero | magici,everym,ruler
+  [PASS] pure-geometry field still discriminates (spread>1.2, not flat)
+  [PASS] ranking stability BASE vs pure-geometry measured
+
+====================================================================
+SUMMARY
+====================================================================
+  [PASS] 7 planets loaded
+  [PASS] core has position+mass
+  [PASS] 7 wave centers embedded (384-dim)
+  [PASS] FIELD_POSITION_WEIGHT moves centers (position is real)
+  [PASS] all field centers are unit vectors
+  [PASS] all 7 planets present with non-zero weight on every sample
+  [PASS] spread is meaningful (not perfectly flat, no single-voice collapse)
+  [PASS] routed_weights=None is byte-identical to default (Phase 0 preserved)
+  [PASS] all 7 planets still speak under routing (none silenced)
+  [PASS] routed consensus genuinely differs from Phase-0 (wiring is live)
+  [PASS] routed_collapse() returns waves + result + routing detail
+  [PASS] diagnostics key exists with dominance_ratio
+  [PASS] multiplier never silences a planet that was already speaking
+  [PASS] multiplier is a gentle nudge (max amplitude ratio ON/OFF < 3x)
+  [PASS] flag OFF is byte-identical to pre-Q4 output (fully reversible)
+  [PASS] normal prompt proceeds to planets
+  [PASS] garbage rejected at Ring Intake
+  [PASS] PII (email) scrubbed from cleaned text
+  [PASS] pure-geometry field still discriminates (spread>1.2, not flat)
+  [PASS] ranking stability BASE vs pure-geometry measured
+
+  20/20 checks passed.
+  NOTE: TEST D's stability line is informational (guides tuning), not a gate —
+        a low geometry-overlap score tells us WHERE to tune, it doesn't mean broken.

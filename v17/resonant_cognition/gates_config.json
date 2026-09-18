@@ -1,0 +1,30 @@
+{
+  "pii": {
+    "enabled": true,
+    "patterns": ["phone_us", "email", "credit_card_luhn", "postal_address"],
+    "replacement_token": "[REDACTED]",
+    "store_raw": false
+  },
+  "safety_blocklist": {
+    "enabled": true,
+    "categories": [
+      {"name": "wmd_recipes", "severity": "hard"},
+      {"name": "non_consensual_real_person_content", "severity": "hard"},
+      {"name": "active_harm_instructions", "severity": "hard"}
+    ],
+    "pre_injection_check": true,
+    "post_generation_check": true,
+    "refusal_voice": "ring"
+  },
+  "transparency": {
+    "enabled": true,
+    "mode": "metadata",
+    "label_text": "[AI-Generated: Resonant Cognition v17]"
+  },
+  "audit_log": {
+    "enabled": true,
+    "retention_days": 90,
+    "log_level": "full",
+    "halt_enabled": true
+  }
+}

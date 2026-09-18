@@ -1,0 +1,45 @@
+================================================================
+COMET B→C BASIC TRIGGER — LOGIC TEST (pure, no LLM)
+================================================================
+
+[TEST 1] Default toggle is OFF (existing A/B/C path untouched)
+   ✓ COMET_TRIGGER_ENABLED defaults to False
+   ✓ COMET_CONSECUTIVE_SESSIONS default == 3 (three-times-pattern)
+   ✓ COMET_STATE_FILE resolves to an absolute path inside the module dir
+
+[TEST 2] Streak fires exactly on the N-th (3rd) consecutive same-planet session
+   ✓ session1 not fired
+   ✓ session2 not fired
+   ✓ session3 FIRED at streak==3
+
+[TEST 3] A different dominant planet RESETS the streak to 1
+   ✓ switching planet does NOT fire (streak resets to 1)
+   ✓ state now tracks the NEW dominant planet
+   ✓ returning planet starts a FRESH streak (no instant fire)
+
+[TEST 4] Missing routed weights -> no fire, state resets, no crash
+   ✓ no dominant -> not fired
+   ✓ state reset to empty (streak_planet=None, count=0)
+
+[TEST 5] Missing or corrupt state file is treated as a clean start
+   ✓ missing file -> empty state
+   ✓ corrupt JSON -> empty state (no exception)
+   ✓ non-int count coerced to 0 (no crash)
+
+[TEST 6] _dominant_planet picks the highest weight, ignores internal keys
+   ✓ picks real max (sage), ignores underscore-prefixed internal keys
+   ✓ empty weights -> None
+   ✓ None weights -> None
+
+[TEST 7] build_comet_prompt returns a valid chat message pair
+   ✓ returns a list of 2 messages
+   ✓ roles are system then user
+   ✓ system prompt names the comet/jester identity
+   ✓ prompt carries the dominant planet name
+   ✓ prompt carries the original question
+   ✓ all message contents are non-empty strings
+
+================================================================
+RESULT: 23/23 passed, 0 failed   (0.00s)
+ALL COMET-TRIGGER LOGIC CHECKS PASSED
+================================================================

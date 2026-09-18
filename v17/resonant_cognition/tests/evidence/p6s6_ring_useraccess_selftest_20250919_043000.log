@@ -1,0 +1,44 @@
+================================================================
+ring.py — Phase 6 Segments 1-6 self-test (offline, no LM Studio)
+================================================================
+
+[1] Persona load round-trip: [PASS]
+[2] Fresh relationship log loads: [PASS]
+[3] ring_inbound (first session): [PASS]
+[4] ring_inbound (after session update): [PASS]
+[5] ring_outbound (normal): [PASS]
+[6] ring_outbound (idle 15min): [PASS]
+[7] ring_outbound (active, 2min): [PASS]
+[8] Swarm load (empty): [PASS]
+[9] Live persona.json loads: [PASS]
+[10] Persona name is swappable data: [PASS]
+[11] should_write_to_ring_swarm write-everything default: [PASS]
+[12] make_ring_swarm_entry position/zone: [PASS]  (dist=0.0130)
+[13] Swarm write+read round-trip: [PASS]
+[14] PII guard on swarm write: [PASS]
+[15] read_ring_swarm_entries (empty store): [PASS]
+[16] get_ring_memory_context top-N by mass: [PASS]
+[17] Mass via cosine (aligned=1.000, anti=0.000): [PASS]
+[18] Decay rate = D-011 base gamma (0.0200): [PASS]
+[19] compress_older_swarm_entries (faded->compaction): [PASS]
+[20] generate_idle_reflection OFF => no-op "": [PASS]
+[21] generate_idle_reflection below threshold => no-op: [PASS]
+[22] OFF path works even without cognitive_chamber importable: [PASS]
+[23] self-review trigger OFF => never fires (no side effects): [PASS]
+[24] trigger ON at threshold => fires (session_threshold): [PASS]
+[25] trigger below threshold & <1 month => no fire: [PASS]
+[26] trigger ON, 40 days since first contact => month_boundary fires: [PASS]
+[27] anti-double-fire: same session after logged review => no re-fire: [PASS]
+[28] change-report skeleton: stats + topic cap respected: [PASS]
+[29] verdict log: silenced debate => HELD, before-state captured: [PASS]
+[30] verdict log: clean debate => committed, append-only on disk: [PASS]
+[31] live g2_selfmodel.json not polluted by offline tests (1 legit SELF_REVIEW entry/entries): [PASS]
+[32] user_read_swarm: all entries, newest-first order: [PASS]
+[33] user_export_swarm: valid JSON with metadata header: [PASS]
+[34] user_delete_entry: removes one, persists; missing ID => False: [PASS]
+[35] user_wipe_swarm: clears all, valid empty JSON remains: [PASS]
+[36] format_swarm_for_display: shows entries + [FADED]; empty => message: [PASS]
+[37] backdated context: 7-day-old entries still above MIN_ENTRY_MASS for recall: [PASS]
+
+================================================================
+Ring sanity (Segs 1-6): ALL PASS

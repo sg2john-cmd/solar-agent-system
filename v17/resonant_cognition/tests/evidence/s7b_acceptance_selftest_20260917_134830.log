@@ -1,0 +1,34 @@
+================================================================
+PHASE 5 SLEEP CYCLE — THE CRITICAL ACCEPTANCE TEST (S7b)
+live state source : A:\AI\Solar_Agent_System\v17\resonant_cognition
+================================================================
+
+TEST 1 — real deep_sleep() against a copy of LIVE state (zero LLM)
+  ✓ File A captured: core + all 7 planets present  (planets=['caregiver', 'everyman', 'hero', 'magician', 'rebel', 'ruler', 'sage'])
+   planets moved on disk: 7/7  (unmoved=[])
+     caregiver   Δmax=0.021748
+     everyman    Δmax=0.027313
+     hero        Δmax=0.065959
+     magician    Δmax=0.041793
+     rebel       Δmax=0.017374
+     ruler       Δmax=0.056260
+     sage        Δmax=0.072256
+  ✓ ALL 7 planets' positions changed on disk  (moved=['caregiver', 'everyman', 'hero', 'magician', 'rebel', 'ruler', 'sage'])
+   cognitive_mode fields changed: 0/7 (expected 0 with no G2 suggestions — mode only moves when guided)
+  ✓ cognitive_mode unchanged (no G2 suggestion given, so no mode shift expected)  (changed=[])
+  ✓ deep_sleep() reported state_changed=True (v16 failure #2 signal)
+  ✓ core position changed on disk  (pre=[0.1, -0.8, -0.3] post=[0.103, -0.794, -0.291])
+  ✓ REAL gates_config.json byte-identical after deep_sleep()
+  ✓ All semantic_anchors unchanged (identity clobber guard held)
+
+TEST 2 — negative control: the check must be able to FAIL
+   zero-input run: 7/7 planets moved (jitter-only drift)
+  ✓ Part A: even with ALL inputs zeroed, positions still change on disk (drift is never exactly 0 by design)  (moved=['caregiver', 'everyman', 'hero', 'magician', 'rebel', 'ruler', 'sage'])
+   identity-commit run: 0/7 planets moved, core_moved=True
+  ✗ FAIL: Part B: with a forced cosmetic (identity) commit, NO planet position changed (the check would correctly flag this as v16 failure #2)  (moved=[])
+
+================================================================
+PHASE 5 SLEEP ACCEPTANCE RESULT: 8/9 checks passed, 1 failed
+(live seed snapshot read-only check: 9 files hashed, none written by this test)
+⚠️ FAIL — see above; do NOT treat Phase 5 as complete.
+================================================================

@@ -1,0 +1,32 @@
+{
+  "id": "sage",
+  "archetype_name": "Sage",
+  "position": [
+    6.162719,
+    -0.494145,
+    2.455781
+  ],
+  "velocity": [
+    1.133246,
+    0.0,
+    -2.493141
+  ],
+  "mass": 3.0,
+  "sigma": 1.2,
+  "cognitive_mode": {
+    "temperature": 0.5,
+    "context_window_exchanges": 4,
+    "cot_depth": 2,
+    "prompt_structure": "rigid"
+  },
+  "id_flavor": "The pull toward raw pattern and hidden structure before it is named.",
+  "ego_descriptor": "Analyzes, decomposes, verifies. Seeks the elegant proof.",
+  "superego_principle": "Truth must be grounded; a beautiful claim without evidence is a decoration, not a finding.",
+  "orbital_plane_tilt_deg": 3.9218,
+  "semantic_anchor": [
+    1.0,
+    0.4,
+    -0.5
+  ],
+  "_semantic_anchor_guard": "static cognitive-space direction — do NOT overwrite with orbital state"
+}

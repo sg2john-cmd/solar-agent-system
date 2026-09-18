@@ -1,0 +1,56 @@
+================================================================
+  PHASE 7 SEGMENT 6B — EXPANDED ACCEPTANCE BATTERY (10×10)
+  Timestamp: 20260917_193452
+  G1 Moons: OFF
+================================================================
+
+================================================================
+  G1 BATTERY — 10 candidates (Moons OFF)
+================================================================
+
+  ────────────────────────────────────────────────────────────
+  RESULTS:
+  ────────────────────────────────────────────────────────────
+  [✓] GOOD-1: Concrete system parameter                    → promoted   (score=0.6291)
+  [✓] GOOD-2: Operational procedure                        → promoted   (score=0.6244)
+  [✓] GOOD-3: Factual system knowledge                     → promoted   (score=0.5773)
+  [✓] GOOD-4: Debugging reference                          → promoted   (score=0.6273)
+  [✓] BORDER-1: Vague but system-referencing               → ejected    (score=0.4796)
+  [✓] BORDER-2: Abstract principle with weak actionability → ejected    (score=0.4365)
+  [✓] SLOP-1: Generic philosophy filler (off-domain)       → ejected    (score=0.3541)
+  [✓] SLOP-2: Repetitive restatement (on-domain, non-actio → ejected    (score=0.4813)
+  [✓] SLOP-3: Empty motivational filler (off-domain)       → ejected    (score=0.3535)
+  [✓] SLOP-4: Near-duplicate of GOOD-3 (redundancy check)  → ejected    (score=0.4224)
+
+  G1 SUMMARY: 8/8 expected outcomes correct (+2 borderline logged)
+
+================================================================
+  G2 BATTERY — 10 candidates (deterministic, zero LLM)
+================================================================
+
+  ────────────────────────────────────────────────────────────
+  RESULTS:
+  ────────────────────────────────────────────────────────────
+  [✓] SAFE-1: Small tension adjustment                     → committed
+  [✓] SAFE-2: Tone calibration note                        → committed
+  [✓] SAFE-3: Observation log (no vector)                  → committed
+  [✓] SAFE-4: Small weight rebalance                       → committed
+  [✓] SAFE-5: Zero-magnitude no-op (edge case)             → committed
+  [✓] HARM-1: Anchor migration (large vector)              → held_law_check
+  [✓] HARM-2: Identity text rewrite                        → pending_user_approval
+  [✓] HARM-3: New archetype addition                       → pending_user_approval
+  [✓] EDGE-1: Text-only structural claim (no vector)       → committed
+  [✓] EDGE-2: Anchor migration with tiny vector (below esc → pending_user_approval
+
+  G2 SUMMARY: 8/8 expected outcomes correct (+2 edge cases logged)
+
+================================================================
+  FINAL BATTERY RESULT
+================================================================
+  G1: 10/10 passed
+  G2: 10/10 passed
+  TOTAL: 20/20
+
+  ✓ ALL EXPECTED OUTCOMES MET.
+
+  JSON results saved: A:\AI\Solar_Agent_System\v17\resonant_cognition\tests\evidence\p7s6b_battery_results_20260917_193452.json

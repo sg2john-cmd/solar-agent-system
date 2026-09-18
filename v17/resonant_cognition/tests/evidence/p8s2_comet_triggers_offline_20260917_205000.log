@@ -1,0 +1,93 @@
+================================================================
+PHASE 8 SEGMENT 2 — COMET TRIGGER SYSTEM (FULL, OFFLINE)
+All 4 jester.json predicates + state + cooldown + weight priority
+================================================================
+
+[TEST 1] Default toggle is OFF (existing A/B/C path untouched)
+   ✓ COMET_TRIGGER_ENABLED defaults to False
+
+[TEST 2] No input data -> comet never fires
+   ✓ No weights: no fire
+   ✓ Return type is 4-tuple
+   ✓ Empty weights: no fire
+
+[TEST 3] Stagnation: same dominant+topic >3 sessions -> fires on 4th
+     Session 1: fired=False, trigger=''
+     Session 2: fired=False, trigger=''
+     Session 3: fired=False, trigger=''
+     Session 4: fired=True, trigger='stagnation'
+     Session 5: fired=False, trigger=''
+   ✓ Sessions 1-3: no fire
+   ✓ Session 4: stagnation fires
+   ✓ Session 5: in cooldown after fire
+
+[TEST 4] Over-seriousness: sustained Ruler/Caregiver dominance >5 sessions -> fires on 6th
+     Session 1: fired=False, trigger=''
+     Session 2: fired=False, trigger=''
+     Session 3: fired=False, trigger=''
+     Session 4: fired=True, trigger='stagnation'
+     Session 5: fired=False, trigger=''
+     Session 6: fired=False, trigger=''
+     Session 7: fired=True, trigger='stagnation'
+   ✓ By session 8: at least one trigger fired
+
+[TEST 4b] Magician dominant resets serious dominance streak
+   ✓ Serious streak reset (was 4, now 0)
+
+[TEST 5] Binary convergence: opposing pair (align < -0.6) unresolved >2 sessions -> fires on 3rd
+     Session 1: fired=False, trigger=''
+     Session 2: fired=False, trigger=''
+     Session 3: fired=True, trigger='binary_convergence'
+     Session 4: fired=False, trigger=''
+   ✓ Sessions 1-2: no binary_convergence fire
+   ✓ Binary convergence fires by session 4
+
+[TEST 6] Random injection: deterministic with session_number seed
+   ✓ Same seed produces same result
+   ✓ ~2% fire rate over 500 sessions (got 0.032)
+
+[TEST 7] Cooldown: no re-fire within 3 sessions of last fire
+   ✓ Session 11 (gap=1): in cooldown
+   ✓ Session 12 (gap=2): in cooldown
+   ✓ Gap=3 passes cooldown check
+
+[TEST 8] Weight priority: binary_convergence (0.9) > stagnation (0.8) > over_seriousness (0.7)
+   ✓ Both triggers eligible -> a fire occurred
+   ✓ Winner is highest-weight trigger (got 'binary_convergence', weight=0.9)
+     Fired: binary_convergence (Planets ruler vs rebel in direct opposition (align < -0.6) for 3 sessions unresolved.)
+
+[TEST 9] Corrupt/missing state file -> defaults, no crash
+   ✓ Missing file returns defaults
+   ✓ Corrupt file returns defaults
+   ✓ Save/reload round-trip preserves data
+
+[TEST 10] Topic fingerprint is deterministic and sensitive to changes
+   ✓ Same input -> same fingerprint
+   ✓ Different planet -> different fingerprint
+   ✓ Different question -> different fingerprint
+   ✓ Empty question returns 'none'
+   ✓ None planet returns 'none'
+
+[TEST 11] jester.json loads with correct trigger definitions
+   ✓ 4 triggers defined
+   ✓ stagnation weight=0.8
+   ✓ over_seriousness weight=0.7
+   ✓ binary_convergence weight=0.9
+   ✓ random_injection p=0.02
+
+[TEST 12] Integration: 8-session scenario with topic change mid-way
+     Session 1: dominant=sage, fired=False, trigger=''
+     Session 2: dominant=sage, fired=False, trigger=''
+     Session 3: dominant=sage, fired=False, trigger=''
+     Session 4: dominant=sage, fired=True, trigger='stagnation'
+     Session 5: dominant=hero, fired=False, trigger=''
+     Session 6: dominant=hero, fired=False, trigger=''
+     Session 7: dominant=hero, fired=False, trigger=''
+     Session 8: dominant=hero, fired=True, trigger='stagnation'
+   ✓ Sage period produced at least one fire by session 4
+   ✓ After topic change: no immediate re-fire
+
+================================================================
+RESULTS: 33/33 passed, 0 failed. Time: 0.02s
+ALL CHECKS PASSED.
+================================================================

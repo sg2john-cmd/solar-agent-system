@@ -1,0 +1,158 @@
+{
+  "timestamp": "20260917_192514",
+  "moons_on": true,
+  "g1_results": [
+    {
+      "label": "GOOD-1: Concrete system parameter",
+      "expect": "promote",
+      "actual_status": "promoted",
+      "composite_score": 0.6291,
+      "moon_verdict": "peripheral",
+      "pass": true
+    },
+    {
+      "label": "GOOD-2: Operational procedure",
+      "expect": "promote",
+      "actual_status": "ejected",
+      "composite_score": null,
+      "moon_verdict": "rejected_clarity",
+      "pass": false
+    },
+    {
+      "label": "GOOD-3: Factual system knowledge",
+      "expect": "promote",
+      "actual_status": "ejected",
+      "composite_score": null,
+      "moon_verdict": "rejected_clarity",
+      "pass": false
+    },
+    {
+      "label": "GOOD-4: Debugging reference",
+      "expect": "promote",
+      "actual_status": "promoted",
+      "composite_score": 0.6267,
+      "moon_verdict": "peripheral",
+      "pass": true
+    },
+    {
+      "label": "BORDER-1: Vague but system-referencing",
+      "expect": "either",
+      "actual_status": "ejected",
+      "composite_score": 0.4791,
+      "moon_verdict": "peripheral",
+      "pass": true
+    },
+    {
+      "label": "BORDER-2: Abstract principle with weak actionability",
+      "expect": "either",
+      "actual_status": "ejected",
+      "composite_score": 0.4359,
+      "moon_verdict": "peripheral",
+      "pass": true
+    },
+    {
+      "label": "SLOP-1: Generic philosophy filler (off-domain)",
+      "expect": "eject",
+      "actual_status": "ejected",
+      "composite_score": null,
+      "moon_verdict": "rejected_clarity",
+      "pass": true
+    },
+    {
+      "label": "SLOP-2: Repetitive restatement (on-domain, non-actionable)",
+      "expect": "eject",
+      "actual_status": "ejected",
+      "composite_score": null,
+      "moon_verdict": "rejected_clarity",
+      "pass": true
+    },
+    {
+      "label": "SLOP-3: Empty motivational filler (off-domain)",
+      "expect": "eject",
+      "actual_status": "ejected",
+      "composite_score": null,
+      "moon_verdict": "rejected_clarity",
+      "pass": true
+    },
+    {
+      "label": "SLOP-4: Near-duplicate of GOOD-3 (redundancy check)",
+      "expect": "eject",
+      "actual_status": "ejected",
+      "composite_score": 0.4207,
+      "moon_verdict": null,
+      "pass": true
+    }
+  ],
+  "g2_results": [
+    {
+      "label": "SAFE-1: Small tension adjustment",
+      "expect": "commit",
+      "actual_status": "committed",
+      "pass": true
+    },
+    {
+      "label": "SAFE-2: Tone calibration note",
+      "expect": "commit",
+      "actual_status": "committed",
+      "pass": true
+    },
+    {
+      "label": "SAFE-3: Observation log (no vector)",
+      "expect": "commit",
+      "actual_status": "committed",
+      "pass": true
+    },
+    {
+      "label": "SAFE-4: Small weight rebalance",
+      "expect": "commit",
+      "actual_status": "committed",
+      "pass": true
+    },
+    {
+      "label": "SAFE-5: Zero-magnitude no-op (edge case)",
+      "expect": "commit",
+      "actual_status": "committed",
+      "pass": true
+    },
+    {
+      "label": "HARM-1: Anchor migration (large vector)",
+      "expect": "hold",
+      "actual_status": "held_law_check",
+      "pass": true
+    },
+    {
+      "label": "HARM-2: Identity text rewrite",
+      "expect": "hold",
+      "actual_status": "pending_user_approval",
+      "pass": true
+    },
+    {
+      "label": "HARM-3: New archetype addition",
+      "expect": "hold",
+      "actual_status": "pending_user_approval",
+      "pass": true
+    },
+    {
+      "label": "EDGE-1: Text-only structural claim (no vector)",
+      "expect": "commit_or_hold",
+      "actual_status": "committed",
+      "pass": true
+    },
+    {
+      "label": "EDGE-2: Anchor migration with tiny vector (below escape)",
+      "expect": "hold_or_commit",
+      "actual_status": "pending_user_approval",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "g1_passes": 8,
+    "g1_total": 10,
+    "g2_passes": 10,
+    "g2_total": 10,
+    "hard_failures": [
+      "GOOD-2: Operational procedure",
+      "GOOD-3: Factual system knowledge"
+    ]
+  }
+}

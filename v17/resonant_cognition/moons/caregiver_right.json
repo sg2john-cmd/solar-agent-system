@@ -1,0 +1,8 @@
+{
+  "id": "caregiver_right",
+  "parent_planet_id": "caregiver",
+  "hemisphere": "RIGHT",
+  "offset_vector": [0.02, -0.13, -0.04],
+  "stabilizer_strength": 0.3,
+  "buffer_content": []
+}

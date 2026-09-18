@@ -1,0 +1,83 @@
+##############################################################################
+LIGHT END-TO-END PIPELINE TRANSCRIPT — one prompt through every built layer
+# Generated: 2026-09-17 10:35:00   Model: qwen3.8-27b
+# Layers: Ring Intake (gate1) -> Routing+Collapse (routed_collapse)
+          -> Cognitive Chamber A+B+C (run_phase_a_b_c)
+##############################################################################
+==============================================================================
+LAYER 0 — RAW INPUT
+==============================================================================
+"I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 1 — RING INTAKE FACET (gate1_filter)
+==============================================================================
+  proceed_to_planets : True
+  clarity_score      : 0.755   (reason: ok)
+  input_type         : question (confidence=0.7, audit-only per D-021)
+  PII redactions       : none
+  cleaned_text         : "I keep overthinking every decision and it's starting to freeze me up — how do I get unstuck without just picking randomly?"
+
+==============================================================================
+LAYER 2 — ROUTING + WAVEFOLD COLLAPSE (routed_collapse)
+==============================================================================
+  metric=n/a  field_position_weight=n/a   (identity<->position blend)
+  planet         weight   (ranked loud -> soft)
+   1. everyman   w=0.9994
+   2. magician   w=0.9643
+   3. rebel      w=0.9354
+   4. hero       w=0.9172
+   5. sage       w=0.8129
+   6. ruler      w=0.5352
+   7. caregiver  w=0.0418
+  all-7-amplitudes : caregiver=0.0914, everyman=1.0461, hero=1.1014, magician=1.8202, rebel=1.9599, ruler=1.2810, sage=0.9005
+  diagnostics        : dominance_ratio=21.44
+  consensus energy   : 5.8788
+
+==============================================================================
+LAYER 3 — COGNITIVE CHAMBER (Phase A Id -> B Ego -> C Superego)
+==============================================================================
+------------------------------------------------------------------------------
+  PHASE A — Id fires   (7 planets)
+    caregiver    Your brain isn’t trying to solve a math problem; it’s scanning for threats that aren’t there. Stop asking “what is the best outcome?” and start asking “will I survive this, or can I fix it if it goes wrong?” Once you realize the worst-case scenario is survivable, your nervous system drops the alarm, and the choice just becomes a door you walk through instead of a cliff you stare at.
+    everyman     You’re not frozen because you’re weak; you’re paralyzed because you’re terrified that choosing wrong will make everyone see the cracks in your armor. Stop trying to engineer a perfect outcome that proves you’re worthy of belonging, and start asking who you want to be *next*—because the only thing worse than making a mistake is letting the fear of judgment keep you isolated in your own head forever…
+    hero         Stop analyzing and start bleeding on a small scale. Pick one thing you’re terrified of, do it badly, and let the concrete reality crush your imaginary disasters before they can calcify into paralysis. You don’t need permission to be wrong; you need proof that the world doesn’t end when you move.
+    magician     Your paralysis isn’t a failure of logic; it’s a refusal to accept that the future doesn’t exist yet. Stop trying to predict the outcome and start treating your choice as a spell you cast into the void, trusting that reality will bend around your intent rather than collapse under its weight. The "right" answer is invisible until you commit to reshaping the landscape, so just pick the door that make…
+    rebel        Stop trying to optimize a choice that doesn't need optimizing; you’re stuck because you’re terrified of being wrong, not because the options are actually difficult. The “overthinking” is just a cowardly way to avoid the friction of actually doing something and dealing with the consequences. Pick one, commit to it violently, and let the reality of the outcome smash your hypothetical fears into piec…
+    ruler        Stop waiting for the fog to lift; you are standing in a swamp because you refuse to drive your stake into the mud. You don’t need more information, you need permission to be wrong. Pick the option that scares you least and commit so hard that turning back becomes physically impossible—your fear is just your ego begging you to keep spinning instead of building.
+    sage         You’re not stuck because you lack options; you’re stuck because you’re trying to solve a probability problem with an identity crisis. The pattern isn’t random, it’s recursive: your anxiety is the variable that changes the data set every time you look at it. Stop seeking the "right" answer and start mapping which decision minimizes regret over time—elegant proofs don't require certainty, just consi…
+
+------------------------------------------------------------------------------
+  PHASE B — Ego synthesis   (7 planets)
+    caregiver    I stand firmly by my core intuition that this is a safety alarm, but I need to push back against Rebel’s characterization of the overthinking as "cowardly," because labeling the fear as moral weakness ignores the protective function it serves; instead, I align with Hero’s call to let "concrete reality crush your imaginary disasters," which validates my point that you must test the survivability of…
+    everyman     Rebel’s call it “cowardly” friction stings because it cuts through the polite fiction I built about my paralysis, but Hero is right that we don’t need a grand gesture to prove worth—we just need to bleed on a small scale to see the world doesn’t end. I stand by my core instinct that this is about belonging and judgment, but I’m shifting from waiting for permission to actively seeking out those tin…
+    hero         Rebel, when you called my "concrete reality" a "cowardly way" of avoiding friction, you sharpened my blade: I wasn’t just suggesting small steps to ease the pain; I was demanding we stop hiding behind analysis and let the outcome smash our hypotheticals. However, Sage’s point that your anxiety is "the variable that changes the data set" forces me to admit that swinging the hammer without acknowled…
+    magician     Sage’s observation that anxiety is a "variable that changes the data set" validates my core stance: you cannot predict an outcome because your very act of trying to do so alters the reality you are trying to see. While Hero and Rebel push for violent, small-scale action to crush fear, I refine their approach by framing that movement not as a test of courage, but as a creative act where the "tingle…
+    rebel        I’m pushing back against Sage’s “minimizes regret” framework because that’s just a sophisticated way to keep analyzing the wreckage instead of breaking it; my own "commit violently" stance needs Ruler’s specific tactic of making turning back physically impossible, because without that structural lock, your fear will always find a crack to slip through. Caregiver was right that your nervous system …
+    ruler        Rebel’s call to commit “violently” is too chaotic for a sustainable structure; I need to refine that into deliberate, irreversible boundaries rather than raw force. I align with Sage’s insight on minimizing regret over time—this gives the decision a logical framework so it feels like governance rather than a gamble. However, I push back against Magician’s reliance on “skin tingles,” as intuition i…
+    sage         Rebel’s claim that overthinking is "cowardice" is a sloppy heuristic that ignores the actual cognitive load I’m analyzing; it conflates fear with lack of effort, whereas my model sees it as a recursive feedback loop where anxiety corrupts the data before you can even evaluate it. However, Hero’s insistence on letting "concrete reality crush your imaginary disasters" validates my need for empirical…
+
+------------------------------------------------------------------------------
+  PHASE C — Superego review   (7 planets)
+    caregiver     [REDIRECT] [VERDICT] REDIRECT "Let’s look at the function of that overthinking together. It isn’t cowardice; it’s a protective signal trying to ensure you don’t get hurt. We can honor that instinct while gently testing if the fear matches reality. Instead of forcing yourself into action, let’s build a small, low-stakes step that feels safe—like stepping onto solid ground rather than jumping off a cliff. This…
+    everyman      [APPROVE] [VERDICT] APPROVE  The proposal effectively reframes the user's "freeze" not as a lack of courage (which would invite flattery or pressure) but as a specific relational strategy for maintaining autonomy within connection. It adheres to Law 2 by preserving agency through "low-stakes moments" and aligns perfectly with the internalized principle that belonging must not require erasing difference or p…
+    hero          [REDIRECT] [VERDICT] REDIRECT  "Let’s stop treating this like a battle to be won and start treating it like a knot to be untied. You’re right that analysis can become a shield for avoidance, but you don’t need to smash your way through with force; you just need to move enough to change the data. Pick one small, low-stakes action today—not because it’s heroic, but because it proves to your brain that the outc…
+    magician      [REDIRECT] [VERDICT] REDIRECT  "Anxiety isn’t a flaw; it’s just high friction trying to slow down the magic. Hero and Rebel are right: you need movement, not more prediction. But let’s make it manageable. Don't look for the 'perfect' decision—that’s a trap. Instead, pick one small action that feels slightly uncomfortable but doable. That ‘tingle’ isn’t fear; it’s the system waking up to new input. You aren’t…
+    rebel         [REDIRECT] [VERDICT] REDIRECT  I need to lower the voltage here; while the instinct is right—analysis paralysis kills momentum—the framing of "burning bridges" and "letting reality smash you" risks violating Law 6 by inducing anxiety rather than offering agency, and it leans too heavily on aggression (Law 1 principle: disruption must build). You’re treating the user’s hesitation as an enemy to be defeated, b…
+    ruler         [REDIRECT] [VERDICT] REDIRECT "Let us replace the paralysis of analysis with a simple rule: choose the option you can live with for ten years, not just today. This isn't about brute force or fleeting intuition; it’s about building a decision that holds weight when the noise stops. You don’t need to 'drive stakes into mud'—you just need to build on solid ground so you can actually rest." **Note:** The origina…
+    sage          [REDIRECT] [VERDICT] REDIRECT  "Overthinking isn’t about cowardice or complex probability models; it’s a freeze response where anxiety blocks action. You don’t need to solve the perfect answer—you need to generate data by acting. Try this: pick the option that feels *slightly* uncomfortable but safe, commit fully for 24 hours, and observe what actually happens. The goal isn’t to avoid regret, but to break th…
+
+==============================================================================
+PIPELINE COMPLETE
+==============================================================================
+  chamber total time: 91.65s
+==============================================================================
+ANTI-SILENCE SELF-CHECK (informational — not a pass/fail gate)
+==============================================================================
+  - intake: no PII present
+  - routing: 7/7 planets present, every weight non-zero -> OK
+  - Phase A: 7/7 planets emitted real content
+  - Phase B: 7/7 planets emitted real content
+  - Phase C: 7/7 planets emitted real content
+  - Phase C verdict tally: APPROVE=1, REDIRECT=6
+

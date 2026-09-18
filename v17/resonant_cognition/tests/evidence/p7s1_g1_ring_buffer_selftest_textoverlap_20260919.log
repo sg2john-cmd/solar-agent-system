@@ -1,0 +1,22 @@
+================================================================
+g1_ops.py — Phase 7 Segment 1 self-test (G1 ring buffer + AI slop test)
+================================================================
+  [PASS] [1] Candidate added with status=pending
+  [PASS] [1] Ring buffer has 1 entry after add
+  [PASS] [2] Second candidate added
+  [PASS] [3] Score vs empty archive: consistency=0.5 (neutral)
+  [PASS] [3] Operationality > 0 for action-text
+  [PASS] [4] Committed set has 1 entry
+  [PASS] [5] Consistency measured (not neutral)
+  [PASS] [5] Consistency matches manual cosine
+  [PASS] [6] True duplicate has low non_redundancy (< 0.3)
+  [PASS] [6b] Similar-context entry also has low vector non_redundancy
+  [PASS] [7] Report has total_pending == number processed
+  [PASS] [7] True duplicate was ejected
+  [PASS] [7] Similar-context entry NOT rejected as duplicate
+  [PASS] [8] Promoted entries are in contents
+  [PASS] [8] Ejected entries remain in ring buffer (audit trail)
+  [PASS] [9] Second pass processes 0 pending (idempotent)
+  [PASS] [10] Staleness flag logic ran without error
+
+g1_ops.py Segment 1 self-test: ALL PASS (G1 ring buffer + AI slop test)

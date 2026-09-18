@@ -1,0 +1,33 @@
+sleep.py Segment 1 self-test: micro_sleep()
+  elapsed: 0.0026s
+  [PASS] completes in < 1 second
+  [PASS] returns combined report shape
+  [PASS] Pass I scanned both ring entries
+  [PASS] Pass I aligned count == 1
+  [PASS] Pass I misaligned count == 1
+  [PASS] aligned decay_rate relaxed to 0.003333
+  [PASS] aligned align_score >= threshold
+  [PASS] misaligned decay_rate accelerated to 0.06
+  [PASS] misaligned align_score below threshold
+  [PASS] aged-but-surviving entry still present
+  [PASS] below-min-mass entry shed from live store
+  [PASS] surviving entry mass decayed on disk to 0.814354
+  [PASS] shed entry landed in compression queue
+
+Segment 1 self-test: PASS (micro_sleep = Pass I light + Pass V light, <1s, no LLM)
+
+sleep.py Segment 2 self-test: select_watchkeepers()
+  [PASS] selects top-2 by weight
+  [PASS] remaining 5 are asleep
+  [PASS] count matches WATCHKEEPER_COUNT
+  [PASS] weights_snapshot has all 7
+  [PASS] tie: both top-weight planets selected
+  [PASS] 2 planets, count=2: both watchkeepers
+  [PASS] no one asleep with only 2 planets
+  [PASS] empty weights: no watchkeepers locked
+  [PASS] empty weights: note present
+  [PASS] non-planet keys excluded from selection
+  [PASS] count=3 selects top 3
+  [PASS] min_count=1 overrides count=0
+
+Segment 2 self-test: PASS (select_watchkeepers = top-N by activation weight, pure math)

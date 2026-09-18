@@ -1,0 +1,8 @@
+{
+  "id": "everyman_right",
+  "parent_planet_id": "everyman",
+  "hemisphere": "RIGHT",
+  "offset_vector": [-0.05, -0.08, 0.08],
+  "stabilizer_strength": 0.3,
+  "buffer_content": []
+}

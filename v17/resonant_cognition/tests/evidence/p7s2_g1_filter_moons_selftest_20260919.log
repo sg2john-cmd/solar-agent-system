@@ -1,0 +1,23 @@
+============================================================
+g1_filter_moons.py — Phase 7 Segment 2 self-test (G1 Filter Moons)
+============================================================
+  [PASS] [1] moons_enabled() is False in dev mode (default)
+  [PASS] [2a] Clarity prompt has system + user messages
+  [PASS] [2b] Clarity prompt mentions CLARITY_FILTER
+  [PASS] [2c] Relevance prompt has 2 messages
+  [PASS] [2d] Relevance prompt includes recent topics
+  [PASS] [2e] Dissonance prompt has 2 messages
+  [PASS] [2f] Dissonance prompt includes existing contents id
+  [PASS] [3a] Valid JSON parses correctly
+  [PASS] [3b] Fenced JSON parses correctly
+[g1_filter_moons] WARNING: test_bad returned unparseable JSON: 'this is not json at all'
+  [PASS] [3c] Garbage input returns _parse_error flag, no exception raised
+  [PASS] [6a] Dev mode: verdict is None (moons skipped)
+  [PASS] [6b] Dev mode: candidate text unchanged
+  [PASS] [7a] Clarity failure overrides all → rejected_clarity
+  [PASS] [7b] Contradiction flag beats relevance → flagged_contradiction
+  [PASS] [7c] Low relevance (no contradiction) → peripheral
+  [PASS] [7d] All clear → pass
+  [PASS] [8a] g1_filter_moons_pass accepts candidate, g1_data, recent_topics
+
+g1_filter_moons.py Segment 2 self-test: ALL PASS (G1 Filter Moons)

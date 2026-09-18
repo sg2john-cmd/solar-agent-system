@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resonant Cognition v17 — System Visualizer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a12; color: #e0e0e8; font-family: 'Segoe UI', system-ui, sans-serif; overflow-x: hidden; }
+#canvas-container { position: relative; width: 100vw; height: 100vh; }
+canvas { display: block; width: 100%; height: 100%; }
+
+/* Control Panel */
+#controls {
+  position: absolute; top: 16px; left: 16px; z-index: 10;
+  background: rgba(12, 12, 24, 0.92); border: 1px solid rgba(100, 140, 255, 0.3);
+  border-radius: 12px; padding: 16px; width: 300px; backdrop-filter: blur(8px);
+}
+#controls h2 { font-size: 13px; color: #7ab; margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+.btn-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+button {
+  background: rgba(60, 80, 140, 0.5); border: 1px solid rgba(100, 150, 255, 0.4);
+  color: #cde; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;
+  transition: all 0.2s;
+}
+button:hover { background: rgba(80, 110, 200, 0.7); border-color: #8af; }
+button.active { background: rgba(80, 140, 255, 0.6); box-shadow: 0 0 8px rgba(100, 160, 255, 0.4); }
+#input-box {
+  width: 100%; background: rgba(20, 20, 40, 0.8); border: 1px solid rgba(100, 150, 255, 0.3);
+  color: #dde; padding: 8px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;
+}
+#input-box::placeholder { color: #556; }
+
+/* Phase indicator */
+#phase-display {
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+  background: rgba(12, 12, 24, 0.92); border: 1px solid rgba(255, 180, 60, 0.3);
+  border-radius: 12px; padding: 14px 18px; width: 220px; backdrop-filter: blur(8px);
+}
+#phase-display h3 { font-size: 11px; color: #fa5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.phase-step { font-size: 12px; padding: 4px 0; opacity: 0.4; transition: all 0.3s; }
+.phase-step.active { opacity: 1; color: #fd6; text-shadow: 0 0 8px rgba(255, 200, 60, 0.5); }
+.phase-step.done { opacity: 0.7; color: #8f8; }
+
+/* Memory log */
+#memory-log {
+  position: absolute; bottom: 16px; left: 16px; z-index: 10;
+  background: rgba(12, 12, 24, 0.9); border: 1px solid rgba(100, 150, 255, 0.2);
+  border-radius: 10px; padding: 12px; width: 380px; max-height: 180px; overflow-y: auto;
+  font-size: 11px; line-height: 1.6; backdrop-filter: blur(6px);
+}
+#memory-log h4 { font-size: 10px; color: #678; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.log-entry { opacity: 0.85; border-left: 2px solid rgba(100, 150, 255, 0.3); padding-left: 8px; margin-bottom: 4px; }
+.log-entry.memory { border-color: #6a6; color: #bfb; }
+.log-entry.sleep { border-color: #f84; color: #fbb; }
+.log-entry.routing { border-color: #6af; color: #adf; }
+
+/* Legend */
+#legend {
+  position: absolute; bottom: 16px; right: 16px; z-index: 10;
+  background: rgba(12, 12, 24, 0.9); border: 1px solid rgba(100, 150, 255, 0.2);
+  border-radius: 10px; padding: 12px 16px; font-size: 11px; backdrop-filter: blur(6px);
+}
+#legend .item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+#legend .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* Axis labels */
+.axis-label { position: absolute; font-size: 10px; color: rgba(150, 180, 220, 0.6); letter-spacing: 1px; text-transform: uppercase; pointer-events: none; z-index: 5; }
+
+/* Tooltip */
+#tooltip {
+  position: absolute; display: none; z-index: 20;
+  background: rgba(10, 10, 20, 0.95); border: 1px solid rgba(100, 180, 255, 0.4);
+  border-radius: 8px; padding: 10px 14px; font-size: 12px; max-width: 260px; pointer-events: none;
+}
+#tooltip .name { color: #8cf; font-weight: bold; margin-bottom: 4px; }
+#tooltip .detail { color: #aab; line-height: 1.5; }
+
+/* Sleep overlay */
+#sleep-overlay {
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(20, 0, 40, 0.6) 100%);
+  opacity: 0; transition: opacity 1.5s;
+}
+#sleep-overlay.active { opacity: 1; }
+
+/* Sleep pass indicator */
+#sleep-passes {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 6;
+  display: none; text-align: center; pointer-events: none;
+}
+#sleep-passes.active { display: block; }
+#sleep-passes h2 { font-size: 18px; color: #c9f; margin-bottom: 16px; text-shadow: 0 0 20px rgba(200, 150, 255, 0.6); }
+.sleep-pass-item { font-size: 13px; padding: 4px 0; color: #889; transition: all 0.5s; }
+.sleep-pass-item.active { color: #fcf; text-shadow: 0 0 12px rgba(255, 200, 255, 0.6); transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+<div id="canvas-container">
+  <canvas id="cv"></canvas>
+  <div id="sleep-overlay"></div>
+  
+  <div id="controls">
+    <h2>⬡ Resonant Cognition v17</h2>
+    <input id="input-box" type="text" placeholder="Type a thought to inject..." />
+    <div class="btn-row">
+      <button onclick="injectRandom()">Inject Random</button>
+      <button onclick="triggerSleep()" id="sleep-btn">Trigger Sleep</button>
+    </div>
+    <div class="btn-row">
+      <button onclick="setScenario('moral')">Moral Dilemma</button>
+      <button onclick="setScenario('creative')">Creative</button>
+      <button onclick="setScenario('logic')">Logic Puzzle</button>
+      <button onclick="setScenario('emotional')">Emotional</button>
+    </div>
+  </div>
+
+  <div id="phase-display">
+    <h3>Waking Cycle</h3>
+    <div class="phase-step" id="ps-1">① Pre-Filter (G1 Moons)</div>
+    <div class="phase-step" id="ps-2">② Spike Detection & Routing</div>
+    <div class="phase-step" id="ps-3">③ Hemispheric Ingestion</div>
+    <div class="phase-step" id="ps-4">④ Ego Synthesis (Dialogue)</div>
+    <div class="phase-step" id="ps-5">⑤ Regulatory Review (Core)</div>
+    <div class="phase-step" id="ps-6">⑥ Memory Write & Ring Update</div>
+  </div>
+
+  <div id="memory-log">
+    <h4>System Log</h4>
+    <div id="log-content"></div>
+  </div>
+
+  <div id="legend">
+    <div class="item"><div class="dot" style="background:#fff;box-shadow:0 0 6px #ff8"></div>Core (C_core)</div>
+    <div class="item"><div class="dot" style="background:#4af"></div>Planets</div>
+    <div class="item"><div class="dot" style="background:#a7f;box-shadow:0 0 4px #a7f"></div>Gas Giants (G1/G2)</div>
+    <div class="item"><div class="dot" style="background:#6a6;width:6px;height:6px"></div>Moons</div>
+    <div class="item"><div class="dot" style="background:#f84;box-shadow:0 0 4px #f84"></div>Ring (User Persona)</div>
+    <div class="item"><div class="dot" style="background:rgba(255,255,255,0.3);width:4px;height:4px"></div>Memory entries</div>
+  </div>
+
+  <div id="tooltip">
+    <div class="name" id="tt-name"></div>
+    <div class="detail" id="tt-detail"></div>
+  </div>
+
+  <div id="sleep-passes">
+    <h2>◈ Sleep Cycle Active ◈</h2>
+    <div class="sleep-pass-item" id="sp-1">Pass I — Integration Check</div>
+    <div class="sleep-pass-item" id="sp-2">Pass II — Black Hole Compression</div>
+    <div class="sleep-pass-item" id="sp-3">Pass III — White Hole Emission</div>
+    <div class="sleep-pass-item" id="sp-4">Pass IV — Structural Commit (Drift)</div>
+    <div class="sleep-pass-item" id="sp-5">Pass V — Dark Energy Sweep</div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// RESONANT COGNITION v17 — INTERACTIVE VISUALIZER
+// A living map of the system's geometry, routing, and evolution.
+// ============================================================
+
+const canvas = document.getElementById('cv');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+// Backing resolution is capped: browsers silently fail to render canvases whose
+// width*height exceeds ~16M pixels. On a high-DPI monitor, using the raw pixel
+// size (CSS px * devicePixelRatio) can blow past that cap and produce an entirely
+// blank canvas with no console error. So we use CSS-pixel dimensions for the backing
+// store — the image may be slightly softer on hi-dpi screens but it always renders,
+// and mouse events (which report CSS pixels) line up 1:1 with what's drawn.
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// --- System State ---
+const state = {
+  core: { x: 0, y: 0, z: 0, G: 1.0, mass: 5.0 },
+  sessionCount: 0,
+  dissonance: 0,
+  sleeping: false,
+  sleepPass: -1,
+};
+
+// 7 Planet Archetypes — positions in [x,y,z] space mapped to screen
+// 7 Jungian archetypes. Each is a full Freudian triad:
+//   idDrive  = raw impulse (lives in the two moons — what it *wants*, pre-conscience)
+//   ego      = mediator (the cognitive mode that forms a considered position)
+//   superego = constraint layer (checks against C_core gravity; last word before Core)
+const planets = [
+  { id: 'The Sage',      x: 1.2, y: -0.4, z: 0.2, energy: 3.0, sigma: 1.2, color: '#4af',
+    idDrive: 'Know the truth, even if ugly', ego: 'Analytical truth-seeking', superego: 'Rigorous validation', moons: [{off:0.16},{off:-0.16}] },
+  { id: 'The Hero',      x: 1.8, y: 1.0, z: 1.5, energy: 2.0, sigma: 2.0, color: '#f74',
+    idDrive: 'Act now — charge in', ego: 'Action under moral pressure', superego: 'Sustainable pacing', moons: [{off:0.16},{off:-0.16}] },
+  { id: 'The Caregiver', x: 0.2, y: -1.2, z: -0.4, energy: 4.5, sigma: 0.8, color: '#6a6',
+    idDrive: 'Protect them all', ego: 'Empathy & protection', superego: 'Boundaries prevent harm to self', moons: [{off:0.16},{off:-0.16}] },
+  { id: 'The Rebel',     x: 0.8, y: 0.2, z: -0.9, energy: 3.2, sigma: 1.1, color: '#f4a',
+    idDrive: 'Break this — tear it down', ego: 'Disruption of stale frames', superego: 'Is the disruption necessary?', moons: [{off:0.16},{off:-0.16}] },
+  { id: 'The Magician',  x: -1.0, y: 1.4, z: -0.3, energy: 3.5, sigma: 1.8, color: '#a6f',
+    idDrive: 'Connect everything to everything', ego: 'Hidden pattern recognition', superego: 'Grounded in evidence', moons: [{off:0.16},{off:-0.16}] },
+  { id: 'The Everyman',  x: -0.5, y: -0.8, z: 0.8, energy: 2.8, sigma: 1.4, color: '#6cf',
+    idDrive: 'Make it plain for real people', ego: 'Human grounding', superego: 'No jargon — stay connected to experience', moons: [{off:0.16},{off:-0.16}] },
+  { id: 'The Ruler',     x: 0.0, y: 0.0, z: 1.2, energy: 4.0, sigma: 1.0, color: '#fa4',
+    idDrive: 'Order & accountability now', ego: 'Structure & consequence tracking', superego: 'Stewardship over authoritarianism', moons: [{off:0.16},{off:-0.16}] },
+];
+
+// Gas Giants
+const gasGiants = [
+  { id: 'G1 — Knowledge Archive', x: 2.8, y: 0.5, z: -1.5, radius: 0.6, color: '#a7f', ringColor: 'rgba(160,100,255,0.3)', moons: [
+    { id: 'Clarity Moon', off: 0.8 },
+    { id: 'Relevance Moon', off: -0.8 },
+    { id: 'Dissonance Moon', off: 1.4 },
+  ], contents: [] },
+  { id: 'G2 — Evolving Self-Model', x: -3.0, y: -0.5, z: 1.2, radius: 0.55, color: '#f7a', ringColor: 'rgba(255,120,160,0.3)', moons: [], contents: [] },
+];
+
+// Ring (user-facing persona)
+// The Comet (Jester) — a wandering, NON-orbital body with no fixed coordinate.
+// Its position is emergent: it drifts through the Stochastic Periphery and can
+// "appear" near any planet when triggered. Shown here as a small comet on an
+// eccentric path so its non-fixed nature is visible at a glance.
+const comet = {
+  angle: Math.random() * Math.PI * 2,
+  speed: 0.15,          // slow drift
+  rMin: 1.4, rMax: 3.6, // eccentric: sometimes inner (near planets), sometimes out in the belt
+  wobble: Math.random() * Math.PI * 2,
+  color: '#f6d',
+  name: 'The Comet — Jester',
+  idDrive: 'Sneak in the joke that reframes everything', ego: 'Playful disruption of rigid frames', superego: 'Punchline must serve a point, not just gag',
+  active: false,        // lights up when it "appears" in a planet's dialogue
+  trail: []             // recent screen positions for the comet tail (pushed each frame)
+};
+
+// Ring (user-facing persona)
+const ring = { x: 0, y: 0, z: 0, radius: 4.5, color: '#f84', name: 'Maya' };
+
+// Memory entries (spawn during operation)
+let memoryEntries = [];
+
+// Active input vector (animated)
+let activeInput = null; // {x,y,z, progress, selectedPlanets, phase}
+let animations = [];
+
+// --- Camera & View State ---
+// The system lives in a true 3D space and is slowly ROTATED over time so that
+// idle motion looks like real orbital flow (bodies drift around the core) rather
+// than static jitter. Zoom/pan let the user frame anything — including the gas
+// giants, which sit far out at |x|~3.
+const cam = { zoom: 1.0, panX: 0, panY: 0 };
+let rotY = -0.6;   // continuous rotation about vertical axis (radians)
+let rotX = -0.42;  // fixed tilt so we look slightly down onto the orbital plane
+const IDLE_SPIN_SPEED = 0.03; // radians/sec — slow, ambient drift while idle
+let camUserTouched = false;
+function fitZoom() {
+  const m = Math.min(window.innerWidth, window.innerHeight);
+  // base scale tuned so a body at world-radius ~3.5 (the gas giants) fits in frame
+  return (m * 0.165);
+}
+
+// --- Coordinate Mapping: true 3D → rotate about Y then tilt about X → project ---
+function toScreen(x, y, z) {
+  const m = Math.min(window.innerWidth, window.innerHeight);
+  const scale = fitZoom() * cam.zoom;
+  // 1. rotate about vertical (Y)
+  const cy0 = Math.cos(rotY), sy0 = Math.sin(rotY);
+  const x1 = x * cy0 + z * sy0;
+  let   z1 = -x * sy0 + z * cy0;
+  // 2. tilt about X (pitch)
+  const cx1 = Math.cos(rotX), sx1 = Math.sin(rotX);
+  const y2 = y * cx1 - z1 * sx1;
+  let   z2 = y * sx1 + z1 * cx1;
+  // 3. perspective: farther (z2>0) is smaller
+  const persp = 5 / (5 + z2);
+  return {
+    x: window.innerWidth/2 + cam.panX + x1 * scale * persp,
+    y: window.innerHeight/2 + cam.panY - y2 * scale * persp,
+    depth: persp, scale
+  };
+}
+
+// --- Color helpers. Canvas addColorStop() rejects malformed hex strings, and
+// appending a 2-digit alpha to a 3-digit shorthand like '#a7f' yields a 7-char
+// string ('#a7f40') that is NOT a valid color — it throws and kills the whole
+// render loop (blank canvas). So all colored fills/gradients go through these,
+// which always emit well-formed rgba() strings. ---
+function hexToRgb(h) {
+  h = String(h).replace('#','');
+  if (h.length === 3) h = h.split('').map(c => c + c).join('');
+  const n = parseInt(h, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+function rgba(hex, a) {
+  const [r,g,b] = hexToRgb(hex);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+// --- Intent Sphere Density (Paper I) ---
+function sphereDensity(px, py, pz, planet) {
+  const dx = px - planet.x, dy = py - planet.y, dz = pz - planet.z;
+  const d2 = dx*dx + dy*dy + dz*dz;
+  return planet.energy * Math.exp(-d2 / (2 * planet.sigma * planet.sigma));
+}
+
+// --- Spike Detection: find which planets light up for an input vector ---
+function detectSpikes(ix, iy, iz) {
+  // Apply Core gravitational pull first (bend toward center)
+  const corePull = state.core.G * state.core.mass / (ix*ix + iy*iy + iz*iz + 0.5);
+  const ex = ix - ix * Math.min(corePull * 0.1, 0.3);
+  const ey = iy - iy * Math.min(corePull * 0.1, 0.3);
+  const ez = iz - iz * Math.min(corePull * 0.1, 0.3);
+  
+  // Compute field at the effective point
+  let scores = planets.map(p => sphereDensity(ex, ey, ez, p));
+  
+  // Also check along a small trajectory (the "wave" propagates)
+  for (let t = 0.2; t <= 1.0; t += 0.3) {
+    const tx = ex * t, ty = ey * t, tz = ez * t;
+    planets.forEach((p, i) => { scores[i] += sphereDensity(tx, ty, tz, p) * (1 - t * 0.5); });
+  }
+  
+  // Rank and normalize
+  const ranked = scores.map((s, i) => ({ idx: i, score: s })).sort((a, b) => b.score - a.score);
+  const maxScore = ranked[0].score || 1;
+  return planets.map((_, i) => ranked.find(r => r.idx === i).score / maxScore);
+}
+
+// --- Semantic Projection (mock for visualizer) ---
+function projectInput(text) {
+  // Simple keyword-based projection for the demo
+  const lower = text.toLowerCase();
+  let x = 0, y = 0, z = 0;
+  
+  if (/logic|math|solve|equation|prove|algorithm|code/.test(lower)) { x += 0.7; z += 0.2; }
+  if (/feel|emotional|sad|happy|lost|lonely|scared|love/.test(lower)) { x -= 0.6; y -= 0.3; z -= 0.5; }
+  if (/creative|write|story|art|music|imagine|design/.test(lower)) { x += 0.2; y -= 0.4; z += 0.6; }
+  if (/moral|right|wrong|ethic|should|kill|harm|fair/.test(lower)) { x += 0.3; y += 0.5; z -= 0.3; }
+  if (/change|new|break|disrupt|revolution|different/.test(lower)) { y -= 0.7; z += 0.3; }
+  if (/remember|past|history|learn|study|research/.test(lower)) { x += 0.1; y += 0.4; z -= 0.6; }
+  if (/action|do|build|make|execute|plan|goal/.test(lower)) { z += 0.7; y -= 0.2; }
+  
+  // Add slight randomness for organic feel
+  x += (Math.random() - 0.5) * 0.3;
+  y += (Math.random() - 0.5) * 0.3;
+  z += (Math.random() - 0.5) * 0.3;
+  
+  // Clamp to [-1, 1]
+  return { x: Math.max(-1, Math.min(1, x)), y: Math.max(-1, Math.min(1, y)), z: Math.max(-1, Math.min(1, z)) };
+}
+
+// --- Scenarios ---
+const scenarios = {
+  moral: "Is it ever right to lie to protect someone's feelings?",
+  creative: "Write me a story about a lighthouse keeper who hears singing from the sea",
+  logic: "If all Zorps are Quil and no Quils are Fenn, can a Zorp be a Fen?",
+  emotional: "I've been feeling really lost lately. I don't know what to do.",
+};
+
+function setScenario(key) {
+  document.getElementById('input-box').value = scenarios[key];
+  injectInput(scenarios[key]);
+}
+
+// --- Inject Input (starts the waking cycle animation) ---
+let cycleActive = false;
+function injectRandom() {
+  const keys = Object.keys(scenarios);
+  setScenario(keys[Math.floor(Math.random() * keys.length)]);
+}
+
+function injectInput(text) {
+  if (!text.trim()) return;
+  if (cycleActive || state.sleeping) return;
+  
+  const vec = projectInput(text);
+  activeInput = { ...vec, progress: 0, phase: 0, selectedPlanets: [], startTime: Date.now() };
+  cycleActive = true;
+  state.sessionCount++;
+  
+  log(`Session #${state.sessionCount}: "${text.slice(0, 50)}..." injected`, 'routing');
+  
+  setTimeout(() => runWakingCycle(vec), 300);
+}
+
+// --- Waking Cycle Animation (6 phases) ---
+async function runWakingCycle(vec) {
+  const phases = ['ps-1','ps-2','ps-3','ps-4','ps-5','ps-6'];
+  
+  for (let i = 0; i < phases.length; i++) {
+    document.getElementById(phases[i]).className = 'phase-step active';
+    
+    await sleep(800 + Math.random() * 400);
+    
+    if (i === 1) {
+      // Spike detection — actually compute which planets activate
+      const weights = detectSpikes(vec.x, vec.y, vec.z);
+      activeInput.selectedPlanets = weights;
+      const topIdx = weights.indexOf(Math.max(...weights));
+      log(`Spike detected → ${planets[topIdx].id} primary (w=${weights[topIdx].toFixed(2)})`, 'routing');
+    }
+    
+    if (i === 3) {
+      // Ego synthesis — log which planets are in the dialogue (weights computed at phase 2)
+      const topIdx = activeInput.selectedPlanets.indexOf(Math.max(...activeInput.selectedPlanets));
+      log(`Ego synthesis → ${planets[topIdx].id} leads the dialogue`, 'routing');
+    }
+    
+    document.getElementById(phases[i]).className = 'phase-step done';
+    await sleep(200);
+  }
+  
+  // Phase 6: Write memory
+  writeMemory(vec, text);
+  
+  activeInput.progress = 1;
+  setTimeout(() => { cycleActive = false; activeInput = null; }, 1500);
+}
+
+function writeMemory(vec, text) {
+  const entry = {
+    x: vec.x + (Math.random()-0.5)*0.3,
+    y: vec.y + (Math.random()-0.5)*0.3,
+    z: vec.z + (Math.random()-0.5)*0.3,
+    mass: 0.3 + Math.random() * 0.5,
+    age: 0,
+    text: text.slice(0, 40) + '...',
+    ringBuffer: false,
+  };
+  memoryEntries.push(entry);
+  
+  // Also add to a Gas Giant ring buffer (G1 for knowledge, G2 for self-model changes)
+  const gg = gasGiants[Math.random() > 0.5 ? 0 : 1];
+  gg.contents.push({ x: (Math.random()-0.5)*gg.radius*1.5, y: (Math.random()-0.5)*gg.radius, z: (Math.random()-0.5)*gg.radius*1.5 });
+  
+  log(`Memory written → mass=${entry.mass.toFixed(2)}, pos=[${vec.x.toFixed(1)}, ${vec.y.toFixed(1)}, ${vec.z.toFixed(1)}]`, 'memory');
+}
+
+// --- Sleep Cycle ---
+let sleepActive = false;
+function triggerSleep() {
+  if (sleepActive || cycleActive) return;
+  sleepActive = true;
+  state.sleeping = true;
+  
+  document.getElementById('sleep-overlay').classList.add('active');
+  document.getElementById('sleep-passes').classList.add('active');
+  document.getElementById('sleep-btn').textContent = 'Sleeping...';
+  
+  const passes = ['sp-1','sp-2','sp-3','sp-4','sp-5'];
+  
+  (async () => {
+    for (let i = 0; i < passes.length; i++) {
+      document.getElementById(passes[i]).className = 'sleep-pass-item active';
+      
+      await sleep(1800);
+      
+      if (i === 3) {
+        // Pass IV — Structural Commit: actually drift planet positions!
+        planets.forEach(p => {
+          p.x += (Math.random() - 0.5) * 0.06;
+          p.y += (Math.random() - 0.5) * 0.04;
+          p.z += (Math.random() - 0.5) * 0.04;
+          // Clamp to reasonable range
+          p.x = Math.max(-1.2, Math.min(1.2, p.x));
+          p.y = Math.max(-1.2, Math.min(1.2, p.y));
+          p.z = Math.max(-1.2, Math.min(1.2, p.z));
+        });
+        state.core.G += (Math.random() - 0.5) * 0.1;
+        state.core.G = Math.max(0.5, Math.min(2.0, state.core.G));
+        
+        log(`Sleep Pass IV: C_core G=${state.core.G.toFixed(3)}, planets drifted`, 'sleep');
+      }
+      
+      if (i === 4) {
+        // Pass V — Dark Energy Sweep: remove oldest/weakest memories
+        const toRemove = memoryEntries.filter(e => e.mass < 0.35).slice(-3);
+        toRemove.forEach(e => memoryEntries.splice(memoryEntries.indexOf(e), 1));
+        if (toRemove.length) log(`Dark Energy sweep: ${toRemove.length} entries shed`, 'sleep');
+      }
+      
+      document.getElementById(passes[i]).className = 'sleep-pass-item done';
+    }
+    
+    await sleep(800);
+    state.sleeping = false;
+    sleepActive = false;
+    
+    document.getElementById('sleep-overlay').classList.remove('active');
+    document.getElementById('sleep-passes').classList.remove('active');
+    document.getElementById('sleep-btn').textContent = 'Trigger Sleep';
+    
+    log(`Sleep complete. System topology updated. Next session routing will differ.`, 'sleep');
+  })();
+}
+
+// --- Logging ---
+function log(msg, type) {
+  const el = document.getElementById('log-content');
+  const div = document.createElement('div');
+  div.className = `log-entry ${type}`;
+  div.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  el.prepend(div);
+  // Keep max 20 entries
+  while (el.children.length > 20) el.removeChild(el.lastChild);
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// --- Rendering ---
+let time = 0;
+// Comet world position — eccentric, non-orbital drift through the Stochastic
+// Periphery. Radius oscillates between rMin (near the planets) and rMax (out in
+// the belt); angle advances slowly; a sinusoidal wobble keeps it from ever looking
+// like a fixed orbit. Purely presentational — no engine state depends on it.
+function cometWorld() {
+  const e = 0.5 + 0.5 * Math.sin(time * 0.18);
+  const r = comet.rMin + (comet.rMax - comet.rMin) * e;
+  const a = comet.angle;
+  return { x: Math.cos(a) * r, y: Math.sin(comet.wobble) * 0.4, z: Math.sin(a) * r };
+}
+
+// Draw the Jester comet: small glowing head with a fading tail (last N screen
+// positions). Pulses brighter when active:true (i.e. it has "spoken").
+function drawComet() {
+  const w = cometWorld();
+  const s = toScreen(w.x, w.y, w.z);
+  const headR = (3 + (comet.active ? 2 : 0)) * s.depth;
+
+  // push current position, cap the tail length
+  comet.trail.push({ x: s.x, y: s.y });
+  if (comet.trail.length > 16) comet.trail.shift();
+
+  // Tail — fading trail from oldest to newest
+  for (let i = 0; i < comet.trail.length - 1; i++) {
+    const a0 = comet.trail[i], a1 = comet.trail[i + 1];
+    const t = i / comet.trail.length;
+    ctx.beginPath();
+    ctx.moveTo(a0.x, a0.y);
+    ctx.lineTo(a1.x, a1.y);
+    ctx.strokeStyle = rgba(comet.color, t * (comet.active ? 0.7 : 0.35));
+    ctx.lineWidth = t * 2;
+    ctx.stroke();
+  }
+
+  // Head — soft glow + solid dot
+  const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, headR * (comet.active ? 6 : 3));
+  g.addColorStop(0, rgba(comet.color, comet.active ? 0.9 : 0.5));
+  g.addColorStop(1, rgba(comet.color, 0));
+  ctx.beginPath(); ctx.arc(s.x, s.y, headR * (comet.active ? 6 : 3), 0, Math.PI*2);
+  ctx.fillStyle = g; ctx.fill();
+
+  ctx.beginPath(); ctx.arc(s.x, s.y, headR, 0, Math.PI*2);
+  ctx.fillStyle = comet.color;
+  ctx.shadowColor = comet.color; ctx.shadowBlur = comet.active ? 18 : 6;
+  ctx.fill(); ctx.shadowBlur = 0;
+
+  // Label — always visible so the non-orbital nature is obvious at a glance
+  ctx.font = `${9 * s.depth}px system-ui`;
+  ctx.fillStyle = rgba(comet.color, comet.active ? 1 : 0.6);
+  ctx.textAlign = 'center';
+  ctx.fillText('☄ Jester (Comet)', s.x, s.y - headR - 8);
+}
+
+function render() {
+  time += 0.016;
+  // Idle spin — the whole system slowly rotates about Y so it reads as orbital flow,
+  // not a static diorama. Pure camera transform: zero effect on any engine state.
+  rotY += IDLE_SPIN_SPEED * 0.016;
+  const cw = window.innerWidth;
+  const ch = window.innerHeight;
+  
+  ctx.clearRect(0, 0, cw, ch);
+  
+  // Background: subtle star field
+  drawStars();
+  
+  // Coordinate axes (faint)
+  drawAxes();
+  
+  // Ring (user persona orbit) — pulsing circle around center
+  drawRing();
+  
+  // Gas Giants + their rings + moons
+  gasGiants.forEach(gg => drawGasGiant(gg));
+  
+  // Memory entries (small dots in orbital zones)
+  memoryEntries.forEach((e, i) => {
+    const s = toScreen(e.x * 0.7, e.y * 0.7, e.z * 0.7);
+    const r = Math.max(2, e.mass * 4 * s.depth);
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(180, 220, 255, ${0.3 + e.mass * 0.4})`;
+    ctx.fill();
+    
+    // Decay visual: older entries dimmer
+    e.age += 0.001;
+  });
+  
+  // Planets (intent spheres)
+  planets.forEach((p, i) => {
+    const s = toScreen(p.x, p.y, p.z);
+    const activation = activeInput ? activeInput.selectedPlanets[i] || 0 : 0.3 + Math.sin(time * 0.5 + i) * 0.1;
+    
+    // Glow (intent sphere)
+    const glowR = (20 + p.sigma * 40) * s.depth * (0.5 + activation);
+    const grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowR);
+    grad.addColorStop(0, rgba(p.color, 0.38));
+    grad.addColorStop(0.5, rgba(p.color, 0.13));
+    grad.addColorStop(1, rgba(p.color, 0));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, glowR, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+    
+    // Planet body
+    const pr = (8 + activation * 12) * s.depth;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, pr, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.shadowColor = p.color;
+    ctx.shadowBlur = activation > 0.5 ? 20 : 6;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    
+    // Moons (dual hemisphere)
+    const moonOrbitR = pr + 14 * s.depth;
+    for (let m = 0; m < 2; m++) {
+      const angle = time * (m === 0 ? 0.8 : -0.6) + i * 1.5 + m * Math.PI;
+      const mx = s.x + Math.cos(angle) * moonOrbitR;
+      const my = s.y + Math.sin(angle) * moonOrbitR * 0.4; // elliptical
+      ctx.beginPath();
+      ctx.arc(mx, my, 3 * s.depth, 0, Math.PI * 2);
+      ctx.fillStyle = m === 0 ? '#8f8' : '#f88';
+      ctx.fill();
+    }
+    
+    // Label
+    if (activation > 0.4 || !activeInput) {
+      ctx.font = `${10 * s.depth}px system-ui`;
+      ctx.fillStyle = `rgba(200, 220, 255, ${0.4 + activation * 0.6})`;
+      ctx.textAlign = 'center';
+      ctx.fillText(p.id, s.x, s.y - pr - 8);
+    }
+    
+    // Connection line to active input (showing routing)
+    if (activeInput && activation > 0.3) {
+      const is = toScreen(activeInput.x * activeInput.progress, activeInput.y * activeInput.progress, activeInput.z * activeInput.progress);
+      ctx.beginPath();
+      ctx.moveTo(is.x, is.y);
+      ctx.lineTo(s.x, s.y);
+      ctx.strokeStyle = rgba(p.color, activation);
+      ctx.lineWidth = activation * 2;
+      ctx.stroke();
+    }
+  });
+  
+  // Core (center star) — pulsing
+  const cs = toScreen(0, 0, 0);
+  const corePulse = 1 + Math.sin(time * 2) * 0.15 * state.core.G;
+  const coreR = 18 * corePulse;
+  
+  // Core glow
+  const cg = ctx.createRadialGradient(cs.x, cs.y, 0, cs.x, cs.y, coreR * 3);
+  cg.addColorStop(0, 'rgba(255, 240, 200, 0.8)');
+  cg.addColorStop(0.3, 'rgba(255, 200, 100, 0.3)');
+  cg.addColorStop(1, 'rgba(255, 150, 50, 0)');
+  ctx.beginPath();
+  ctx.arc(cs.x, cs.y, coreR * 3, 0, Math.PI * 2);
+  ctx.fillStyle = cg;
+  ctx.fill();
+  
+  // Core body
+  ctx.beginPath();
+  ctx.arc(cs.x, cs.y, coreR, 0, Math.PI * 2);
+  const cgrad = ctx.createRadialGradient(cs.x - 4, cs.y - 4, 0, cs.x, cs.y, coreR);
+  cgrad.addColorStop(0, '#fff');
+  cgrad.addColorStop(0.6, '#ffa');
+  cgrad.addColorStop(1, '#f84');
+  ctx.fillStyle = cgrad;
+  ctx.shadowColor = '#fa4';
+  ctx.shadowBlur = 30 * state.core.G;
+  ctx.fill();
+  ctx.shadowBlur = 0;
+  
+  // Core label
+  ctx.font = '11px system-ui';
+  ctx.fillStyle = '#ffa';
+  ctx.textAlign = 'center';
+  ctx.fillText('C_core', cs.x, cs.y + coreR + 16);
+  ctx.font = '9px system-ui';
+  ctx.fillStyle = 'rgba(255, 200, 100, 0.6)';
+  ctx.fillText(`G=${state.core.G.toFixed(2)} M=${state.core.mass}`, cs.x, cs.y + coreR + 28);
+  
+  // Active input vector (animated dot traveling from edge toward center)
+  if (activeInput && activeInput.progress < 1) {
+    activeInput.progress = Math.min(1, activeInput.progress + 0.008);
+    const t = activeInput.progress;
+    const ix = activeInput.x * t, iy = activeInput.y * t, iz = activeInput.z * t;
+    const is = toScreen(ix, iy, iz);
+    
+    // Trail
+    ctx.beginPath();
+    for (let tt = 0; tt < t; tt += 0.02) {
+      const ts = toScreen(activeInput.x * tt, activeInput.y * tt, activeInput.z * tt);
+      if (tt === 0) ctx.moveTo(ts.x, ts.y);
+      else ctx.lineTo(ts.x, ts.y);
+    }
+    ctx.strokeStyle = 'rgba(150, 220, 255, 0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    
+    // Input dot
+    ctx.beginPath();
+    ctx.arc(is.x, is.y, 6, 0, Math.PI * 2);
+    ctx.fillStyle = '#adf';
+    ctx.shadowColor = '#4af';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    
+    // Vector label
+    ctx.font = '10px monospace';
+    ctx.fillStyle = '#8cf';
+    ctx.textAlign = 'center';
+    ctx.fillText(`[${activeInput.x.toFixed(2)}, ${activeInput.y.toFixed(2)}, ${activeInput.z.toFixed(2)}]`, is.x, is.y - 12);
+  }
+  
+  // Comet drawn LAST so its trail sits on top of everything else.
+  comet.angle += comet.speed * 0.016;
+  comet.wobble += 0.35 * 0.016;
+  drawComet();
+
+  // Gravitational field lines (subtle curves from planets to core) — only when not sleeping
+  if (!state.sleeping) {
+    ctx.globalAlpha = 0.08;
+    planets.forEach(p => {
+      const ps = toScreen(p.x, p.y, p.z);
+      // Simple curve toward center
+      ctx.beginPath();
+      ctx.moveTo(ps.x, ps.y);
+      const midX = (ps.x + cs.x) / 2 + Math.sin(time + p.id.length) * 15;
+      const midY = (ps.y + cs.y) / 2 + Math.cos(time + p.id.length) * 10;
+      ctx.quadraticCurveTo(midX, midY, cs.x, cs.y);
+      ctx.strokeStyle = '#48f';
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+  }
+  
+  requestAnimationFrame(render);
+}
+
+// --- Star background (cached) ---
+let stars = [];
+function initStars() {
+  for (let i = 0; i < 200; i++) {
+    stars.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.5 + 0.3, twinkle: Math.random() * Math.PI * 2 });
+  }
+}
+initStars();
+
+function drawStars() {
+  stars.forEach(s => {
+    const alpha = 0.3 + Math.sin(time * 0.5 + s.twinkle) * 0.2;
+    ctx.beginPath();
+    ctx.arc(s.x * window.innerWidth, s.y * window.innerHeight, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200, 210, 240, ${alpha})`;
+    ctx.fill();
+  });
+}
+
+// --- Axes (faint reference lines) ---
+function drawAxes() {
+  const o = toScreen(0, 0, 0);
+  const ext = 1.3;
+  
+  // X axis: Rationality ↔ Intuition
+  let a = toScreen(-ext, 0, 0), b = toScreen(ext, 0, 0);
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+  ctx.strokeStyle = 'rgba(100, 150, 255, 0.15)'; ctx.lineWidth = 1; ctx.stroke();
+  
+  // Y axis: Preservation ↔ Disruption
+  a = toScreen(0, -ext, 0); b = toScreen(0, ext, 0);
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+  ctx.strokeStyle = 'rgba(150, 255, 100, 0.12)'; ctx.stroke();
+  
+  // Z axis: Inward ↔ Outward
+  a = toScreen(0, 0, -ext); b = toScreen(0, 0, ext);
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+  ctx.strokeStyle = 'rgba(255, 150, 100, 0.12)'; ctx.stroke();
+  
+  // Labels at ends
+  ctx.font = '9px system-ui'; ctx.textAlign = 'center';
+  let l = toScreen(ext*1.1, 0, 0);
+  ctx.fillStyle = 'rgba(100,150,255,0.4)'; ctx.fillText('Rationality →', l.x, l.y - 6);
+  l = toScreen(-ext*1.1, 0, 0);
+  ctx.fillText('← Intuition', l.x, l.y - 6);
+  
+  l = toScreen(0, ext*1.1, 0);
+  ctx.fillStyle = 'rgba(150,255,100,0.3)'; ctx.fillText('Preservation ↑', l.x + 40, l.y);
+  l = toScreen(0, -ext*1.1, 0);
+  ctx.fillText('↓ Disruption', l.x + 40, l.y);
+}
+
+// --- Ring (user persona) ---
+function drawRing() {
+  // The user-persona ring is a flat circle in world-space (the orbital plane
+  // through the core). Sampling points around it and projecting each with
+  // toScreen() makes it tilt correctly as the camera spins — instead of being a
+  // screen-fixed circle that would look wrong once we have real 3D rotation.
+  const rs = toScreen(0, 0, 0);
+  const segs = 72;
+  ctx.beginPath();
+  for (let i = 0; i <= segs; i++) {
+    const a = (i / segs) * Math.PI * 2;
+    const p = toScreen(Math.cos(a) * ring.radius, 0, Math.sin(a) * ring.radius);
+    if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
+  }
+  ctx.closePath();
+
+  // Pulsing ring — stroke the projected path
+  const pulse = 1 + Math.sin(time * 0.8) * 0.02;
+  ctx.strokeStyle = `rgba(255, 140, 60, ${0.15 + Math.sin(time) * 0.05})`;
+  ctx.lineWidth = 2;
+  ctx.setLineDash([8, 12]);
+  ctx.lineDashOffset = -time * 20;
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Approximate on-screen radius for the label offset only.
+  const ringR = fitZoom() * cam.zoom * rs.depth * pulse;
+  
+  // Ring label
+  ctx.font = '10px system-ui';
+  ctx.fillStyle = 'rgba(255, 160, 80, 0.4)';
+  ctx.textAlign = 'center';
+  const labelPos = { x: rs.x + ringR * 0.7, y: rs.y - ringR * 0.7 };
+  ctx.fillText(`Ring — ${ring.name}`, labelPos.x, labelPos.y);
+}
+
+// --- Gas Giants ---
+function drawGasGiant(gg) {
+  const gs = toScreen(gg.x, gg.y, gg.z);
+  // Body size now flows through the same scale/perspective as everything else.
+  // The old hard-coded min_dim*0.32 made them dominate and clip off-frame.
+  const bodyR = gg.radius * fitZoom() * cam.zoom * gs.depth;
+  
+  // Body (large, soft glow)
+  const bg = ctx.createRadialGradient(gs.x, gs.y, 0, gs.x, gs.y, bodyR);
+  bg.addColorStop(0, rgba(gg.color, 0.25));
+  bg.addColorStop(0.7, rgba(gg.color, 0.08));
+  bg.addColorStop(1, rgba(gg.color, 0));
+  ctx.beginPath();
+  ctx.arc(gs.x, gs.y, bodyR, 0, Math.PI * 2);
+  ctx.fillStyle = bg;
+  ctx.fill();
+  
+  // Inner solid disc
+  ctx.beginPath();
+  ctx.arc(gs.x, gs.y, bodyR * 0.4, 0, Math.PI * 2);
+  ctx.fillStyle = rgba(gg.color, 0.38);
+  ctx.fill();
+  
+  // Ring around the giant (incubation buffer) — elliptical
+  ctx.beginPath();
+  ctx.ellipse(gs.x, gs.y, bodyR * 1.4, bodyR * 0.5, -0.3, 0, Math.PI * 2);
+  ctx.strokeStyle = gg.ringColor;
+  ctx.lineWidth = 3 + Math.sin(time * 0.7) * 1;
+  ctx.stroke();
+  
+  // Ring buffer contents (small dots orbiting the ring)
+  gg.contents.forEach((c, i) => {
+    const angle = time * 0.4 + i * 2.1;
+    const rx = bodyR * 1.4;
+    const ry = bodyR * 0.5;
+    const cx = gs.x + Math.cos(angle - 0.3) * rx - Math.sin(-0.3) * Math.sin(angle) * ry;
+    const cy = gs.y + Math.sin(angle - 0.3) * ry + Math.cos(-0.3) * Math.cos(angle) * rx * 0;
+    // Simplified: just orbit on the ellipse
+    const ox = gs.x + Math.cos(angle) * rx * Math.cos(-0.3) - Math.sin(angle) * ry * Math.sin(-0.3);
+    const oy = gs.y + Math.cos(angle) * rx * Math.sin(-0.3) + Math.sin(angle) * ry * Math.cos(-0.3);
+    ctx.beginPath();
+    ctx.arc(ox, oy, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = rgba(gg.color, 0.67);
+    ctx.fill();
+  });
+  
+  // G1 moons (pre-filter) orbit faster
+  if (gg.moons.length) {
+    gg.moons.forEach((m, i) => {
+      const angle = time * 1.2 + i * (Math.PI * 2 / gg.moons.length);
+      const mr = bodyR * 0.7;
+      const mx = gs.x + Math.cos(angle) * mr;
+      const my = gs.y + Math.sin(angle) * mr * 0.45;
+      ctx.beginPath();
+      ctx.arc(mx, my, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#8cf';
+      ctx.fill();
+    });
+  }
+  
+  // Label
+  ctx.font = '10px system-ui';
+  ctx.fillStyle = gg.color + 'cc';
+  ctx.textAlign = 'center';
+  ctx.fillText(gg.id, gs.x, gs.y - bodyR * 0.5 - 12);
+}
+
+// --- Tooltip on hover ---
+canvas.addEventListener('mousemove', (e) => {
+  const mx = e.clientX, my = e.clientY;
+  let found = null;
+  
+  planets.forEach(p => {
+    const s = toScreen(p.x, p.y, p.z);
+    if (Math.hypot(mx - s.x, my - s.y) < 20) found = p;
+  });
+  
+  if (!found) gasGiants.forEach(gg => {
+    const s = toScreen(gg.x, gg.y, gg.z);
+    const r = gg.radius * fitZoom() * cam.zoom * s.depth;
+    if (Math.hypot(mx - s.x, my - s.y) < r) found = gg;
+  });
+  
+  const tt = document.getElementById('tooltip');
+  if (found) {
+    tt.style.display = 'block';
+    tt.style.left = (mx + 15) + 'px';
+    tt.style.top = (my - 10) + 'px';
+    
+    if (found.idDrive !== undefined) {
+      // Planet OR Comet — both now carry the full Freudian triad
+      document.getElementById('tt-name').textContent = found.id;
+      const isPlanet = found.sigma !== undefined;   // planets have sigma, comet doesn't
+      const posLine = isPlanet ? `Pos: [${found.x.toFixed(2)}, ${found.y.toFixed(2)}, ${found.z.toFixed(2)}]<br>` : '';
+      document.getElementById('tt-detail').innerHTML = 
+        posLine +
+        `<b>Id</b>: ${found.idDrive}<br><b>Ego</b>: ${found.ego}<br><b>Superego</b>: ${found.superego}` +
+        (isPlanet ? `<br>σ=${found.sigma}` : '');
+    } else {
+      document.getElementById('tt-name').textContent = found.id;
+      document.getElementById('tt-detail').innerHTML = 
+        `Ring buffer entries: ${found.contents.length}<br>` +
+        (found.moons ? `Pre-filter moons: ${found.moons.length}` : 'No pre-filter (internal)');
+    }
+  } else {
+    tt.style.display = 'none';
+  }
+});
+
+// --- Camera controls: scroll to zoom, drag to pan, double-click to reset framing ---
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const factor = e.deltaY > 0 ? 0.92 : 1.08;
+  cam.zoom = Math.max(0.3, Math.min(5, cam.zoom * factor));
+}, { passive: false });
+
+let dragging = false, lastX = 0, lastY = 0;
+canvas.addEventListener('mousedown', e => {
+  // Only start a pan when the press lands on the canvas itself (not the overlays)
+  if (e.target !== canvas) return;
+  dragging = true; lastX = e.clientX; lastY = e.clientY;
+});
+canvas.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  cam.panX += e.clientX - lastX;
+  cam.panY += e.clientY - lastY;
+  lastX = e.clientX; lastY = e.clientY;
+});
+window.addEventListener('mouseup', () => { dragging = false; });
+canvas.addEventListener('dblclick', () => {
+  // Reset framing: recenter, refit, reset rotation
+  cam.zoom = 1.0; cam.panX = 0; cam.panY = 0; rotY = -0.6;
+});
+
+// Enter key to inject
+document.getElementById('input-box').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') injectInput(e.target.value);
+});
+
+// Start rendering
+render();
+log('System initialized. Core gravity G=' + state.core.G.toFixed(2) + '. Awaiting input.', 'routing');
+</script>
+</body>
+</html>
