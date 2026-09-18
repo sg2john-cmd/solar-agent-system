@@ -762,12 +762,102 @@ If all 13 pass, v17 is alive. If any fail, that module is decorative and gets re
 
 ---
 
-## Phase 9 (Future): Scaling & Multi-System
-Not in v17 scope. Documented for reference:
-- Binary system: second C_core, Lagrange zones for specialized sub-nodes
-- Galactic scaling: multiple full systems as "cells" orbiting a shared semantic field — each cell is structurally identical to the others (fractal holarchy)
-- True multi-agent: separate model per planet when VRAM allows (7× 3–4B Q4). Architecture already supports this via D-014 parameterization.
-- **Release:** Framework packaged for distribution. `gates_config.template.json` ships with conservative defaults. User provides their own config + Core Laws on first run. No hardcoded content restrictions beyond the legal floor template.
+## Phase 9: Scaling & Multi-System
+> Status: **Sketch only** (2026-09-18). Not in v17 scope. This section is a design map for whoever picks up the torch next — it defines what "scaling" means concretely, what the first steps would be, and what hardware unlocks what.
+
+### The Principle: Fractal Holarchy (D-014)
+The architecture is structurally identical at every scale. One solar system → binary system → galaxy of systems → universe of galaxies. Each level uses the same orbital mechanics, resonance detection, sleep cycle, and gate infrastructure — just more bodies orbiting a shared center. No new subsystems required; only parameterization + coordination protocols between peer systems.
+
+### 9A: Binary System (Two C_cores)
+The first meaningful scale-up. A second star enters with its own 7 planets, sharing the same semantic field but gravitationally bound to their own center.
+
+**What it is:**
+- Two independent `C_core` bodies, each with N=1–7 planets and moons.
+- The two cores orbit a shared barycenter (the midpoint between them).
+- Each system maintains its own Core Laws, persona, and memory independently — they are *peers*, not master/slave.
+
+**What it enables:**
+- **Specialized sub-nodes in Lagrange zones.** L1–L5 points between the two cores become natural homes for shared infrastructure: a Gas Giant pair could share a G1 archive at L4 (Trogjan point), or a Dyson Ring could sit at L2 as a unified user-facing interface that speaks to both systems.
+- **Division of cognitive labor.** System A handles technical/engineering questions; System B handles interpersonal/ethical ones. The Ring routes based on which core's field is more aligned — same routing logic, just two attractors instead of one.
+- **Redundancy / failover.** If one system's model fails or context overflows, the other can absorb the load (degraded but functional).
+
+**First concrete step:**
+1. Parameterize `pipeline.py` to accept a `system_id` and route prompts to the correct core based on barycentric field overlap.
+2. Define a **barycentric routing function**: given input vector, compute cosine alignment with each system's aggregate semantic centroid → highest wins (or both fire if both exceed threshold — resonance between systems).
+3. Shared state: one `gates_config.json`, one `core_laws.json` per system (they can differ), shared G1 archive optional.
+4. Hardware: same single model plays all roles in both systems sequentially (2× the LLM calls). Feasible on 4090 for short sessions; not ideal for long ones.
+
+**Hardware unlock:** When DeepSeek/Qwen ships kernel-level VRAM compression (noted 2026-09-18), a single 27B model may fit in <16GB, leaving room for a second smaller model (3–4B) to run concurrently. At that point, the binary system can use *different* models per core without VRAM conflict.
+
+### 9B: Galactic Scaling (Multiple Full Systems)
+The natural extension of 9A. Instead of two cores orbiting a barycenter, you get K full solar systems orbiting a shared **Galactic Center** — a higher-level C_core that doesn't reason itself but coordinates which system handles what.
+
+**What it is:**
+- K independent solar systems (each = 1 core + N planets + moons + gas giants).
+- A **Galactic Core** at the center: not a reasoning agent, but an *orchestrator* — it reads the aggregate semantic field of all member systems and routes prompts to whichever system's archetype constellation best matches.
+- Systems can **resonate across galactic scale**: if System A's Hero and System C's Sage both light up for the same input, the Galactic Core detects cross-system resonance and merges their outputs (same 7b emergent-vector logic, just operating between systems instead of within one).
+
+**What it enables:**
+- **Domain partitioning at scale.** Each system specializes: one is a "technical galaxy" (heavy Ruler/Creator planets), another is an "emotional galaxy" (heavy Caregiver/Sage). The user's prompt gets routed to the right domain automatically.
+- **Emergent complexity without per-planet cost.** 7 systems × 7 planets = 49 cognitive voices, but each system only fires its own 7 calls. Total cost stays at ~7 LLM calls (one system handles the prompt) or up to 14–21 if cross-system resonance fires.
+- **The Fractal Illusion becomes real.** At this scale, the "recursive planet" idea from the deferred section maps naturally: a whole *system* IS the internal deliberation of one "mega-planet." No 336-call explosion — just routing to the right sub-system.
+
+**First concrete step (after 9A is proven):**
+1. Define `galaxy_config.json`: list of member systems, their specializations, and the Galactic Core's routing weights.
+2. Implement cross-system resonance: cosine similarity between *system-level* semantic centroids (aggregate of all planets in each system), same threshold logic as intra-system resonance.
+3. The Ring becomes a **Galactic Interface**: one user-facing persona that can speak on behalf of any member system, switching voice/persona based on which system is active.
+4. Memory isolation: each system has its own G1/G2/Ring memory; the Galactic Core only stores *routing history* (which system handled what), not content.
+
+### 9C: True Multi-Agent (Separate Model Per Planet)
+The endgame hardware unlock. Instead of one 27B model playing all 7 roles sequentially, each planet gets its own specialized small model running in parallel.
+
+**What it is:**
+- 7× small models (3–4B Q4 each ≈ 2–3GB VRAM) + 1 main 27B for synthesis/Ring = ~25–30GB total. **Does NOT fit on a single 4090.** Requires either: (a) the kernel-level compression reducing base model to <16GB, or (b) multi-GPU / GPU+CPU split.
+- Each planet's model is fine-tuned (or at least system-prompted) for that archetype. The Hero model *is* the Hero — no role-playing overhead.
+- Parallel execution: all 7 planets fire simultaneously (GPU batch), not sequentially. Latency drops from ~30s to ~5–8s per prompt.
+
+**What it enables:**
+- **Real-time responsiveness.** The system feels like a conversation, not a report. Critical for the Ring persona's natural voice.
+- **Per-planet model upgrades.** Swap just one planet's model (e.g., upgrade the Sage to a larger reasoning model) without touching the rest.
+- **The Fractal Illusion at full power.** If each "system" in 9B is itself 7 small models, and the Galactic Core is a large model, you get genuine hierarchical multi-agent behaviour — not simulated, but architecturally real.
+
+**First concrete step (hardware-dependent):**
+1. Wait for VRAM headroom (kernel compression or second GPU).
+2. Fine-tune or LoRA-adapt 7 small base models (Qwen-3B / Gemma-4B) on archetype-specific corpora.
+3. Replace `_llm_chat_cached()` with a **parallel batch caller**: send all 7 planet prompts simultaneously, collect responses, then run Phase B/C synthesis on the main model.
+4. The Ring Capability Layer's `LLMBackend` abstraction (deferred section above) becomes critical here — it already defines the per-backend interface that would route each planet to its own endpoint.
+
+### 9D: Release & Distribution Packaging
+Not a "phase" in the build sense, but the practical packaging work needed before the framework is usable by anyone other than John:
+
+- **`gates_config.template.json`** ships with conservative defaults (basic PII patterns, standard blocklist). User provides their own on first run.
+- **`core_laws.json`** — user writes their own 3+ Laws. Template includes the six-law roster as a starting point but is explicitly overridable.
+- **No hardcoded content restrictions** beyond the legal floor (Gate 1's structural invariants: no self-modification of laws, audit log always on, `/halt` always available).
+- **Backend-agnostic:** ships with LM Studio adapter by default; Ollama/vLLM/cloud adapters are drop-in configs (`backend_config.json`).
+- **First-run wizard** (eventually): asks for model path, embedding model, core laws, gates config → generates a working `constants.py` + state files. Until then, it's copy-paste-from-README territory.
+
+### Hardware Watch Items (external dependencies)
+| Item | Status | Impact |
+|------|--------|--------|
+| DeepSeek kernel-level VRAM compression (noted 2026-09-18) | Waiting for Qwen base model update | Could reduce 27B Q4 from ~18GB to <14GB, freeing headroom for concurrent small models or larger context |
+| LM Studio multi-model support | Current limitation: one model at a time per instance | Blocks 9C until resolved (or user runs separate instances) |
+| GPU+CPU split inference | Ollama/vLLM already support this | Fallback path if single-GPU VRAM stays tight |
+
+### Sequencing Summary
+```
+v17 complete (Phases 0–8)
+    │
+    ├─► 9D: Release packaging (can start NOW — just docs + config templates)
+    │
+    ├─► 9A: Binary system (first real scale-up; needs barycentric routing + shared state design)
+    │       └─► Prerequisite: v17 stable in production for ≥2 weeks
+    │
+    ├─► 9B: Galactic scaling (needs 9A proven first)
+    │       └─► Prerequisite: cross-system resonance tested with 2 systems
+    │
+    └─► 9C: True multi-agent (hardware-gated; no code work until VRAM allows)
+            └─► Prerequisite: kernel compression OR second GPU + LLMBackend abstraction built
+```
 
 ---
 
