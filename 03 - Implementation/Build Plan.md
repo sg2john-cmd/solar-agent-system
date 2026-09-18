@@ -649,6 +649,8 @@ Properties: no planet drifts while fewer than 4 others are present; user can typ
 
 **Evidence:** `p6s1_ring_core_selftest.log`, `p6s2_ring_swarm_writes_selftest.log`, `p6s2_ring_compression_selftest_*.log` (19/19), `p6s3_ring_drift_sleep_selftest_*.log` (Segment 3: bounded drift + isolated persona commit, zero LLM), `p6s4_ring_idle_selftest_20260917_145357.log` (Segment 4: 22/22 offline PASS — Segs 1-3 regression + [20][21][22] idle-OFF path; ON-path LLM test deferred), `p6s5_ring_selfreview_offline_20260917_151001.log` (Segment 5a: 31/31 offline PASS), `p6s5_selfreview_live_20260917_151042.log` (Segment 5b: full live debate, 23 LLM calls in 112s, verdict committed), `p6s6_ring_useraccess_selftest_20250919_043000.log` (Segment 6: **37/37 PASS** — full regression [1]–[37], user access API + backdated context).
 
+> **Deferred micro-feature (Ring):** Time awareness — the Ring persona should have access to current date/time so it can reference "it's getting late" or frame responses temporally without John having to tell it. Implementation: inject a `current_time` field into the Ring's system prompt at session start (one line in `ring.py`, no new subsystem). Noted 2026-09-18 so it doesn't get lost.
+
 ---
 
 ## Phase 7: Gas Giant Operations
