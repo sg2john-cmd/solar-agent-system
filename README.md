@@ -4,6 +4,26 @@ A 3D solar-system cognitive framework where 7 archetype "planets" orbit a Core S
 
 Theory papers live in the companion repo [resonant-cognition](https://github.com/sg2john-cmd/resonant-cognition). This repository is the *implementation and its evidence*.
 
+## Hardware & Benchmarks
+
+Empirically verified running locally on consumer hardware:
+- **GPU:** NVIDIA RTX 4090 (24 GB VRAM)
+- **CPU / RAM:** Intel i9 13th gen, 64 GB system RAM
+- **Model:** ~27B Q4 quantization via [LM Studio](https://lmstudio.ai/) at `127.0.0.1:1234`
+- **Embeddings:** `text-embedding-allmini` (384-dim), same server
+
+Full pipeline latency (moons ON, 7 planets × A/B/C): ~60–120 s per prompt on the above rig.
+Smoke tests and offline gates run in < 5 s with no LLM calls.
+
+## Memory & Edge Defense
+
+The system uses a tiered memory architecture inspired by orbital mechanics:
+
+- **Dyson Ring (the user-facing layer):** The only component that talks to you. Houses the persona's short-term swarm cache, PII vault (encrypted, ejectable), and EU AI Act guardrails. Everything enters and exits through here.
+- **G1 Knowledge Archive:** Off-VRAM permanent long-term memory. A 3-pass moon-filtered sleep cycle promotes stable knowledge into the archive and rejects low-signal noise. Never loaded into GPU memory during inference.
+- **G2 Self-Model (Gas Giant 2):** The system's dreaming sandbox — a parallel self-model that runs background consolidation, drift detection, and axiom distillation without consuming live-session VRAM.
+- **Dyson Swarm (orbital decay cache):** A half-life-decay ring of recent context fragments. Entries lose mass over time; anything below threshold is compressed or ejected to G1. Acts as the system's working short-term memory between Ring sessions.
+
 ## Repository Layout
 
 ```
