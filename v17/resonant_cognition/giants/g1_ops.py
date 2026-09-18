@@ -306,6 +306,7 @@ def g1_sleep_pass_i(path: str | None = None) -> dict:
             entry["status"] = "ejected"
             entry["ejected_ts"] = time.time()
             entry["reject_reason"] = "moon_rejected_clarity"
+            entry["_moon_verdict"] = moon_verdict
             ejected.append(entry)
             remaining_ring.append(entry)
             continue
@@ -314,6 +315,7 @@ def g1_sleep_pass_i(path: str | None = None) -> dict:
             # do NOT promote or eject this pass. Stays pending-ish but flagged so a
             # human can reconcile it (mirrors Tier-2 hold semantics).
             entry["status"] = "flagged_contradiction"
+            entry["_moon_verdict"] = moon_verdict
             remaining_ring.append(entry)
             held_for_review.append({"id": entry.get("id")})
             continue
@@ -351,6 +353,8 @@ def g1_sleep_pass_i(path: str | None = None) -> dict:
                 entry["original_mass"] = base_mass
                 entry["mass"] = round(base_mass * G1_PERIPHERAL_MASS_FACTOR, 4)
                 entry["peripheral"] = True
+            if moon_verdict:
+                entry["_moon_verdict"] = moon_verdict
             promoted.append(entry)
             committed.append(entry)  # add to committed list for subsequent scoring
         else:
@@ -390,9 +394,18 @@ def g1_sleep_pass_i(path: str | None = None) -> dict:
     g1["contents"] = committed
     _save_g1(g1, path)
 
+    def _entry_summary(e: dict) -> dict:
+        return {
+            "id": e["id"],
+            "text": e.get("text", "")[:200],
+            "composite": (e.get("score_breakdown") or {}).get("composite"),
+            "reject_reason": e.get("reject_reason", ""),
+            "moon_verdict": e.get("_moon_verdict", ""),
+        }
+
     return {
-        "promoted": [{"id": e["id"], "composite": e.get("score_breakdown", {}).get("composite")} for e in promoted],
-        "ejected": [{"id": e["id"], "composite": e.get("score_breakdown", {}).get("composite")} for e in ejected],
+        "promoted": [_entry_summary(e) for e in promoted],
+        "ejected": [_entry_summary(e) for e in ejected],
         "held_for_review": held_for_review,
         "stale_flagged": stale_flagged,
         "total_pending": len(promoted) + len(ejected),

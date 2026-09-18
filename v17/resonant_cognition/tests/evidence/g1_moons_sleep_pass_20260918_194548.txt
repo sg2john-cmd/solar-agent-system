@@ -1,0 +1,27 @@
+########################################################################
+G1 FILTER-MOONS SLEEP PASS — LIVE EVIDENCE TRANSCRIPT
+# Generated: 2026-09-18 19:45:48
+# G1_FILTER_MOONS_ENABLED = True (in-memory)
+# Duration: 10.3s
+########################################################################
+
+SEEDED CANDIDATES:
+  good_insight         id=g1_rb_da9c5250  text="When a user expresses decision paralysis, the most effective intervention is not..."
+  borderline_slop      id=g1_rb_9bac5e44  text="It is generally acknowledged that cognitive systems benefit from some degree of ..."
+  vague_redundant      id=g1_rb_6274787d  text="The system should balance structure with flexibility, allowing for both planned ..."
+
+REPORT (10.3s):
+
+  PROMOTED (0):
+
+  EJECTED (3):
+    g1_rb_da9c5250  moon=  reason=
+      text: "When a user expresses decision paralysis, the most effective intervention is not to provide more options or analysis but to introduce a reversibility filter: 'Can this choice be undone?' This single b"
+    g1_rb_9bac5e44  moon=rejected_clarity  reason=moon_rejected_clarity
+      text: "It is generally acknowledged that cognitive systems benefit from some degree of structured reflection and periodic review in order to maintain overall coherence and avoid the accumulation of unnecessa"
+    g1_rb_6274787d  moon=rejected_clarity  reason=moon_rejected_clarity
+      text: "The system should balance structure with flexibility, allowing for both planned execution and adaptive response to emerging circumstances in a holistic manner."
+
+  HELD_FOR_REVIEW (0):
+
+SUMMARY: 0 promoted, 3 ejected, 0 held for review. Moons fired: YES

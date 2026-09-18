@@ -1,0 +1,14 @@
+########################################################################
+G1 FILTER-MOONS SLEEP PASS — LIVE EVIDENCE TRANSCRIPT
+# Generated: 2026-09-18 19:37:04
+# G1_FILTER_MOONS_ENABLED = True (in-memory)
+# Duration: 10.4s
+########################################################################
+
+SEEDED CANDIDATES:
+  good_insight         id=g1_rb_dd482918  text="When a user expresses decision paralysis, the most effective intervention is not..."
+  borderline_slop      id=g1_rb_2a218d63  text="It is generally acknowledged that cognitive systems benefit from some degree of ..."
+  vague_redundant      id=g1_rb_ccadcf74  text="The system should balance structure with flexibility, allowing for both planned ..."
+
+REPORT (10.4s):
+  ERROR: AttributeError: 'NoneType' object has no attribute 'get'
